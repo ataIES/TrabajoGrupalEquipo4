@@ -4,6 +4,8 @@
  */
 package proyectointermodular.prestamos;
 
+import java.time.LocalDate;
+
 /**
  * Clase Movimiento que contiene los datos de un movimiento en cuenta.
  *
@@ -18,6 +20,7 @@ public class Movimiento {
     private String emisor;
     private String destinatario;
     private String concepto;
+    private LocalDate fecha;
 
     /**
      * Constructor por parámetros que recibe el valor de todos los atributos excepto el número de operación y crea un objeto Movimiento.
@@ -27,13 +30,15 @@ public class Movimiento {
      * @param emisor Parámetro de tipo String que será el emisor.
      * @param destinatario Parámetro de tipo String que será el destinatario.
      * @param concepto Parámetro de tipo String que será el concepto.
+     * @param fecha Parámetro de tipo LocalDate que será la fecha.
      */
-    public Movimiento(double cantidad, TipoMovimiento tipoMovimiento, String emisor, String destinatario, String concepto) {
+    public Movimiento(double cantidad, TipoMovimiento tipoMovimiento, String emisor, String destinatario, String concepto, LocalDate fecha) {
         this.cantidad = cantidad;
         this.tipoMovimiento = tipoMovimiento;
         this.emisor = emisor;
         this.destinatario = destinatario;
         this.concepto = concepto;
+        this.fecha = fecha;
     }
 
     /**
@@ -45,14 +50,16 @@ public class Movimiento {
      * @param emisor Parámetro de tipo String que será el emisor.
      * @param destinatario Parámetro de tipo String que será el destinatario.
      * @param concepto Parámetro de tipo String que será el concepto.
+     * @param fecha Parámetro de tipo LocalDate que será la fecha.
      */
-    public Movimiento(int numOperacion, double cantidad, TipoMovimiento tipoMovimiento, String emisor, String destinatario, String concepto) {
+    public Movimiento(int numOperacion, double cantidad, TipoMovimiento tipoMovimiento, String emisor, String destinatario, String concepto, LocalDate fecha) {
         this.numOperacion = numOperacion;
         this.cantidad = cantidad;
         this.tipoMovimiento = tipoMovimiento;
         this.emisor = emisor;
         this.destinatario = destinatario;
         this.concepto = concepto;
+        this.fecha = fecha;
     }
 
 }
