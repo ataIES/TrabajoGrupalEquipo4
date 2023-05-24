@@ -98,6 +98,7 @@ public class Prestamos extends javax.swing.JFrame {
 
     private void jBVolverSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVolverSolicitarActionPerformed
         // TODO add your handling code here:
+        
         jPSolicitar.setVisible(false);
         jPPortada.setVisible(true);
     }//GEN-LAST:event_jBVolverSolicitarActionPerformed
