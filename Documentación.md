@@ -16,7 +16,7 @@
 | Objetivos|Encargados | Conseguido|
 |----------|-----------|-----------|
 |Crear la base de datos a partir del diagrama relacional  | Efrén, Victor|si|
-|Montar el servidor y el cliente para la creacion del entorno cliente-servidor   | Cesar y Efrén||
+|Montar el servidor y el cliente para la creacion del entorno cliente-servidor   | Cesar y Efrén|Faltan utimar los detalles , se acabará el jueves|
 |Revisar diagrama de flujo y de clases | todos|si|
 
 # Día 3 
