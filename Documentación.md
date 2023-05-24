@@ -22,9 +22,11 @@
 # Día 3 
 | Objetivos|Encargados | Conseguido|
 |----------|-----------|-----------|
-|Revisar la base de datos y añadir los triggers necesarios para poder introducir los datos | Efrén, Victor ||
-|Empezar a crear las clases principales del programa de java | Cesar y Efrén||
-|Revisar diagrama de flujo y de clases | todos||
+|Revisar la base de datos y añadir los triggers necesarios para poder introducir los datos | César ||
+|Empezar a crear las clases principales del programa de java |Víctor |Si|
+|Revisar diagrama de flujo y de clases | todos|Si |
+|Empezar a diseñar el layout de la aplicación | Efrén, Víctor , Adrián||
+|Empezar a crear los metodos necesarios para el funcionamiento del programa | todos | |
  
 
 
