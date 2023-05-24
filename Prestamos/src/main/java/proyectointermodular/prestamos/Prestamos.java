@@ -83,7 +83,7 @@ public class Prestamos extends javax.swing.JFrame {
                 jBVolverSolicitarActionPerformed(evt);
             }
         });
-        jPSolicitar.add(jBVolverSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 220, -1, -1));
+        jPSolicitar.add(jBVolverSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
 
         getContentPane().add(jPSolicitar, "card3");
 
