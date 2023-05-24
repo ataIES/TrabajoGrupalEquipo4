@@ -22,11 +22,13 @@
 # Día 3 
 | Objetivos|Encargados | Conseguido|
 |----------|-----------|-----------|
-|Revisar la base de datos y añadir los triggers necesarios para poder introducir los datos | César ||
+|Revisar la base de datos y añadir los triggers necesarios para poder introducir los datos | César |Si|
 |Empezar a crear las clases principales del programa de java |Víctor |Si|
 |Revisar diagrama de flujo y de clases | todos|Si |
-|Empezar a diseñar el layout de la aplicación | Efrén, Víctor , Adrián||
-|Empezar a crear los metodos necesarios para el funcionamiento del programa | todos | |
+|Diseñar el layout de la aplicación | Efrén, Víctor , Adrián|Si|
+|Empezar a crear las pantallas del menu con JFrame | Victor y Adrián | |
+|Empezar a crear la página web de promoción|César||
+|Terminar los detalles del entorno cliente servidor|Efrén ||
  
 
 
