@@ -16,15 +16,19 @@
 | Objetivos|Encargados | Conseguido|
 |----------|-----------|-----------|
 |Crear la base de datos a partir del diagrama relacional  | Efrén, Victor|si|
-|Montar el servidor y el cliente para la creacion del entorno cliente-servidor   | Cesar y Efrén||
+|Montar el servidor y el cliente para la creacion del entorno cliente-servidor   | Cesar y Efrén|Faltan utimar los detalles , se acabará el jueves|
 |Revisar diagrama de flujo y de clases | todos|si|
 
 # Día 3 
 | Objetivos|Encargados | Conseguido|
 |----------|-----------|-----------|
-|Revisar la base de datos y añadir los triggers necesarios para poder introducir los datos | Efrén, Victor ||
-|Empezar a crear las clases principales del programa de java | Cesar y Efrén||
-|Revisar diagrama de flujo y de clases | todos||
+|Revisar la base de datos y añadir los triggers necesarios para poder introducir los datos | César |Si|
+|Empezar a crear las clases principales del programa de java |Víctor |Si|
+|Revisar diagrama de flujo y de clases | todos|Si |
+|Diseñar el layout de la aplicación | Efrén, Víctor , Adrián|Si|
+|Empezar a crear las pantallas del menu con JFrame | Victor y Adrián | |
+|Empezar a crear la página web de promoción|César||
+|Terminar los detalles del entorno cliente servidor|Efrén ||
  
 
 
