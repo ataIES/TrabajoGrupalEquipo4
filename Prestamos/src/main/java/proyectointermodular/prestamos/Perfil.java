@@ -44,4 +44,29 @@ public class Perfil {
         this.gananciales = gananciales;
     }
 
+    //GETs
+    public boolean isEsMoroso() {
+        return esMoroso;
+    }
+
+    public boolean isProcesoJudicial() {
+        return procesoJudicial;
+    }
+
+    public SituacionLaboral getSituacionLaboral() {
+        return situacionLaboral;
+    }
+
+    public SituacionCivil getSituacionCivil() {
+        return situacionCivil;
+    }
+
+    public Cliente getPareja() {
+        return pareja;
+    }
+
+    public boolean isGananciales() {
+        return gananciales;
+    }
+
 }
