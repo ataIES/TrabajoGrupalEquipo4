@@ -40,6 +40,12 @@ public class CuentaBancaria {
         this.movimientos = movimientos;
     }
 
+    @Override
+    public String toString() {
+        return "\nCuentaBancaria{" + "IBAN=" + IBAN + ", tipoCuenta=" + tipoCuenta + ", saldoActual=" + saldoActual + ", nominaUltMes=" + nominaUltMes + ", mediaNominaAnual=" + mediaNominaAnual + ", movimientos=" + movimientos + '}';
+    }
+
+    
     //GETs
     public double getNominaUltMes() {
         return nominaUltMes;

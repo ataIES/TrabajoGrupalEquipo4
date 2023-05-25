@@ -49,17 +49,6 @@ public class Prestamos extends javax.swing.JFrame {
         jBAceptar = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
         jPSolicitar = new javax.swing.JPanel();
-        jBVolverSolicitar = new javax.swing.JButton();
-        jPMostrar = new javax.swing.JPanel();
-        jBVolverMostrar = new javax.swing.JButton();
-        jLabelMostrar = new javax.swing.JLabel();
-        jLabelFiltroMostrar = new javax.swing.JLabel();
-        jComboBoxFiltroMostrar = new javax.swing.JComboBox<>();
-        jTextFieldDatoMostrar = new javax.swing.JTextField();
-        jButtonBuscarMostrar = new javax.swing.JButton();
-        jButtonLimpiarMostrar = new javax.swing.JButton();
-        jScrollPaneMostrar = new javax.swing.JScrollPane();
-        jTableMostrar = new javax.swing.JTable();
         jScrollPaneClientesSolicitar = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButtonVolverSolicitar = new javax.swing.JButton();
@@ -70,6 +59,16 @@ public class Prestamos extends javax.swing.JFrame {
         jLabelTituloSolicitar = new javax.swing.JLabel();
         jLabelDatosClienteSolicitar = new javax.swing.JLabel();
         jButtonProcesarSolicitar = new javax.swing.JButton();
+        jPMostrar = new javax.swing.JPanel();
+        jBVolverMostrar = new javax.swing.JButton();
+        jLabelMostrar = new javax.swing.JLabel();
+        jLabelFiltroMostrar = new javax.swing.JLabel();
+        jComboBoxFiltroMostrar = new javax.swing.JComboBox<>();
+        jTextFieldDatoMostrar = new javax.swing.JTextField();
+        jButtonBuscarMostrar = new javax.swing.JButton();
+        jButtonLimpiarMostrar = new javax.swing.JButton();
+        jScrollPaneMostrar = new javax.swing.JScrollPane();
+        jTableMostrar = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Préstamos - Aurora Bank");
@@ -131,6 +130,11 @@ public class Prestamos extends javax.swing.JFrame {
         jPSolicitar.add(jTextFieldDNISolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 170, -1));
 
         jButtonBuscarSolicitar.setText("Buscar");
+        jButtonBuscarSolicitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarSolicitarActionPerformed(evt);
+            }
+        });
         jPSolicitar.add(jButtonBuscarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
 
         jButtonLimpiarSolicitar.setText("Limpiar");
@@ -246,6 +250,11 @@ public class Prestamos extends javax.swing.JFrame {
         jTextFieldDatoMostrar.setText("");
     }//GEN-LAST:event_jButtonLimpiarMostrarActionPerformed
 
+    private void jButtonBuscarSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarSolicitarActionPerformed
+        // TODO add your handling code here:
+        System.out.println(MetodosBD.clientePorDni("90123456E").toString());
+    }//GEN-LAST:event_jButtonBuscarSolicitarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -288,28 +297,27 @@ public class Prestamos extends javax.swing.JFrame {
     private javax.swing.JButton jBMostrar;
     private javax.swing.JButton jBSolicitar;
     private javax.swing.JButton jBVolverMostrar;
-    private javax.swing.JButton jBVolverSolicitar;
     private javax.swing.JButton jButtonBuscarMostrar;
-    private javax.swing.JButton jButtonLimpiarMostrar;
-    private javax.swing.JComboBox<String> jComboBoxFiltroMostrar;
-    private javax.swing.JLabel jLabelFiltroMostrar;
-    private javax.swing.JLabel jLabelMostrar;
-    private javax.swing.JPanel jPMostrar;
-    private javax.swing.JPanel jPPortada;
-    private javax.swing.JPanel jPSolicitar;
-    private javax.swing.JScrollPane jScrollPaneMostrar;
-    private javax.swing.JTable jTableMostrar;
-    private javax.swing.JTextField jTextFieldDatoMostrar;
     private javax.swing.JButton jButtonBuscarSolicitar;
+    private javax.swing.JButton jButtonLimpiarMostrar;
     private javax.swing.JButton jButtonLimpiarSolicitar;
     private javax.swing.JButton jButtonProcesarSolicitar;
     private javax.swing.JButton jButtonVolverSolicitar;
+    private javax.swing.JComboBox<String> jComboBoxFiltroMostrar;
     private javax.swing.JLabel jLabelDNISolicitar;
     private javax.swing.JLabel jLabelDatosClienteSolicitar;
+    private javax.swing.JLabel jLabelFiltroMostrar;
+    private javax.swing.JLabel jLabelMostrar;
     private javax.swing.JLabel jLabelTituloSolicitar;
+    private javax.swing.JPanel jPMostrar;
+    private javax.swing.JPanel jPPortada;
+    private javax.swing.JPanel jPSolicitar;
     private javax.swing.JScrollPane jScrollPaneClientesSolicitar;
+    private javax.swing.JScrollPane jScrollPaneMostrar;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableMostrar;
     private javax.swing.JTextField jTextFieldDNISolicitar;
+    private javax.swing.JTextField jTextFieldDatoMostrar;
     private javax.swing.JLabel lblLogo;
     // End of variables declaration//GEN-END:variables
 }

@@ -62,4 +62,11 @@ public class Movimiento {
         this.fecha = fecha;
     }
 
+    @Override
+    public String toString() {
+        return "\nMovimiento{" + "numOperacion=" + numOperacion + ", cantidad=" + cantidad + ", tipoMovimiento=" + tipoMovimiento + ", emisor=" + emisor + ", destinatario=" + destinatario + ", concepto=" + concepto + ", fecha=" + fecha + '}';
+    }
+    
+    
+
 }
