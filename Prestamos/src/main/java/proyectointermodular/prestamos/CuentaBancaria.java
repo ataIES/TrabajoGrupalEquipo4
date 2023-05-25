@@ -8,16 +8,45 @@ import java.util.List;
 
 /**
  * Clase CuentaBancaria que contiene todos los datos de una cuenta bancaria, incluyendo un listado de movimientos realizados.
- * 
+ *
  * @author Víctor Sánchez Llada, César Torre, Efrén Gutiérrez y Adrián Tresgallo.
  */
 public class CuentaBancaria {
-    
+
+    //Atributos
     private String IBAN;
     private TipoCuenta tipoCuenta;
     private double saldoActual;
     private double nominaUltMes;
     private double mediaNominaAnual;
     private List<Movimiento> movimientos;
-    
+
+    /**
+     * Constructor por parámetros que recibe todos los valores de los atributos y crea un objeto CuentaBancaria.
+     *
+     * @param IBAN Parámetro de tipo String que será el IBAN.
+     * @param tipoCuenta Parámetro de tipo String que será en Enum de tipos de cuentas.
+     * @param saldoActual Parámetro de tipo double que será el saldo actual.
+     * @param nominaUltMes Parámetro de tipo double que será la cantidad de la nómina del último mes.
+     * @param mediaNominaAnual Parámetro de tupo double que será la media de las últimas 12 nóminas.
+     * @param movimientos Parámetrod de tipo List<code>Movimiento</code> que será una lista con los movimientos.
+     */
+    public CuentaBancaria(String IBAN, TipoCuenta tipoCuenta, double saldoActual, double nominaUltMes, double mediaNominaAnual, List<Movimiento> movimientos) {
+        this.IBAN = IBAN;
+        this.tipoCuenta = tipoCuenta;
+        this.saldoActual = saldoActual;
+        this.nominaUltMes = nominaUltMes;
+        this.mediaNominaAnual = mediaNominaAnual;
+        this.movimientos = movimientos;
+    }
+
+    //GETs
+    public double getNominaUltMes() {
+        return nominaUltMes;
+    }
+
+    public double getMediaNominaAnual() {
+        return mediaNominaAnual;
+    }
+
 }

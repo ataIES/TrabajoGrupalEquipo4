@@ -82,4 +82,13 @@ public class Cliente {
         return "Cliente{" + "uuid=" + uuid + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", telefono=" + telefono + ", direccion=" + direccion + ", localidad=" + localidad + ", fechaNacimiento=" + fechaNacimiento + ", perfil=" + perfil + ", cuentaBancaria=" + cuentaBancaria + '}';
     }
 
+    //GETs
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    public CuentaBancaria getCuentaBancaria() {
+        return cuentaBancaria;
+    }
+
 }
