@@ -24,6 +24,15 @@ Proyecto Equipo4
 # Día 3 
 | Objetivos|Encargados | Conseguido|
 |----------|-----------|-----------|
-|Revisar la base de datos y añadir los triggers necesarios para poder introducir los datos | Efrén, Victor ||
-|Empezar a crear las clases principales del programa de java | Cesar y Efrén||
-|Revisar diagrama de flujo y de clases | todos||
+|Revisar la base de datos y añadir los triggers necesarios para poder introducir los datos | César |Si|
+|Empezar a crear las clases principales del programa de java |Víctor |Si|
+|Revisar diagrama de flujo y de clases | todos|Si |
+|Diseñar el layout de la aplicación | Efrén, Víctor , Adrián|Si|
+|Empezar a crear las pantallas del menu con JFrame | Victor y Adrián | SI |
+|Empezar a crear la página web de promoción|César|SI|
+|Terminar los detalles del entorno cliente servidor|Efrén |SI|
+# Día 4 
+| Objetivos|Encargados | Conseguido|
+|----------|-----------|-----------|
+|Cargar mas movimientos en la base de datos|césar||
+|Continuar modificando la página web | Efrén||
