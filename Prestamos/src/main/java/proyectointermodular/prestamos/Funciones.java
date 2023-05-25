@@ -4,6 +4,8 @@
  */
 package proyectointermodular.prestamos;
 
+import java.util.regex.PatternSyntaxException;
+
 /**
  * Clase Funciones que contiene métodos estáticos auxiliares.
  *
@@ -160,6 +162,25 @@ public class Funciones {
 
         return basesMinimas;
 
+    }
+    
+    /**
+     * Método estático esCadenaValida que comprueba si un String es valido frente a un regex pasado como parámetro.
+     *
+     * @param cadena Parámetro de tipo String que será la cadena de texto a validar.
+     * @param regex Parámetro de tipo String que será el regex.
+     * @return Devuelve un boolean.
+     * @throws PatternSyntaxException Lanza una excepción si el regex no es válido.
+     */
+    public static boolean esCadenaValida(String cadena, String regex) throws PatternSyntaxException {
+        /*
+        Ejemplos de regex:
+            DNI -> "[0-9]{7,8}[A-Z a-z]"
+            Fecha con formato dd-MM-yyyy o dd/MM/yyyy, días entre 1 y 31 y mes entre 1 y 12 -> "^([0-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])\\2(\\d{4})$"
+            Palabras o frases:
+                Minúsculas, mayúsculas, vocales acentuadas, espacios y ñ -> "[a-zA-ZÑñáéíóúÁÉÍÓÚ\\s]*"
+        */
+        return cadena.matches(regex);
     }
 
 }
