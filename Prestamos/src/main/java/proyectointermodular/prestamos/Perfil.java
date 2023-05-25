@@ -44,6 +44,12 @@ public class Perfil {
         this.gananciales = gananciales;
     }
 
+    @Override
+    public String toString() {
+        return "\nPerfil{" + "usuario=" + usuario + ", password=" + password + ", situacionCivil=" + situacionCivil + ", situacionLaboral=" + situacionLaboral + ", esMoroso=" + esMoroso + ", procesoJudicial=" + procesoJudicial + ", pareja=" + pareja + ", gananciales=" + gananciales + '}';
+    }
+
+    
     //GETs
     public boolean isEsMoroso() {
         return esMoroso;

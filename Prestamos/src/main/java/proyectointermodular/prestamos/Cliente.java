@@ -91,4 +91,8 @@ public class Cliente {
         return cuentaBancaria;
     }
 
+    public String getUuid() {
+        return uuid;
+    }
+
 }
