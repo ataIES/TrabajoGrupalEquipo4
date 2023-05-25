@@ -59,14 +59,11 @@ public class Prestamos extends javax.swing.JFrame {
         jLabelTituloSolicitar = new javax.swing.JLabel();
         jLabelDatosClienteSolicitar = new javax.swing.JLabel();
         jButtonProcesarSolicitar = new javax.swing.JButton();
-
-
         jPCalcularPrestamo = new javax.swing.JPanel();
         jScrollPanePrestamo = new javax.swing.JScrollPane();
         jLCalculoPrestamo = new javax.swing.JLabel();
         jBCalculo = new javax.swing.JButton();
         jBVolver = new javax.swing.JButton();
-
         jPMostrar = new javax.swing.JPanel();
         jBVolverMostrar = new javax.swing.JButton();
         jLabelMostrar = new javax.swing.JLabel();
@@ -75,9 +72,7 @@ public class Prestamos extends javax.swing.JFrame {
         jTextFieldDatoMostrar = new javax.swing.JTextField();
         jButtonBuscarMostrar = new javax.swing.JButton();
         jButtonLimpiarMostrar = new javax.swing.JButton();
-        jScrollPaneMostrar = new javax.swing.JScrollPane();
-        jTableMostrar = new javax.swing.JTable();
-
+        jScrollPane1Mostrar = new javax.swing.JScrollPane();
         jPFirmar = new javax.swing.JPanel();
         jLPrestamoConcedido = new javax.swing.JLabel();
         DNI = new javax.swing.JLabel();
@@ -90,7 +85,6 @@ public class Prestamos extends javax.swing.JFrame {
         jScrollPanePreconcedido = new javax.swing.JScrollPane();
         jLPrestamoPreconcedido1 = new javax.swing.JLabel();
         jBVolver1 = new javax.swing.JButton();
-
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Préstamos - Aurora Bank");
@@ -167,15 +161,12 @@ public class Prestamos extends javax.swing.JFrame {
         jPSolicitar.add(jTextFieldDNISolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 170, -1));
 
         jButtonBuscarSolicitar.setText("Buscar");
-
+        jButtonBuscarSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBuscarSolicitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonBuscarSolicitarActionPerformed(evt);
             }
         });
-
-        jButtonBuscarSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
         jPSolicitar.add(jButtonBuscarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
 
         jButtonLimpiarSolicitar.setText("Limpiar");
@@ -259,18 +250,7 @@ public class Prestamos extends javax.swing.JFrame {
             }
         });
         jPMostrar.add(jButtonLimpiarMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, -1, -1));
-
-        jTableMostrar.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
-            }
-        ));
-        jScrollPaneMostrar.setViewportView(jTableMostrar);
-
-        jPMostrar.add(jScrollPaneMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 720, 350));
+        jPMostrar.add(jScrollPane1Mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 690, 300));
 
         getContentPane().add(jPMostrar, "card4");
 
@@ -517,38 +497,27 @@ public class Prestamos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonProcesarSolicitar;
     private javax.swing.JButton jButtonVolverSolicitar;
     private javax.swing.JComboBox<String> jComboBoxFiltroMostrar;
-
-
     private javax.swing.JLabel jLCalculoPrestamo;
     private javax.swing.JLabel jLFirmarPrestamo1;
     private javax.swing.JLabel jLPrestamoConcedido;
     private javax.swing.JLabel jLPrestamoPreconcedido1;
-
     private javax.swing.JLabel jLabelDNISolicitar;
     private javax.swing.JLabel jLabelDatosClienteSolicitar;
     private javax.swing.JLabel jLabelFiltroMostrar;
     private javax.swing.JLabel jLabelMostrar;
     private javax.swing.JLabel jLabelTituloSolicitar;
-
-
     private javax.swing.JPanel jPCalcularPrestamo;
     private javax.swing.JPanel jPFirmar;
-
     private javax.swing.JPanel jPMostrar;
     private javax.swing.JPanel jPPortada;
     private javax.swing.JPanel jPSolicitar;
+    private javax.swing.JScrollPane jScrollPane1Mostrar;
     private javax.swing.JScrollPane jScrollPaneClientesSolicitar;
-
-    private javax.swing.JScrollPane jScrollPaneMostrar;
-
     private javax.swing.JScrollPane jScrollPaneConcedidos;
-    private javax.swing.JScrollPane jScrollPaneMostrar;
     private javax.swing.JScrollPane jScrollPanePreconcedido;
     private javax.swing.JScrollPane jScrollPanePrestamo;
     private javax.swing.JTextField jTIntroDNI;
-
     private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTableMostrar;
     private javax.swing.JTextField jTextFieldDNISolicitar;
     private javax.swing.JTextField jTextFieldDatoMostrar;
     private javax.swing.JLabel lblLogo;
