@@ -4,6 +4,7 @@
  */
 package proyectointermodular.prestamos;
 
+import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -13,13 +14,16 @@ import javax.swing.ImageIcon;
  */
 public class Prestamos extends javax.swing.JFrame {
 
+    //Atributos
+    private AccesoBaseDatos bd = AccesoBaseDatos.getInstance();
+    
     /**
      * Creates new form PrestamosI
      */
     public Prestamos() {
         initComponents();
-        this.setLocationRelativeTo(null);
-        jPPortada.setVisible(true);
+        //this.setLocationRelativeTo(null);
+        //jPPortada.setVisible(true);
         mostrarImagen();
     }
 
@@ -60,16 +64,16 @@ public class Prestamos extends javax.swing.JFrame {
                 jBSolicitarActionPerformed(evt);
             }
         });
-        jPPortada.add(jBSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 530, -1, -1));
+        jPPortada.add(jBSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, -1, -1));
 
         jBCalcular.setText("Calcular");
-        jPPortada.add(jBCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 530, -1, -1));
+        jPPortada.add(jBCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 520, -1, -1));
 
         jBMostrar.setText("Mostrar");
-        jPPortada.add(jBMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 530, -1, -1));
+        jPPortada.add(jBMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 520, -1, -1));
 
         jBAceptar.setText("Aceptar");
-        jPPortada.add(jBAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 530, -1, -1));
+        jPPortada.add(jBAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 520, -1, -1));
         jPPortada.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 800, 580));
         lblLogo.getAccessibleContext().setAccessibleName("Logo");
 
@@ -94,11 +98,18 @@ public class Prestamos extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPPortada.setVisible(false);
         jPSolicitar.setVisible(true);
+        
+        //Pruebas
+        /*
+        List<Cliente> clientes = MetodosBD.listarClientes();
+        for (Cliente cliente : clientes) {
+            System.out.println(cliente.toString());
+        }
+        */
     }//GEN-LAST:event_jBSolicitarActionPerformed
 
     private void jBVolverSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVolverSolicitarActionPerformed
         // TODO add your handling code here:
-        
         jPSolicitar.setVisible(false);
         jPPortada.setVisible(true);
     }//GEN-LAST:event_jBVolverSolicitarActionPerformed
