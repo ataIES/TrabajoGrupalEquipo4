@@ -32,9 +32,10 @@
 # Día 4 
 | Objetivos|Encargados | Conseguido|
 |----------|-----------|-----------|
-|Cargar mas movimientos en la base de datos|césar||
-|Continuar modificando la página web | Efrén||
-|||
+|Cargar mas movimientos en la base de datos|césar|SI|
+|Continuar modificando la página web | Efrén|SI|
+|Instalar los programas necesarios en la maquina virtual|César y Efrén|SI|
+|Crear la clase de acceso a la base de datos en java | víctor | si|
 
 
 
