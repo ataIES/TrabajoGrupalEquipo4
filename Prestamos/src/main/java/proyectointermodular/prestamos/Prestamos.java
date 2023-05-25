@@ -307,8 +307,6 @@ public class Prestamos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelDNISolicitar;
     private javax.swing.JLabel jLabelDatosClienteSolicitar;
     private javax.swing.JLabel jLabelTituloSolicitar;
-    private javax.swing.JPanel jPPortada;
-    private javax.swing.JPanel jPSolicitar;
     private javax.swing.JScrollPane jScrollPaneClientesSolicitar;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextFieldDNISolicitar;
