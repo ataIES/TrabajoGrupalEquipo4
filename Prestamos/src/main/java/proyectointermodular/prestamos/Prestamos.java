@@ -46,20 +46,9 @@ public class Prestamos extends javax.swing.JFrame {
         jBSolicitar = new javax.swing.JButton();
         jBCalcular = new javax.swing.JButton();
         jBMostrar = new javax.swing.JButton();
-        jBAceptar = new javax.swing.JButton();
+        jBBFirmar = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
         jPSolicitar = new javax.swing.JPanel();
-        jBVolverSolicitar = new javax.swing.JButton();
-        jPMostrar = new javax.swing.JPanel();
-        jBVolverMostrar = new javax.swing.JButton();
-        jLabelMostrar = new javax.swing.JLabel();
-        jLabelFiltroMostrar = new javax.swing.JLabel();
-        jComboBoxFiltroMostrar = new javax.swing.JComboBox<>();
-        jTextFieldDatoMostrar = new javax.swing.JTextField();
-        jButtonBuscarMostrar = new javax.swing.JButton();
-        jButtonLimpiarMostrar = new javax.swing.JButton();
-        jScrollPaneMostrar = new javax.swing.JScrollPane();
-        jTableMostrar = new javax.swing.JTable();
         jScrollPaneClientesSolicitar = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jButtonVolverSolicitar = new javax.swing.JButton();
@@ -70,6 +59,33 @@ public class Prestamos extends javax.swing.JFrame {
         jLabelTituloSolicitar = new javax.swing.JLabel();
         jLabelDatosClienteSolicitar = new javax.swing.JLabel();
         jButtonProcesarSolicitar = new javax.swing.JButton();
+        jPCalcularPrestamo = new javax.swing.JPanel();
+        jScrollPanePrestamo = new javax.swing.JScrollPane();
+        jLCalculoPrestamo = new javax.swing.JLabel();
+        jBCalculo = new javax.swing.JButton();
+        jBVolver = new javax.swing.JButton();
+        jPMostrar = new javax.swing.JPanel();
+        jBVolverMostrar = new javax.swing.JButton();
+        jLabelMostrar = new javax.swing.JLabel();
+        jLabelFiltroMostrar = new javax.swing.JLabel();
+        jComboBoxFiltroMostrar = new javax.swing.JComboBox<>();
+        jTextFieldDatoMostrar = new javax.swing.JTextField();
+        jButtonBuscarMostrar = new javax.swing.JButton();
+        jButtonLimpiarMostrar = new javax.swing.JButton();
+        jScrollPaneMostrar = new javax.swing.JScrollPane();
+        jTableMostrar = new javax.swing.JTable();
+        jPFirmar = new javax.swing.JPanel();
+        jLPrestamoConcedido = new javax.swing.JLabel();
+        DNI = new javax.swing.JLabel();
+        jTIntroDNI = new javax.swing.JTextField();
+        jBPLimpiar = new javax.swing.JButton();
+        jBFirmar = new javax.swing.JButton();
+        jScrollPaneConcedidos = new javax.swing.JScrollPane();
+        jBPreconcedidos2 = new javax.swing.JButton();
+        jLFirmarPrestamo1 = new javax.swing.JLabel();
+        jScrollPanePreconcedido = new javax.swing.JScrollPane();
+        jLPrestamoPreconcedido1 = new javax.swing.JLabel();
+        jBVolver1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Préstamos - Aurora Bank");
@@ -79,6 +95,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPPortada.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jBSolicitar.setText("Solicitar");
+        jBSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBSolicitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBSolicitarActionPerformed(evt);
@@ -87,9 +104,16 @@ public class Prestamos extends javax.swing.JFrame {
         jPPortada.add(jBSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, -1, -1));
 
         jBCalcular.setText("Calcular");
+        jBCalcular.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBCalcular.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCalcularActionPerformed(evt);
+            }
+        });
         jPPortada.add(jBCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 520, -1, -1));
 
         jBMostrar.setText("Mostrar");
+        jBMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBMostrarActionPerformed(evt);
@@ -97,8 +121,14 @@ public class Prestamos extends javax.swing.JFrame {
         });
         jPPortada.add(jBMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 520, -1, -1));
 
-        jBAceptar.setText("Aceptar");
-        jPPortada.add(jBAceptar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 520, -1, -1));
+        jBBFirmar.setText("Firmar");
+        jBBFirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBBFirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBBFirmarActionPerformed(evt);
+            }
+        });
+        jPPortada.add(jBBFirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 520, -1, -1));
         jPPortada.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 800, 580));
         lblLogo.getAccessibleContext().setAccessibleName("Logo");
 
@@ -119,6 +149,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPSolicitar.add(jScrollPaneClientesSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 720, 190));
 
         jButtonVolverSolicitar.setText("Volver");
+        jButtonVolverSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonVolverSolicitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonVolverSolicitarActionPerformed(evt);
@@ -131,9 +162,11 @@ public class Prestamos extends javax.swing.JFrame {
         jPSolicitar.add(jTextFieldDNISolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 170, -1));
 
         jButtonBuscarSolicitar.setText("Buscar");
+        jButtonBuscarSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPSolicitar.add(jButtonBuscarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
 
         jButtonLimpiarSolicitar.setText("Limpiar");
+        jButtonLimpiarSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonLimpiarSolicitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLimpiarSolicitarActionPerformed(evt);
@@ -148,13 +181,41 @@ public class Prestamos extends javax.swing.JFrame {
         jPSolicitar.add(jLabelDatosClienteSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
         jButtonProcesarSolicitar.setText("Solicitud de préstamo");
+        jButtonProcesarSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPSolicitar.add(jButtonProcesarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, -1, -1));
 
         getContentPane().add(jPSolicitar, "card3");
 
+        jPCalcularPrestamo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jScrollPanePrestamo.setForeground(new java.awt.Color(255, 255, 255));
+        jPCalcularPrestamo.add(jScrollPanePrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 620, 250));
+
+        jLCalculoPrestamo.setText("Cálculo de Prestamos");
+        jPCalcularPrestamo.add(jLCalculoPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 130, 30));
+
+        jBCalculo.setText("Calcular");
+        jBCalculo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCalculoActionPerformed(evt);
+            }
+        });
+        jPCalcularPrestamo.add(jBCalculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, -1, -1));
+
+        jBVolver.setText("Volver");
+        jBVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBVolverActionPerformed(evt);
+            }
+        });
+        jPCalcularPrestamo.add(jBVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 390, -1, -1));
+
+        getContentPane().add(jPCalcularPrestamo, "card5");
+
         jPMostrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jBVolverMostrar.setText("Volver");
+        jBVolverMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBVolverMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBVolverMostrarActionPerformed(evt);
@@ -174,9 +235,11 @@ public class Prestamos extends javax.swing.JFrame {
         jPMostrar.add(jTextFieldDatoMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 180, -1));
 
         jButtonBuscarMostrar.setText("Buscar");
+        jButtonBuscarMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPMostrar.add(jButtonBuscarMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, -1));
 
         jButtonLimpiarMostrar.setText("Limpiar");
+        jButtonLimpiarMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonLimpiarMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLimpiarMostrarActionPerformed(evt);
@@ -197,6 +260,77 @@ public class Prestamos extends javax.swing.JFrame {
         jPMostrar.add(jScrollPaneMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 720, 350));
 
         getContentPane().add(jPMostrar, "card4");
+
+        jPFirmar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLPrestamoConcedido.setText("Préstamos Concedidos");
+        jPFirmar.add(jLPrestamoConcedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, -1, -1));
+
+        DNI.setText("DNI");
+        jPFirmar.add(DNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+
+        jTIntroDNI.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTIntroDNIActionPerformed(evt);
+            }
+        });
+        jPFirmar.add(jTIntroDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 150, -1));
+
+        jBPLimpiar.setText("Limpiar");
+        jBPLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBPLimpiar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBPLimpiarActionPerformed(evt);
+            }
+        });
+        jPFirmar.add(jBPLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, -1, -1));
+
+        jBFirmar.setText("Firmar");
+        jBFirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBFirmar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBFirmarActionPerformed(evt);
+            }
+        });
+        jPFirmar.add(jBFirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 220, -1, -1));
+
+        jScrollPaneConcedidos.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jScrollPaneConcedidosAncestorAdded(evt);
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        jPFirmar.add(jScrollPaneConcedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 690, 170));
+
+        jBPreconcedidos2.setText("Mostrar ");
+        jBPreconcedidos2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBPreconcedidos2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBPreconcedidos2ActionPerformed(evt);
+            }
+        });
+        jPFirmar.add(jBPreconcedidos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, -1, -1));
+
+        jLFirmarPrestamo1.setText("Firmar Préstamo");
+        jPFirmar.add(jLFirmarPrestamo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
+        jPFirmar.add(jScrollPanePreconcedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 570, 150));
+
+        jLPrestamoPreconcedido1.setText("Préstamos Preconcedidos");
+        jPFirmar.add(jLPrestamoPreconcedido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
+
+        jBVolver1.setText("Volver");
+        jBVolver1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBVolver1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBVolver1ActionPerformed(evt);
+            }
+        });
+        jPFirmar.add(jBVolver1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 540, -1, -1));
+
+        getContentPane().add(jPFirmar, "card6");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -246,6 +380,67 @@ public class Prestamos extends javax.swing.JFrame {
         jTextFieldDatoMostrar.setText("");
     }//GEN-LAST:event_jButtonLimpiarMostrarActionPerformed
 
+    private void jBCalculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCalculoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBCalculoActionPerformed
+
+    private void jBVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVolverActionPerformed
+        // TODO add your handling code here:
+        jPPortada.setVisible(true);
+        jPSolicitar.setVisible(false);
+        jPCalcularPrestamo.setVisible(false);
+        jPMostrar.setVisible(false);
+        
+    }//GEN-LAST:event_jBVolverActionPerformed
+
+    private void jBCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCalcularActionPerformed
+        // TODO add your handling code here:
+        jPPortada.setVisible(false);
+        jPSolicitar.setVisible(false);
+        jPCalcularPrestamo.setVisible(true);
+        jPMostrar.setVisible(false);
+    }//GEN-LAST:event_jBCalcularActionPerformed
+
+    private void jTIntroDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTIntroDNIActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTIntroDNIActionPerformed
+
+    private void jBPLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPLimpiarActionPerformed
+        // TODO add your handling code here:
+        jTextFieldDatoMostrar.setText("");
+    }//GEN-LAST:event_jBPLimpiarActionPerformed
+
+    private void jBFirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFirmarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBFirmarActionPerformed
+
+    private void jScrollPaneConcedidosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jScrollPaneConcedidosAncestorAdded
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jScrollPaneConcedidosAncestorAdded
+
+    private void jBPreconcedidos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPreconcedidos2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBPreconcedidos2ActionPerformed
+
+    private void jBVolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVolver1ActionPerformed
+        // TODO add your handling code here:
+        jPPortada.setVisible(true);
+        jPSolicitar.setVisible(false);
+        jPCalcularPrestamo.setVisible(false);
+        jPMostrar.setVisible(false);
+        jPFirmar.setVisible(false);
+        
+    }//GEN-LAST:event_jBVolver1ActionPerformed
+
+    private void jBBFirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBFirmarActionPerformed
+        // TODO add your handling code here:
+        jPPortada.setVisible(false);
+        jPSolicitar.setVisible(false);
+        jPCalcularPrestamo.setVisible(false);
+        jPMostrar.setVisible(false);
+        jPFirmar.setVisible(true);
+    }//GEN-LAST:event_jBBFirmarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -283,33 +478,49 @@ public class Prestamos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jBAceptar;
+    private javax.swing.JLabel DNI;
+    private javax.swing.JButton jBBFirmar;
     private javax.swing.JButton jBCalcular;
+    private javax.swing.JButton jBCalculo;
+    private javax.swing.JButton jBFirmar;
     private javax.swing.JButton jBMostrar;
+    private javax.swing.JButton jBPLimpiar;
+    private javax.swing.JButton jBPreconcedidos2;
     private javax.swing.JButton jBSolicitar;
+    private javax.swing.JButton jBVolver;
+    private javax.swing.JButton jBVolver1;
     private javax.swing.JButton jBVolverMostrar;
-    private javax.swing.JButton jBVolverSolicitar;
     private javax.swing.JButton jButtonBuscarMostrar;
-    private javax.swing.JButton jButtonLimpiarMostrar;
-    private javax.swing.JComboBox<String> jComboBoxFiltroMostrar;
-    private javax.swing.JLabel jLabelFiltroMostrar;
-    private javax.swing.JLabel jLabelMostrar;
-    private javax.swing.JPanel jPMostrar;
-    private javax.swing.JPanel jPPortada;
-    private javax.swing.JPanel jPSolicitar;
-    private javax.swing.JScrollPane jScrollPaneMostrar;
-    private javax.swing.JTable jTableMostrar;
-    private javax.swing.JTextField jTextFieldDatoMostrar;
     private javax.swing.JButton jButtonBuscarSolicitar;
+    private javax.swing.JButton jButtonLimpiarMostrar;
     private javax.swing.JButton jButtonLimpiarSolicitar;
     private javax.swing.JButton jButtonProcesarSolicitar;
     private javax.swing.JButton jButtonVolverSolicitar;
+    private javax.swing.JComboBox<String> jComboBoxFiltroMostrar;
+    private javax.swing.JLabel jLCalculoPrestamo;
+    private javax.swing.JLabel jLFirmarPrestamo1;
+    private javax.swing.JLabel jLPrestamoConcedido;
+    private javax.swing.JLabel jLPrestamoPreconcedido1;
     private javax.swing.JLabel jLabelDNISolicitar;
     private javax.swing.JLabel jLabelDatosClienteSolicitar;
+    private javax.swing.JLabel jLabelFiltroMostrar;
+    private javax.swing.JLabel jLabelMostrar;
     private javax.swing.JLabel jLabelTituloSolicitar;
+    private javax.swing.JPanel jPCalcularPrestamo;
+    private javax.swing.JPanel jPFirmar;
+    private javax.swing.JPanel jPMostrar;
+    private javax.swing.JPanel jPPortada;
+    private javax.swing.JPanel jPSolicitar;
     private javax.swing.JScrollPane jScrollPaneClientesSolicitar;
+    private javax.swing.JScrollPane jScrollPaneConcedidos;
+    private javax.swing.JScrollPane jScrollPaneMostrar;
+    private javax.swing.JScrollPane jScrollPanePreconcedido;
+    private javax.swing.JScrollPane jScrollPanePrestamo;
+    private javax.swing.JTextField jTIntroDNI;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableMostrar;
     private javax.swing.JTextField jTextFieldDNISolicitar;
+    private javax.swing.JTextField jTextFieldDatoMostrar;
     private javax.swing.JLabel lblLogo;
     // End of variables declaration//GEN-END:variables
 }
