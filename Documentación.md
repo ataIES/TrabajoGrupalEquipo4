@@ -26,10 +26,15 @@
 |Empezar a crear las clases principales del programa de java |Víctor |Si|
 |Revisar diagrama de flujo y de clases | todos|Si |
 |Diseñar el layout de la aplicación | Efrén, Víctor , Adrián|Si|
-|Empezar a crear las pantallas del menu con JFrame | Victor y Adrián |SI |
+|Empezar a crear las pantallas del menu con JFrame | Victor y Adrián | SI |
 |Empezar a crear la página web de promoción|César|SI|
 |Terminar los detalles del entorno cliente servidor|Efrén |SI|
- 
+# Día 4 
+| Objetivos|Encargados | Conseguido|
+|----------|-----------|-----------|
+|Cargar mas movimientos en la base de datos|césar||
+|Continuar modificando la página web | Efrén||
+
 
 
 
