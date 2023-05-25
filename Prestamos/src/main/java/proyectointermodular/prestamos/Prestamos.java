@@ -50,6 +50,16 @@ public class Prestamos extends javax.swing.JFrame {
         lblLogo = new javax.swing.JLabel();
         jPSolicitar = new javax.swing.JPanel();
         jBVolverSolicitar = new javax.swing.JButton();
+        jPMostrar = new javax.swing.JPanel();
+        jBVolverMostrar = new javax.swing.JButton();
+        jLabelMostrar = new javax.swing.JLabel();
+        jLabelFiltroMostrar = new javax.swing.JLabel();
+        jComboBoxFiltroMostrar = new javax.swing.JComboBox<>();
+        jTextFieldDatoMostrar = new javax.swing.JTextField();
+        jButtonBuscarMostrar = new javax.swing.JButton();
+        jButtonLimpiarMostrar = new javax.swing.JButton();
+        jScrollPaneMostrar = new javax.swing.JScrollPane();
+        jTableMostrar = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Préstamos - Aurora Bank");
@@ -70,6 +80,11 @@ public class Prestamos extends javax.swing.JFrame {
         jPPortada.add(jBCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 520, -1, -1));
 
         jBMostrar.setText("Mostrar");
+        jBMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBMostrarActionPerformed(evt);
+            }
+        });
         jPPortada.add(jBMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 520, -1, -1));
 
         jBAceptar.setText("Aceptar");
@@ -90,6 +105,52 @@ public class Prestamos extends javax.swing.JFrame {
         jPSolicitar.add(jBVolverSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
 
         getContentPane().add(jPSolicitar, "card3");
+
+        jPMostrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jBVolverMostrar.setText("Volver");
+        jBVolverMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBVolverMostrarActionPerformed(evt);
+            }
+        });
+        jPMostrar.add(jBVolverMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 530, -1, -1));
+
+        jLabelMostrar.setText("Mostrar datos de clientes y préstamos");
+        jPMostrar.add(jLabelMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+
+        jLabelFiltroMostrar.setText("Filtro:");
+        jPMostrar.add(jLabelFiltroMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+
+        jComboBoxFiltroMostrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Localidad" }));
+        jComboBoxFiltroMostrar.setToolTipText("");
+        jPMostrar.add(jComboBoxFiltroMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
+        jPMostrar.add(jTextFieldDatoMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 180, -1));
+
+        jButtonBuscarMostrar.setText("Buscar");
+        jPMostrar.add(jButtonBuscarMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, -1));
+
+        jButtonLimpiarMostrar.setText("Limpiar");
+        jButtonLimpiarMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimpiarMostrarActionPerformed(evt);
+            }
+        });
+        jPMostrar.add(jButtonLimpiarMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, -1, -1));
+
+        jTableMostrar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPaneMostrar.setViewportView(jTableMostrar);
+
+        jPMostrar.add(jScrollPaneMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 140, 720, 350));
+
+        getContentPane().add(jPMostrar, "card4");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -113,6 +174,24 @@ public class Prestamos extends javax.swing.JFrame {
         jPSolicitar.setVisible(false);
         jPPortada.setVisible(true);
     }//GEN-LAST:event_jBVolverSolicitarActionPerformed
+
+    private void jBVolverMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVolverMostrarActionPerformed
+        // TODO add your handling code here:
+        jPMostrar.setVisible(false);
+        jPPortada.setVisible(true);
+        jButtonLimpiarMostrarActionPerformed(evt);
+    }//GEN-LAST:event_jBVolverMostrarActionPerformed
+
+    private void jBMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBMostrarActionPerformed
+        // TODO add your handling code here:
+        jPPortada.setVisible(false);
+        jPMostrar.setVisible(true);
+    }//GEN-LAST:event_jBMostrarActionPerformed
+
+    private void jButtonLimpiarMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarMostrarActionPerformed
+        // TODO add your handling code here:
+        jTextFieldDatoMostrar.setText("");
+    }//GEN-LAST:event_jButtonLimpiarMostrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,9 +234,19 @@ public class Prestamos extends javax.swing.JFrame {
     private javax.swing.JButton jBCalcular;
     private javax.swing.JButton jBMostrar;
     private javax.swing.JButton jBSolicitar;
+    private javax.swing.JButton jBVolverMostrar;
     private javax.swing.JButton jBVolverSolicitar;
+    private javax.swing.JButton jButtonBuscarMostrar;
+    private javax.swing.JButton jButtonLimpiarMostrar;
+    private javax.swing.JComboBox<String> jComboBoxFiltroMostrar;
+    private javax.swing.JLabel jLabelFiltroMostrar;
+    private javax.swing.JLabel jLabelMostrar;
+    private javax.swing.JPanel jPMostrar;
     private javax.swing.JPanel jPPortada;
     private javax.swing.JPanel jPSolicitar;
+    private javax.swing.JScrollPane jScrollPaneMostrar;
+    private javax.swing.JTable jTableMostrar;
+    private javax.swing.JTextField jTextFieldDatoMostrar;
     private javax.swing.JLabel lblLogo;
     // End of variables declaration//GEN-END:variables
 }
