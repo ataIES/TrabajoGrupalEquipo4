@@ -49,7 +49,16 @@ public class Prestamos extends javax.swing.JFrame {
         jBAceptar = new javax.swing.JButton();
         lblLogo = new javax.swing.JLabel();
         jPSolicitar = new javax.swing.JPanel();
-        jBVolverSolicitar = new javax.swing.JButton();
+        jScrollPaneClientesSolicitar = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButtonVolverSolicitar = new javax.swing.JButton();
+        jLabelDNISolicitar = new javax.swing.JLabel();
+        jTextFieldDNISolicitar = new javax.swing.JTextField();
+        jButtonBuscarSolicitar = new javax.swing.JButton();
+        jButtonLimpiarSolicitar = new javax.swing.JButton();
+        jLabelTituloSolicitar = new javax.swing.JLabel();
+        jLabelDatosClienteSolicitar = new javax.swing.JLabel();
+        jButtonProcesarSolicitar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Préstamos - Aurora Bank");
@@ -81,13 +90,49 @@ public class Prestamos extends javax.swing.JFrame {
 
         jPSolicitar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jBVolverSolicitar.setText("Volver");
-        jBVolverSolicitar.addActionListener(new java.awt.event.ActionListener() {
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPaneClientesSolicitar.setViewportView(jTable1);
+
+        jPSolicitar.add(jScrollPaneClientesSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 720, 190));
+
+        jButtonVolverSolicitar.setText("Volver");
+        jButtonVolverSolicitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBVolverSolicitarActionPerformed(evt);
+                jButtonVolverSolicitarActionPerformed(evt);
             }
         });
-        jPSolicitar.add(jBVolverSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 250, -1, -1));
+        jPSolicitar.add(jButtonVolverSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 520, -1, -1));
+
+        jLabelDNISolicitar.setText("DNI");
+        jPSolicitar.add(jLabelDNISolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+        jPSolicitar.add(jTextFieldDNISolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 170, -1));
+
+        jButtonBuscarSolicitar.setText("Buscar");
+        jPSolicitar.add(jButtonBuscarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
+
+        jButtonLimpiarSolicitar.setText("Limpiar");
+        jButtonLimpiarSolicitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimpiarSolicitarActionPerformed(evt);
+            }
+        });
+        jPSolicitar.add(jButtonLimpiarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, -1));
+
+        jLabelTituloSolicitar.setText("Solicitar préstamo");
+        jPSolicitar.add(jLabelTituloSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+
+        jLabelDatosClienteSolicitar.setText("Datos cliente:");
+        jPSolicitar.add(jLabelDatosClienteSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+
+        jButtonProcesarSolicitar.setText("Solicitud de préstamo");
+        jPSolicitar.add(jButtonProcesarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, -1, -1));
 
         getContentPane().add(jPSolicitar, "card3");
 
@@ -108,11 +153,18 @@ public class Prestamos extends javax.swing.JFrame {
         */
     }//GEN-LAST:event_jBSolicitarActionPerformed
 
-    private void jBVolverSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVolverSolicitarActionPerformed
+    private void jButtonVolverSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonVolverSolicitarActionPerformed
         // TODO add your handling code here:
         jPSolicitar.setVisible(false);
         jPPortada.setVisible(true);
-    }//GEN-LAST:event_jBVolverSolicitarActionPerformed
+        jButtonLimpiarSolicitarActionPerformed(evt);
+        
+    }//GEN-LAST:event_jButtonVolverSolicitarActionPerformed
+
+    private void jButtonLimpiarSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarSolicitarActionPerformed
+        // TODO add your handling code here:
+        jTextFieldDNISolicitar.setText("");
+    }//GEN-LAST:event_jButtonLimpiarSolicitarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,9 +207,18 @@ public class Prestamos extends javax.swing.JFrame {
     private javax.swing.JButton jBCalcular;
     private javax.swing.JButton jBMostrar;
     private javax.swing.JButton jBSolicitar;
-    private javax.swing.JButton jBVolverSolicitar;
+    private javax.swing.JButton jButtonBuscarSolicitar;
+    private javax.swing.JButton jButtonLimpiarSolicitar;
+    private javax.swing.JButton jButtonProcesarSolicitar;
+    private javax.swing.JButton jButtonVolverSolicitar;
+    private javax.swing.JLabel jLabelDNISolicitar;
+    private javax.swing.JLabel jLabelDatosClienteSolicitar;
+    private javax.swing.JLabel jLabelTituloSolicitar;
     private javax.swing.JPanel jPPortada;
     private javax.swing.JPanel jPSolicitar;
+    private javax.swing.JScrollPane jScrollPaneClientesSolicitar;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextFieldDNISolicitar;
     private javax.swing.JLabel lblLogo;
     // End of variables declaration//GEN-END:variables
 }
