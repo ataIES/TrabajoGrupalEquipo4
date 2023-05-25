@@ -10,7 +10,7 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author Víctor Sánchez Llada
+ * @author Víctor Sánchez Llada, César Torre, Efrén Gutiérrez y Adrián Tresgallo.
  */
 public class Prestamos extends javax.swing.JFrame {
 
