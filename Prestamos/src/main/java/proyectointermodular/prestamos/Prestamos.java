@@ -34,8 +34,8 @@ public class Prestamos extends javax.swing.JFrame {
                 getScaledInstance(lblLogo.getWidth(),
                         lblLogo.getHeight(), img.getIconWidth()));
         lblLogo.setIcon(icon);
-        Image icon2 = new ImageIcon(getClass().getClassLoader().getResource("Imagen/ico.png")).getImage();
-        setIconImage(icon2);
+//        Image icon2 = new ImageIcon(getClass().getClassLoader().getResource("Imagen/ico.png")).getImage();
+//        setIconImage(icon2);
     }
 
     /**
