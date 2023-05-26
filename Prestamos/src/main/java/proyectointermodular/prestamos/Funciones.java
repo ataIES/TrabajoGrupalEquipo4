@@ -148,22 +148,28 @@ public class Funciones {
 
         boolean basesMinimas = false;
 
-        if (cliente.getCuentaBancaria().getMediaNominaAnual() >= 1000) { //Si la media anual de la nómina es >= 1000.
+        if (cliente.getCuentaBancaria().getMesesCotizados() >= 12) { //Si tiene al menos 12 meses cotizados
 
-            if (cliente.getCuentaBancaria().getNominaUltMes() >= 1000) { //Si la última nómina es >= 1000. La pareja es APTA para solicitar un préstamo.
-                basesMinimas = true;
-            } else { //Si la última nómina es < 1000. La pareja no es APTA para solicitar un préstamo.
-                System.out.println("Préstamo no concedido: La cantidad de la última nómina no cumple los requisitos.");
+            if (cliente.getCuentaBancaria().getMediaNominaAnual() >= 1000) { //Si la media anual de la nómina es >= 1000.
+
+                if (cliente.getCuentaBancaria().getNominaUltMes() >= 1000) { //Si la última nómina es >= 1000. La pareja es APTA para solicitar un préstamo.
+                    basesMinimas = true;
+                } else { //Si la última nómina es < 1000. La pareja no es APTA para solicitar un préstamo.
+                    System.out.println("Préstamo no concedido: La cantidad de la última nómina no cumple los requisitos.");
+                }
+
+            } else { //Si la media anual de la nómina es < 1000.
+                System.out.println("Préstamo no concedido: La media anual de la nómina no cumple los requisitos.");
             }
 
-        } else { //Si la media anual de la nómina es < 1000.
-            System.out.println("Préstamo no concedido: La media anual de la nómina no cumple los requisitos.");
+        } else { //Si no tiene 12 meses cotizados
+            System.out.println("Préstamo no concedido: No tiene cotizados al menos 12 meses.");
         }
 
         return basesMinimas;
 
     }
-    
+
     /**
      * Método estático esCadenaValida que comprueba si un String es valido frente a un regex pasado como parámetro.
      *
@@ -179,7 +185,7 @@ public class Funciones {
             Fecha con formato dd-MM-yyyy o dd/MM/yyyy, días entre 1 y 31 y mes entre 1 y 12 -> "^([0-2][0-9]|3[0-1])(\\/|-)(0[1-9]|1[0-2])\\2(\\d{4})$"
             Palabras o frases:
                 Minúsculas, mayúsculas, vocales acentuadas, espacios y ñ -> "[a-zA-ZÑñáéíóúÁÉÍÓÚ\\s]*"
-        */
+         */
         return cadena.matches(regex);
     }
 
