@@ -94,9 +94,9 @@ public class Funciones {
         double mediaAnual = cliente.getCuentaBancaria().getMediaNominaAnual();
         double ultNomina = cliente.getCuentaBancaria().getNominaUltMes();
 
-        if ((mediaAnual >= 1000 || mediaAnual < 2000) && (ultNomina >= 1000 || ultNomina < 2000)) {
+        if ((mediaAnual >= 1000 && mediaAnual < 2000) && (ultNomina >= 1000 && ultNomina < 2000)) {
             cantidad = 5000;
-        } else if ((mediaAnual >= 2000 || mediaAnual < 3000) && (ultNomina >= 2000 || ultNomina < 3000)) {
+        } else if ((mediaAnual >= 2000 && mediaAnual < 3000) && (ultNomina >= 2000 && ultNomina < 3000)) {
             cantidad = 10000;
         } else {
             cantidad = 15000;
