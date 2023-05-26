@@ -8,6 +8,8 @@ import java.awt.Image;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -53,7 +55,7 @@ public class Prestamos extends javax.swing.JFrame {
         lblLogo = new javax.swing.JLabel();
         jPSolicitar = new javax.swing.JPanel();
         jScrollPaneClientesSolicitar = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jTableSolicitar = new javax.swing.JTable();
         jButtonVolverSolicitar = new javax.swing.JButton();
         jLabelDNISolicitar = new javax.swing.JLabel();
         jTextFieldDNISolicitar = new javax.swing.JTextField();
@@ -138,7 +140,7 @@ public class Prestamos extends javax.swing.JFrame {
 
         jPSolicitar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jTableSolicitar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -146,7 +148,7 @@ public class Prestamos extends javax.swing.JFrame {
 
             }
         ));
-        jScrollPaneClientesSolicitar.setViewportView(jTable1);
+        jScrollPaneClientesSolicitar.setViewportView(jTableSolicitar);
 
         jPSolicitar.add(jScrollPaneClientesSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 720, 190));
 
@@ -189,6 +191,12 @@ public class Prestamos extends javax.swing.JFrame {
 
         jButtonProcesarSolicitar.setText("Solicitud de préstamo");
         jButtonProcesarSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonProcesarSolicitar.setEnabled(false);
+        jButtonProcesarSolicitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonProcesarSolicitarActionPerformed(evt);
+            }
+        });
         jPSolicitar.add(jButtonProcesarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, -1, -1));
 
         getContentPane().add(jPSolicitar, "card3");
@@ -356,6 +364,8 @@ public class Prestamos extends javax.swing.JFrame {
     private void jButtonLimpiarSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarSolicitarActionPerformed
         // TODO add your handling code here:
         jTextFieldDNISolicitar.setText("");
+        jTableSolicitar.setModel(new DefaultTableModel());
+        jButtonProcesarSolicitar.setEnabled(false);
     }//GEN-LAST:event_jButtonLimpiarSolicitarActionPerformed
 
     private void jBVolverMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVolverMostrarActionPerformed
@@ -380,16 +390,33 @@ public class Prestamos extends javax.swing.JFrame {
     private void jButtonBuscarSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarSolicitarActionPerformed
         // TODO add your handling code here:
 
-        //Cliente cliente = MetodosBD.clientePorDni("90123456E");
-        Cliente cliente = MetodosBD.clientePorDni("23456789G");
-        System.out.println(cliente.toString());
-        
-        if (Funciones.aptoParaPrestamo(cliente)) {
-            System.out.println("Apto para préstamo");
-            System.out.println("Cantidad: " + Funciones.cantidadPrestamo(cliente));
+        jTextFieldDNISolicitar.setText("23456789G");
+        String dni = jTextFieldDNISolicitar.getText();
+
+        if (Funciones.esCadenaValida(dni, "[0-9]{7,8}[A-Z a-z]")) {
+
+            Cliente cliente = MetodosBD.clientePorDni(dni);
+
+            if (cliente != null) {
+
+                jButtonProcesarSolicitar.setEnabled(true);
+                System.out.println(cliente.toString());
+
+                String[] columnasTablaSolicitar = {"DNI", "Nombre", "Apellidos"};
+                String[] datosCliente = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos()};
+                DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar);
+                jTableSolicitar.setModel(modeloTabla);
+                modeloTabla.addRow(datosCliente);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No existe como cliente del banco.", "Informativo", JOptionPane.INFORMATION_MESSAGE, null);
+            }
+
         } else {
-            System.out.println("No apto para préstamo.");
+            JOptionPane.showMessageDialog(null, "El DNI no tiene el formato correcto.", "Informativo", JOptionPane.INFORMATION_MESSAGE, null);
+            jButtonLimpiarSolicitarActionPerformed(evt);
         }
+
     }//GEN-LAST:event_jButtonBuscarSolicitarActionPerformed
 
     private void jBCalculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCalculoActionPerformed
@@ -452,6 +479,27 @@ public class Prestamos extends javax.swing.JFrame {
         jPMostrar.setVisible(false);
         jPFirmar.setVisible(true);
     }//GEN-LAST:event_jBBFirmarActionPerformed
+
+    private void jButtonProcesarSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonProcesarSolicitarActionPerformed
+        // TODO add your handling code here:
+
+        String dni = jTextFieldDNISolicitar.getText();
+
+        if (dni == null || dni.equals("")) {
+            JOptionPane.showMessageDialog(null, "DNI vacío.", "Informativo", JOptionPane.INFORMATION_MESSAGE, null);
+        } else {
+            Cliente cliente = MetodosBD.clientePorDni(dni);
+
+            if (Funciones.aptoParaPrestamo(cliente)) {
+                System.out.println("Apto para préstamo");
+                System.out.println("Cantidad: " + Funciones.cantidadPrestamo(cliente));
+                JOptionPane.showMessageDialog(null, "Apto para préstamo. Cantidad = " + Funciones.cantidadPrestamo(cliente), "Informativo", JOptionPane.INFORMATION_MESSAGE, null);
+            } else {
+                System.out.println("No apto para préstamo.");
+            }
+        }
+
+    }//GEN-LAST:event_jButtonProcesarSolicitarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -529,7 +577,7 @@ public class Prestamos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPanePreconcedido;
     private javax.swing.JScrollPane jScrollPanePrestamo;
     private javax.swing.JTextField jTIntroDNI;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable jTableSolicitar;
     private javax.swing.JTextField jTextFieldDNISolicitar;
     private javax.swing.JTextField jTextFieldDatoMostrar;
     private javax.swing.JLabel lblLogo;

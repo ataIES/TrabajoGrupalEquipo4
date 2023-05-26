@@ -95,4 +95,17 @@ public class Cliente {
         return uuid;
     }
 
+    public String getDni() {
+        return dni;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+    
+
 }
