@@ -25,6 +25,8 @@ public class MetodosBD {
     private static final String TABLA_PERFILES = "perfiles";
     private static final String TABLA_CASADOS = "casados";
     private static final String TABLA_MOVIMIENTOS = "movimientos";
+    private static final String TABLA_PRECONCEDIDOS = "prestamospreconcedidos";
+    private static final String TABLA_CONCEDIDOS = "prestamosconcedidos";
 
     /**
      * Método privado getConnection que nos devuelve la conexión.
@@ -82,7 +84,6 @@ public class MetodosBD {
                 if (rs.next()) {
                     cliente = crearCliente(rs);
                 }
-            } catch (Exception e) {
             }
 
         } catch (SQLException ex) {
@@ -119,7 +120,6 @@ public class MetodosBD {
                 if (rs.next()) {
                     cliente = crearCliente(rs);
                 }
-            } catch (Exception e) {
             }
 
         } catch (SQLException ex) {
@@ -152,7 +152,6 @@ public class MetodosBD {
                 if (rs.next()) {
                     perfil = crearPerfil(rs);
                 }
-            } catch (Exception e) {
             }
 
         } catch (SQLException ex) {
@@ -185,7 +184,6 @@ public class MetodosBD {
                 if (rs.next()) {
                     cuenta = crearCuentaBancaria(rs);
                 }
-            } catch (Exception e) {
             }
 
         } catch (SQLException ex) {
@@ -200,7 +198,7 @@ public class MetodosBD {
 
     /**
      * Método estático movimientosPorIDCliente que recibe por parámetro el id del cliente y crea una lista de movimientos.
-     * 
+     *
      * @param idCliente Parámetro de tipo String que será el id del cliente.
      * @return Devuelve un List <code>Movimiento</code>
      */
@@ -242,7 +240,7 @@ public class MetodosBD {
     private static Cliente crearCliente(final ResultSet rs) throws SQLException {
         return new Cliente(rs.getString("cliente_id"), rs.getString("dni"), rs.getString("nombre"), rs.getString("apellidos"), rs.getString("telefono"), rs.getString("direccion"), rs.getString("localidad"), rs.getDate("fecha_nacimiento").toLocalDate(), perfilPorIdCliente(rs.getString("cliente_id")), cuentaPorIdCliente(rs.getString("cliente_id")));
     }
-    
+
     /**
      * Método estático crearPerfil que crea un objeto de tipo Perfil.
      *
@@ -262,7 +260,7 @@ public class MetodosBD {
      * @throws SQLException Lanza una excepción si hay algún error de SQL.
      */
     private static CuentaBancaria crearCuentaBancaria(final ResultSet rs) throws SQLException {
-        return new CuentaBancaria(rs.getString("iban"), TipoCuenta.valueOf(rs.getString("tipo_cuenta")), rs.getDouble("saldo"), rs.getDouble("cantidad_ultima_nomina"), rs.getDouble("cantidad_media_ultimos_12_meses"), rs.getInt("meses_cotizados") , movimientosPorIDCliente(rs.getString("cliente_id")));
+        return new CuentaBancaria(rs.getString("iban"), TipoCuenta.valueOf(rs.getString("tipo_cuenta")), rs.getDouble("saldo"), rs.getDouble("cantidad_ultima_nomina"), rs.getDouble("cantidad_media_ultimos_12_meses"), rs.getInt("meses_cotizados"), movimientosPorIDCliente(rs.getString("cliente_id")));
     }
 
     /**
