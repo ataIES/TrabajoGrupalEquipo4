@@ -4,6 +4,7 @@
  */
 package proyectointermodular.prestamos;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -11,7 +12,7 @@ import java.time.LocalDate;
  *
  * @author Víctor Sánchez Llada, César Torre, Efrén Gutiérrez y Adrián Tresgallo.
  */
-public class PrestamoPreconcedido extends Prestamo {
+public class PrestamoPreconcedido extends Prestamo implements Serializable {
 
     //Atributos
     private int periodoMeses;
@@ -52,5 +53,18 @@ public class PrestamoPreconcedido extends Prestamo {
         this.tipoInteres = tipoInteres;
         this.plazoAceptacion = plazoAceptacion;
     }
+
+    public int getPeriodoMeses() {
+        return periodoMeses;
+    }
+
+    public double getTipoInteres() {
+        return tipoInteres;
+    }
+
+    public int getPlazoAceptacion() {
+        return plazoAceptacion;
+    }
+    
 
 }
