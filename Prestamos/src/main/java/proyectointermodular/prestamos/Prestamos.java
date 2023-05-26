@@ -379,7 +379,17 @@ public class Prestamos extends javax.swing.JFrame {
 
     private void jButtonBuscarSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarSolicitarActionPerformed
         // TODO add your handling code here:
-        System.out.println(MetodosBD.clientePorDni("90123456E").toString());
+
+        //Cliente cliente = MetodosBD.clientePorDni("90123456E");
+        Cliente cliente = MetodosBD.clientePorDni("23456789G");
+        System.out.println(cliente.toString());
+        
+        if (Funciones.aptoParaPrestamo(cliente)) {
+            System.out.println("Apto para préstamo");
+            System.out.println("Cantidad: " + Funciones.cantidadPrestamo(cliente));
+        } else {
+            System.out.println("No apto para préstamo.");
+        }
     }//GEN-LAST:event_jButtonBuscarSolicitarActionPerformed
 
     private void jBCalculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCalculoActionPerformed
