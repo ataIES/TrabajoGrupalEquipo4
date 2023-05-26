@@ -28,4 +28,13 @@ public class PrestamoConcedido {
         this.pagos = pagos;
     }
 
+    public PrestamoPreconcedido getPrestamoPreconcedido() {
+        return prestamoPreconcedido;
+    }
+
+    public List<Pago> getPagos() {
+        return pagos;
+    }
+    
+
 }

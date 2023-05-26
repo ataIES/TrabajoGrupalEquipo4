@@ -47,4 +47,21 @@ public abstract class Prestamo {
         this.cantidad = cantidad;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public double getCantidad() {
+        return cantidad;
+    }
+    
+
 }
