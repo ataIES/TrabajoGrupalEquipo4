@@ -19,6 +19,7 @@ public class CuentaBancaria {
     private double saldoActual;
     private double nominaUltMes;
     private double mediaNominaAnual;
+    private int mesesCotizados;
     private List<Movimiento> movimientos;
 
     /**
@@ -29,23 +30,24 @@ public class CuentaBancaria {
      * @param saldoActual Parámetro de tipo double que será el saldo actual.
      * @param nominaUltMes Parámetro de tipo double que será la cantidad de la nómina del último mes.
      * @param mediaNominaAnual Parámetro de tupo double que será la media de las últimas 12 nóminas.
+     * @param mesesCotizados Parámetro de tipo int que serán los meses que ha cotizado.
      * @param movimientos Parámetrod de tipo List<code>Movimiento</code> que será una lista con los movimientos.
      */
-    public CuentaBancaria(String IBAN, TipoCuenta tipoCuenta, double saldoActual, double nominaUltMes, double mediaNominaAnual, List<Movimiento> movimientos) {
+    public CuentaBancaria(String IBAN, TipoCuenta tipoCuenta, double saldoActual, double nominaUltMes, double mediaNominaAnual, int mesesCotizados, List<Movimiento> movimientos) {
         this.IBAN = IBAN;
         this.tipoCuenta = tipoCuenta;
         this.saldoActual = saldoActual;
         this.nominaUltMes = nominaUltMes;
         this.mediaNominaAnual = mediaNominaAnual;
+        this.mesesCotizados = mesesCotizados;
         this.movimientos = movimientos;
     }
 
     @Override
     public String toString() {
-        return "\nCuentaBancaria{" + "IBAN=" + IBAN + ", tipoCuenta=" + tipoCuenta + ", saldoActual=" + saldoActual + ", nominaUltMes=" + nominaUltMes + ", mediaNominaAnual=" + mediaNominaAnual + ", movimientos=" + movimientos + '}';
+        return "\nCuentaBancaria{" + "IBAN=" + IBAN + ", tipoCuenta=" + tipoCuenta + ", saldoActual=" + saldoActual + ", nominaUltMes=" + nominaUltMes + ", mediaNominaAnual=" + mediaNominaAnual + ", mesesCotizados=" + mesesCotizados + ", movimientos=" + movimientos + '}';
     }
 
-    
     //GETs
     public double getNominaUltMes() {
         return nominaUltMes;
@@ -53,6 +55,10 @@ public class CuentaBancaria {
 
     public double getMediaNominaAnual() {
         return mediaNominaAnual;
+    }
+
+    public int getMesesCotizados() {
+        return mesesCotizados;
     }
 
 }

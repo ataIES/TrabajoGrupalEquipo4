@@ -262,7 +262,7 @@ public class MetodosBD {
      * @throws SQLException Lanza una excepción si hay algún error de SQL.
      */
     private static CuentaBancaria crearCuentaBancaria(final ResultSet rs) throws SQLException {
-        return new CuentaBancaria(rs.getString("iban"), TipoCuenta.valueOf(rs.getString("tipo_cuenta")), rs.getDouble("saldo"), rs.getDouble("cantidad_ultima_nomina"), rs.getDouble("cantidad_media_ultimos_12_meses"), movimientosPorIDCliente(rs.getString("cliente_id")));
+        return new CuentaBancaria(rs.getString("iban"), TipoCuenta.valueOf(rs.getString("tipo_cuenta")), rs.getDouble("saldo"), rs.getDouble("cantidad_ultima_nomina"), rs.getDouble("cantidad_media_ultimos_12_meses"), rs.getInt("meses_cotizados") , movimientosPorIDCliente(rs.getString("cliente_id")));
     }
 
     /**
