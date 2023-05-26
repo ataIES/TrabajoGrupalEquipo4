@@ -199,7 +199,7 @@ public class Prestamos extends javax.swing.JFrame {
             }
         });
         jPPortada.add(jBBFirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 520, -1, -1));
-        jPPortada.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 800, 580));
+        jPPortada.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 810, 580));
         lblLogo.getAccessibleContext().setAccessibleName("Logo");
 
         getContentPane().add(jPPortada, "card2");
