@@ -61,4 +61,12 @@ public class CuentaBancaria {
         return mesesCotizados;
     }
 
+    public String getIBAN() {
+        return IBAN;
+    }
+
+    public TipoCuenta getTipoCuenta() {
+        return tipoCuenta;
+    }
+
 }

@@ -405,8 +405,8 @@ public class Prestamos extends javax.swing.JFrame {
                 jButtonProcesarSolicitar.setEnabled(true);
                 System.out.println(cliente.toString());
 
-                String[] columnasTablaSolicitar = {"DNI", "Nombre", "Apellidos"};
-                String[] datosCliente = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos()};
+                String[] columnasTablaSolicitar = {"DNI", "Nombre", "Apellidos", "IBAN", "Tipo cuenta"};
+                String[] datosCliente = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), cliente.getCuentaBancaria().getIBAN(), cliente.getCuentaBancaria().getTipoCuenta().name()};
                 DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar);
                 jTableSolicitar.setModel(modeloTabla);
                 modeloTabla.addRow(datosCliente);
