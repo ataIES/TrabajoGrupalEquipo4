@@ -152,9 +152,9 @@ public class Funciones {
 
             if (cliente.getCuentaBancaria().getMediaNominaAnual() >= 1000) { //Si la media anual de la nómina es >= 1000.
 
-                if (cliente.getCuentaBancaria().getNominaUltMes() >= 1000) { //Si la última nómina es >= 1000. La pareja es APTA para solicitar un préstamo.
+                if (cliente.getCuentaBancaria().getNominaUltMes() >= 1000) { //Si la última nómina es >= 1000. Es APTO para solicitar un préstamo.
                     basesMinimas = true;
-                } else { //Si la última nómina es < 1000. La pareja no es APTA para solicitar un préstamo.
+                } else { //Si la última nómina es < 1000. No es APTO para solicitar un préstamo.
                     System.out.println("Préstamo no concedido: La cantidad de la última nómina no cumple los requisitos.");
                 }
 
