@@ -4,7 +4,9 @@
  */
 package proyectointermodular.prestamos;
 
+import java.awt.Dimension;
 import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.List;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -337,6 +339,7 @@ public class Prestamos extends javax.swing.JFrame {
         getContentPane().add(jPFirmar, "card6");
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSolicitarActionPerformed
