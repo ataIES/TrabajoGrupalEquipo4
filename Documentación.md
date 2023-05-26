@@ -32,10 +32,16 @@
 # Día 4 
 | Objetivos|Encargados | Conseguido|
 |----------|-----------|-----------|
-|Cargar mas movimientos en la base de datos|césar||
-|Modificar metodos del programa  | Victor yEfrén||
-|Crear los metodos de insercion en la base de datos desde java |Adrián||
-
-
+|Cargar mas movimientos en la base de datos|césar|SI|
+|Continuar modificando la página web | Efrén|SI|
+|Instalar los programas necesarios en la maquina virtual|César y Efrén|SI|
+|Crear la clase de acceso a la base de datos en java | víctor | si|
+# Día 5
+| Objetivos|Encargados | Conseguido|
+|----------|-----------|-----------|
+|Ultimar los detalles de la base de datos|césar|SI|
+|Modificar los metodos del programa que daban error|Victor y Efrén||
+|Crear los metodos de inserciuon en la base de datos | Adrián |SI|
+|Modifiacr el dominio de la maquina virtual|Cesar y Adrian ||
 
 
