@@ -62,11 +62,14 @@ public class Movimiento {
         this.fecha = fecha;
     }
 
+    /**
+     * Método toString que devuelve toda la información del objeto.
+     *
+     * @return Devuelve un String.
+     */
     @Override
     public String toString() {
         return "\nMovimiento{" + "numOperacion=" + numOperacion + ", cantidad=" + cantidad + ", tipoMovimiento=" + tipoMovimiento + ", emisor=" + emisor + ", destinatario=" + destinatario + ", concepto=" + concepto + ", fecha=" + fecha + '}';
     }
-    
-    
 
 }

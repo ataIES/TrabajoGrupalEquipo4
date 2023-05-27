@@ -10,5 +10,5 @@ package proyectointermodular.prestamos;
  * @author Víctor Sánchez Llada, César Torre, Efrén Gutiérrez y Adrián Tresgallo.
  */
 public enum TipoCuenta {
-    CUENTA_DE_AHORRO, CUENTA_CORRIENTE, CUENTA_EMPRESA;
+    CUENTA_DE_AHORRO, CUENTA_CORRIENTE, CUENTA_EMPRESA, CUENTA_PERSONAL;
 }

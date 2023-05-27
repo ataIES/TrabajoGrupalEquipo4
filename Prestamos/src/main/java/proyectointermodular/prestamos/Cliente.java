@@ -77,35 +77,68 @@ public class Cliente {
         this.cuentaBancaria = cuentaBancaria;
     }
 
+    /**
+     * Método toString que devuelve una cadena con toda la información del objeto.
+     *
+     * @return Devuelve un String.
+     */
     @Override
     public String toString() {
         return "Cliente{" + "uuid=" + uuid + ", dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", telefono=" + telefono + ", direccion=" + direccion + ", localidad=" + localidad + ", fechaNacimiento=" + fechaNacimiento + ", perfil=" + perfil + ", cuentaBancaria=" + cuentaBancaria + '}';
     }
 
-    //GETs
+    /**
+     * Método getPerfil que devuelve el valor del atributo perfil.
+     *
+     * @return Devuelve un Perfil.
+     */
     public Perfil getPerfil() {
         return perfil;
     }
 
+    /**
+     * Método getCuentaBancaria que devuelve el valor del atributo cuentaBancaria.
+     *
+     * @return Devuelve un CuentaBancaria.
+     */
     public CuentaBancaria getCuentaBancaria() {
         return cuentaBancaria;
     }
 
+    /**
+     * Método getUuid que devuelve el valor del atributo uuid.
+     *
+     * @return Devuelve un String.
+     */
     public String getUuid() {
         return uuid;
     }
 
+    /**
+     * Método getDni que devuelve el valor del atributo dni.
+     *
+     * @return Devuelve un String.
+     */
     public String getDni() {
         return dni;
     }
 
+    /**
+     * Método getNombre que devuelve el valor del atributo nombre.
+     *
+     * @return Devuelve un String.
+     */
     public String getNombre() {
         return nombre;
     }
 
+    /**
+     * Método getApellidos que devuelve el valor del atributo apellidos.
+     *
+     * @return Devuelve un String.
+     */
     public String getApellidos() {
         return apellidos;
     }
-    
 
 }

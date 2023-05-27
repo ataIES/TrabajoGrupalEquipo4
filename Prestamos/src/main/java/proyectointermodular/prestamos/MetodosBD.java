@@ -15,11 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase métodos BD que contiene los métodos necesarios para operar con la base
- * de datos.
+ * Clase métodos BD que contiene los métodos necesarios para operar con la base de datos.
  *
- * @author Víctor Sánchez Llada, César Torre, Efrén Gutiérrez y Adrián
- * Tresgallo.
+ * @author Víctor Sánchez Llada, César Torre, Efrén Gutiérrez y Adrián Tresgallo.
  */
 public class MetodosBD {
 
@@ -31,6 +29,7 @@ public class MetodosBD {
     private static final String TABLA_MOVIMIENTOS = "movimientos";
     private static final String TABLA_PRECONCEDIDOS = "prestamospreconcedidos";
     private static final String TABLA_CONCEDIDOS = "prestamosconcedidos";
+    private static final String TABLA_PAGOS = "pagos";
 
     /**
      * Método privado getConnection que nos devuelve la conexión.
@@ -42,8 +41,7 @@ public class MetodosBD {
     }
 
     /**
-     * Método estático listarClientes que devuelve una lista de todos los
-     * clientes.
+     * Método estático listarClientes que devuelve una lista de todos los clientes.
      *
      * @return Devuelve un List <code>Cliente</code>
      */
@@ -70,52 +68,70 @@ public class MetodosBD {
 
     }
 
-    /*Metodo para listar los prestamos preconcedidos*/
     /**
-     * 
-     * @return 
+     * Método estático listarPrestamosPreconcedidos para listar los préstamos preconcedidos.
+     *
+     * @return Devuelve un List <code>PrestamoPreconcedido</code>
      */
     public static List<PrestamoPreconcedido> listarPrestamosPreconcedidos() {
+
         List<PrestamoPreconcedido> listaprestamoPreconcedido = new ArrayList();
+
         try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT * FROM " + TABLA_PRECONCEDIDOS);) {
+
             while (rs.next()) {
+
                 PrestamoPreconcedido prestamopreconcedido = crearPrestamoPreconcedido(rs);
+
                 if (!listaprestamoPreconcedido.add(prestamopreconcedido)) {
                     throw new Exception("Error: no se ha insertado el objeto en la colección.");
                 }
+
             }
+
         } catch (SQLException ex) {
             System.out.println("SQLException: " + ex.getMessage());
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+
         return listaprestamoPreconcedido;
+
     }
-    /*Metodo para listar los prestamos concedidos*/
+
     /**
-     * 
-     * @return 
+     * Método estático listarPrestamosConcedidos para listar los préstamos concedidos.
+     *
+     * @return Devuelve un List <code>PrestamoConcedido</code>
      */
-       public static List<PrestamoConcedido>listarPrestamosConcedidos(){
-        List<PrestamoConcedido>listaprestamoConcedido= new ArrayList();
-        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT * FROM " + TABLA_PRECONCEDIDOS);) {
-            while(rs.next()){
-                PrestamoConcedido prestamoconcedido= crearPrestamoConcedido(rs);
-                if(!listaprestamoConcedido.add(prestamoconcedido)){
+    public static List<PrestamoConcedido> listarPrestamosConcedidos() {
+
+        List<PrestamoConcedido> listaprestamoConcedido = new ArrayList();
+
+        try ( Statement stmt = getConnection().createStatement();  ResultSet rs = stmt.executeQuery("SELECT * FROM " + TABLA_CONCEDIDOS);) {
+
+            while (rs.next()) {
+
+                PrestamoConcedido prestamoconcedido = crearPrestamoConcedido(rs);
+
+                if (!listaprestamoConcedido.add(prestamoconcedido)) {
                     throw new Exception("Error: no se ha insertado el objeto en la colección.");
                 }
+
             }
-        }catch(SQLException ex){
-            System.out.println("SQLException: "+ ex.getMessage());
-        }catch(Exception ex){
+
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+
         return listaprestamoConcedido;
+
     }
-    
+
     /**
-     * Método estático clientePorId que recibe por parámetro el id del cliente y
-     * crea un objeto Cliente.
+     * Método estático clientePorId que recibe por parámetro el id del cliente y crea un objeto Cliente.
      *
      * @param idCLiente Parámetro de tipo String que será el id del cliente.
      * @return Devuelve un Cliente.
@@ -146,8 +162,7 @@ public class MetodosBD {
     }
 
     /**
-     * Método estático clientePorDni que recibe por parámetro el dni del cliente
-     * y crea un objeto Cliente.
+     * Método estático clientePorDni que recibe por parámetro el dni del cliente y crea un objeto Cliente.
      *
      * @param dni Parámetro de tipo String que será el dni del cliente.
      * @return Devuelve un Cliente.
@@ -156,11 +171,6 @@ public class MetodosBD {
 
         Cliente cliente = null;
         String sql = "SELECT * FROM " + TABLA_CLIENTES + " WHERE DNI=?";
-//        String sql = "SELECT * FROM " + TABLA_CLIENTES
-//                + " INNER JOIN " + TABLA_CUENTAS + " ON " + TABLA_CLIENTES + ".cliente_id = " + TABLA_CUENTAS + ".cliente_id"
-//                + " INNER JOIN " + TABLA_PERFILES + " ON " + TABLA_CLIENTES + ".cliente_id = " + TABLA_PERFILES + ".cliente_id"
-//                + " INNER JOIN " + TABLA_CASADOS + " ON " + TABLA_CLIENTES + ".cliente_id = " + TABLA_CASADOS + ".cliente_id"
-//                + " WHERE DNI=?";
 
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
 
@@ -183,8 +193,7 @@ public class MetodosBD {
     }
 
     /**
-     * Método estático perfilPorIdCliente que recibe por parámetro el id del
-     * cliente y crea un objeto Perfil.
+     * Método estático perfilPorIdCliente que recibe por parámetro el id del cliente y crea un objeto Perfil.
      *
      * @param idCliente Parámetro de tipo String que será el id del cliente.
      * @return Devuelve un Perfil.
@@ -192,8 +201,16 @@ public class MetodosBD {
     public static Perfil perfilPorIdCliente(String idCliente) {
 
         Perfil perfil = null;
+        String sql;
+        int casado = saberSiEstaCasado(idCliente);
 
-        String sql = "SELECT * FROM " + TABLA_PERFILES + " WHERE cliente_id=?";
+        if (casado == 0) {
+            sql = "SELECT * FROM " + TABLA_PERFILES + " WHERE cliente_id=?";
+        } else {
+            sql = "SELECT cliente_id, usuario, contraseña, situacion_civil, situacion_laboral, moroso, proceso_judicial, conyuge_id, regimen_matrimonial FROM "
+                    + TABLA_PERFILES
+                    + " INNER JOIN " + TABLA_CASADOS + " ON cliente_id = id WHERE cliente_id=?";
+        }
 
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
 
@@ -201,7 +218,12 @@ public class MetodosBD {
 
             try ( ResultSet rs = stmt.executeQuery();) {
                 if (rs.next()) {
-                    perfil = crearPerfil(rs);
+                    if (casado == 0) {
+                        perfil = crearPerfil(rs);
+                    } else {
+                        perfil = crearPerfilCasado(rs);
+                    }
+
                 }
             }
 
@@ -216,8 +238,36 @@ public class MetodosBD {
     }
 
     /**
-     * Método estático cuentaPorIdCliente que recibe por parámetro el id del
-     * cliente y crea un objeto CuentaBancaria.
+     * Método estático saberSiEstaCasado que recibe por parámetro un id de cliente y devuelve un entero indicando si está casado con un cliente del banco.
+     *
+     * @param idCliente Parámetro de tipo String que será el id del cliente.
+     * @return Devuelve un int
+     */
+    private static int saberSiEstaCasado(String idCliente) {
+
+        int casado = 0;
+
+        String sql = "SELECT COUNT(*) AS total_filas FROM (SELECT * FROM casados WHERE id=?) AS resultados";
+
+        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            stmt.setString(1, idCliente);
+            try ( ResultSet rs = stmt.executeQuery();) {
+                if (rs.next()) {
+                    casado = rs.getInt("total_filas");
+                }
+            }
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return casado;
+
+    }
+
+    /**
+     * Método estático cuentaPorIdCliente que recibe por parámetro el id del cliente y crea un objeto CuentaBancaria.
      *
      * @param idCliente Parámetro de tipo String que será el id del cliente.
      * @return Devuelve un CuentaBancaria.
@@ -249,8 +299,7 @@ public class MetodosBD {
     }
 
     /**
-     * Método estático movimientosPorIDCliente que recibe por parámetro el id
-     * del cliente y crea una lista de movimientos.
+     * Método estático movimientosPorIDCliente que recibe por parámetro el id del cliente y crea una lista de movimientos.
      *
      * @param idCliente Parámetro de tipo String que será el id del cliente.
      * @return Devuelve un List <code>Movimiento</code>
@@ -283,25 +332,95 @@ public class MetodosBD {
 
     }
 
-    
     /**
-     * 
-     * @param prestamopreconcedido 
+     * Método estático pagosPorNumPrestamo que recibe por parámetro un número de préstamo y devuelve una lista de los pagos.
+     *
+     * @param numPrestamo Parámetro de tipo int que será el número de préstamo.
+     * @return Devuelve un List<code>Pago</code>
      */
-    public static void insertarPrestamos(PrestamoPreconcedido prestamopreconcedido) {
-        String sql = "INSERT INTO prestamospreconcedidos(numero_prestamo,cliente_id,fecha_oferta,cantidad,periodo_meses,tipo_interes,plazo_aceptacion_dias) VALUES(?,?,?,?,?,?,?)";
+    public static List<Pago> pagosPorNumPrestamo(int numPrestamo) {
+
+        List<Pago> pagos = new ArrayList<>();
+
+        String sql = "SELECT * FROM " + TABLA_PAGOS + " WHERE numero_prestamo=?";
+
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
-            stmt.setInt(1, prestamopreconcedido.getId());
-            stmt.setString(2, prestamopreconcedido.getCliente().getUuid());
-            stmt.setDate(3, Date.valueOf(prestamopreconcedido.getFecha()));
-            stmt.setDouble(4, prestamopreconcedido.getCantidad());
-            stmt.setInt(5, prestamopreconcedido.getPeriodoMeses());
-            stmt.setDouble(6, prestamopreconcedido.getTipoInteres());
-            stmt.setInt(7, prestamopreconcedido.getPlazoAceptacion());
+
+            stmt.setInt(1, numPrestamo);
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()) {
+                Pago pago = crearPago(rs);
+                if (!pagos.add(pago)) {
+                    throw new Exception("Error: no se ha insertado el objeto en la colección.");
+                }
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return pagos;
+
+    }
+
+    /**
+     * Método estático prestamoPreconcedidoPorIdCliente que recibe por parámetro un id del cliente y crea un objeto PrestamoPreconcedido.
+     *
+     * @param idCliente Parámetro de tipo String que será el id del cliente.
+     * @return Devuelve un PrestamoPreconcedido.
+     */
+    public static PrestamoPreconcedido prestamoPreconcedidoPorIdCliente(String idCliente) {
+
+        PrestamoPreconcedido prestamoPreconcedido = null;
+        String sql = "SELECT * FROM " + TABLA_PRECONCEDIDOS + " WHERE cliente_id=?";
+
+        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+
+            stmt.setString(1, idCliente);
+
+            try ( ResultSet rs = stmt.executeQuery();) {
+                if (rs.next()) {
+                    prestamoPreconcedido = crearPrestamoPreconcedido(rs);
+                }
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return prestamoPreconcedido;
+
+    }
+
+    /**
+     * Método estático insertarPrestamo que recibe por parámetro un objeto PrestamoPreconcedido y lo inserta en la base de datos.
+     *
+     * @param prestamopreconcedido Parámetro de tipo PrestamoPreconcedido que será el objeto a insertar.
+     */
+    public static void insertarPrestamopreconcedido(PrestamoPreconcedido prestamopreconcedido) {
+
+        String sql = "INSERT INTO " + TABLA_PRECONCEDIDOS + " (cliente_id,fecha_oferta,cantidad,periodo_meses,tipo_interes,plazo_aceptacion_dias) VALUES(?,?,?,?,?,?)";
+
+        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+
+            stmt.setString(1, prestamopreconcedido.getCliente().getUuid());
+            stmt.setDate(2, Date.valueOf(prestamopreconcedido.getFecha()));
+            stmt.setDouble(3, prestamopreconcedido.getCantidad());
+            stmt.setInt(4, prestamopreconcedido.getPeriodoMeses());
+            stmt.setDouble(5, prestamopreconcedido.getTipoInteres());
+            stmt.setInt(6, prestamopreconcedido.getPlazoAceptacion());
+
             int salida = stmt.executeUpdate();
+
             if (salida != 1) {
                 throw new Exception(" No se ha insertado un solo registro");
             }
+
         } catch (SQLException ex) {
             // errores
             System.out.println("SQLException: " + ex.getMessage());
@@ -311,24 +430,35 @@ public class MetodosBD {
 
     }
 
-    /*Metodo estático para insertar PrestamosConcedidos */
+    /**
+     * Método estático insertarPrestamoConcedido que recibe por parámetro un objeto PrestamoConcedido y lo inserta en la base de datos.
+     *
+     * @param prestamoconcedido Parámetro de tipo PrestamoConcedido que será el objeto a insertar.
+     */
     public static void insertarPrestamoConcedido(PrestamoConcedido prestamoconcedido) {
-        String sql = "INSERT INTO prestamosconcedidos (numero_prestamo,cliente_id,fecha_firma,numero_prestamo_preconcedido,cantidad_mensual) VALUES(?,?,?,?,?)";
+
+        String sql = "INSERT INTO " + TABLA_CONCEDIDOS + " (cliente_id,fecha_firma,numero_prestamo_preconcedido,cantidad_mensual) VALUES(?,?,?,?)";
+
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
-            stmt.setString(2, prestamoconcedido.getPrestamoPreconcedido().getCliente().getUuid());
-            stmt.setDate(3, Date.valueOf(LocalDate.now()));
-            stmt.setInt(4, prestamoconcedido.getPrestamoPreconcedido().getId());
-            stmt.setDouble(5, prestamoconcedido.getPrestamoPreconcedido().getCantidad());
+
+            stmt.setString(1, prestamoconcedido.getPrestamoPreconcedido().getCliente().getUuid());
+            stmt.setDate(2, Date.valueOf(LocalDate.now()));
+            stmt.setInt(3, prestamoconcedido.getPrestamoPreconcedido().getId());
+            stmt.setDouble(4, prestamoconcedido.getPrestamoPreconcedido().getCantidad());
+
             int salida = stmt.executeUpdate();
+
             if (salida != 1) {
                 throw new Exception(" No se ha insertado un solo registro");
             }
+
         } catch (SQLException ex) {
             // errores
             System.out.println("SQLException: " + ex.getMessage());
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
+
     }
 
     /**
@@ -354,8 +484,18 @@ public class MetodosBD {
     }
 
     /**
-     * Método estático crearCuentaBancaria que crea un objeto de tipo
-     * CuentaBancaria.
+     * Método estático crearPerfilCasado que crea un objeto de tipo Perfil.
+     *
+     * @param rs Parámetro de tipo ResultSet.
+     * @return Devuelve un objeto Perfil.
+     * @throws SQLException Lanza una excepción si hay algún error de SQL.
+     */
+    private static Perfil crearPerfilCasado(final ResultSet rs) throws SQLException {
+        return new Perfil(rs.getString("usuario"), rs.getString("contraseña"), SituacionCivil.valueOf(rs.getString("situacion_civil")), SituacionLaboral.valueOf(rs.getString("situacion_laboral")), rs.getBoolean("moroso"), rs.getBoolean("proceso_judicial"), rs.getString("conyuge_id"), rs.getBoolean("regimen_matrimonial"));
+    }
+
+    /**
+     * Método estático crearCuentaBancaria que crea un objeto de tipo CuentaBancaria.
      *
      * @param rs Parámetro de tipo ResultSet.
      * @return Devuelve un objeto CuentaBancaria.
@@ -388,27 +528,25 @@ public class MetodosBD {
     }
 
     /**
-     * Método estático crearPrestamoConcedido que crea un objeto de tipo
-     * PrestamoConcedido.
+     * Método estático crearPrestamoConcedido que crea un objeto de tipo PrestamoConcedido.
      *
      * @param rs Parámetro de tipo ResultSet.
      * @return Devuelve un objeto PrestamoConcedido.
      * @throws SQLException Lanza una excepción si hay algún error de SQL.
      */
     private static PrestamoConcedido crearPrestamoConcedido(final ResultSet rs) throws SQLException {
-        return new PrestamoConcedido(null, null);
+        return new PrestamoConcedido(prestamoPreconcedidoPorIdCliente(rs.getString("cliente_id")), pagosPorNumPrestamo(rs.getInt("numero_prestamo")));
     }
 
     /**
-     * Método estático crearPrestamoPreconcedido que crea un objeto de tipo
-     * PrestamoPreconcedido.
+     * Método estático crearPrestamoPreconcedido que crea un objeto de tipo PrestamoPreconcedido.
      *
      * @param rs Parámetro de tipo ResultSet.
      * @return Devuelve un objeto PrestamoPreconcedido.
      * @throws SQLException Lanza una excepción si hay algún error de SQL.
      */
     private static PrestamoPreconcedido crearPrestamoPreconcedido(final ResultSet rs) throws SQLException {
-        return new PrestamoPreconcedido(rs.getInt("periodo_meses"), rs.getDouble("tipo_interes"), rs.getInt("plazo_aceptacion_dias"), rs.getInt("numero_prestamo"), null, rs.getDate("fecha_oferta").toLocalDate(), rs.getDouble("cantidad"));
+        return new PrestamoPreconcedido(rs.getInt("periodo_meses"), rs.getDouble("tipo_interes"), rs.getInt("plazo_aceptacion_dias"), rs.getInt("numero_prestamo"), clientePorId(rs.getString("cliente_id")), rs.getDate("fecha_oferta").toLocalDate(), rs.getDouble("cantidad"));
     }
 
 }

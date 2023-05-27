@@ -54,17 +54,41 @@ public class PrestamoPreconcedido extends Prestamo implements Serializable {
         this.plazoAceptacion = plazoAceptacion;
     }
 
+    /**
+     * Método toString que devuelve toda la información del objeto.
+     *
+     * @return Devuelve un String.
+     */
+    @Override
+    public String toString() {
+        return super.toString() + "\nPrestamoPreconcedido{" + "periodoMeses=" + periodoMeses + ", tipoInteres=" + tipoInteres + ", plazoAceptacion=" + plazoAceptacion + '}';
+    }
+
+    /**
+     * Método getPeriodoMeses que devuelve el valor del atributo periodoMeses.
+     *
+     * @return Devuelve un int.
+     */
     public int getPeriodoMeses() {
         return periodoMeses;
     }
 
+    /**
+     * Método getTipoInteres que devuelve el valor del atributo tipoInteres.
+     *
+     * @return Devuelve un double.
+     */
     public double getTipoInteres() {
         return tipoInteres;
     }
 
+    /**
+     * Método getPlazoAceptacion que devuelve el valor del atributo plazoAceptacion.
+     *
+     * @return Devuelve un int.
+     */
     public int getPlazoAceptacion() {
         return plazoAceptacion;
     }
-    
 
 }

@@ -47,21 +47,50 @@ public abstract class Prestamo {
         this.cantidad = cantidad;
     }
 
+    /**
+     * Método toString que devuelve toda la información del objeto.
+     *
+     * @return Devuelve un String.
+     */
+    @Override
+    public String toString() {
+        return "Prestamo{" + "id=" + id + ", cliente=" + cliente + ", fecha=" + fecha + ", cantidad=" + cantidad + '}';
+    }
+
+    /**
+     * Método getId que devuelve el valor del atributo id.
+     *
+     * @return Devuelve un int.
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Método getCliente que devuelve el valor del atributo cliente.
+     *
+     * @return Devuelve un Cliente.
+     */
     public Cliente getCliente() {
         return cliente;
     }
 
+    /**
+     * Método getFecha que devuelve el valor del atributo fecha.
+     *
+     * @return Devuelve un LocalDate.
+     */
     public LocalDate getFecha() {
         return fecha;
     }
 
+    /**
+     * Método getCantidad que devuelve el valor del atributo cantidad.
+     *
+     * @return Devuelve un double.
+     */
     public double getCantidad() {
         return cantidad;
     }
-    
 
 }
