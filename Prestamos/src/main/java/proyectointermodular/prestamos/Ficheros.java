@@ -103,5 +103,37 @@ public class Ficheros {
         }
 
     }
+    /**
+     * 
+     * @param fichero
+     * @param lista 
+     */
+     public static void escribirLineaALineaDeListPrestamosConcedidos(File fichero, List<PrestamoConcedido> lista) {
 
+        BufferedWriter bW = null;
+
+        try {
+            bW = new BufferedWriter(new FileWriter(fichero));
+
+            for (PrestamoConcedido elemento : lista) {
+                bW.write(elemento.toString());
+                //bR.write(System.lineSeparator());
+                bW.newLine();
+            }
+
+            System.out.println("Fichero " + fichero.getAbsolutePath() + " grabado.");
+
+        } catch (IOException ex) {
+            System.err.println(ex.toString());
+        } finally {
+            if (bW != null) {
+                try {
+                    bW.close();
+                } catch (IOException ex) {
+                    System.err.println("Error al cerrar el flujo de escritura.");
+                }
+            }
+        }
+
+     }
 }

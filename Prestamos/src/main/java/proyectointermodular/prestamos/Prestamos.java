@@ -13,6 +13,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.Icon;
@@ -54,7 +55,6 @@ public class Prestamos extends javax.swing.JFrame {
         //Fondo JPanels
         ImageIcon fondo = new ImageIcon(getClass().getClassLoader().getResource("Imagen/fondo.jpg"));
         fondoJPanels(fondo, lblFondoSolicitar);
-        fondoJPanels(fondo, lblFondoCalcular);
         fondoJPanels(fondo, lblFondoMostrar);
         fondoJPanels(fondo, lblFondoFirmar);
 
@@ -92,10 +92,11 @@ public class Prestamos extends javax.swing.JFrame {
         lblFondoSolicitar = new javax.swing.JLabel();
         jPCalcularPrestamo = new javax.swing.JPanel();
         jScrollPanePrestamo = new javax.swing.JScrollPane();
+        jTableCalculo = new javax.swing.JTable();
         jLCalculoPrestamo = new javax.swing.JLabel();
         jBCalculo = new javax.swing.JButton();
         jBVolver = new javax.swing.JButton();
-        lblFondoCalcular = new javax.swing.JLabel();
+        jGrabar = new javax.swing.JButton();
         jPMostrar = new javax.swing.JPanel();
         jBVolverMostrar = new javax.swing.JButton();
         jLabelMostrar = new javax.swing.JLabel();
@@ -236,6 +237,9 @@ public class Prestamos extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
+
+        jScrollPanePrestamo.setViewportView(jTableCalculo);
+
         jPCalcularPrestamo.add(jScrollPanePrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 620, 250));
 
         jLCalculoPrestamo.setText("Cálculo de Prestamos");
@@ -256,7 +260,14 @@ public class Prestamos extends javax.swing.JFrame {
             }
         });
         jPCalcularPrestamo.add(jBVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 390, -1, -1));
-        jPCalcularPrestamo.add(lblFondoCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 580));
+
+        jGrabar.setText("Grabar");
+        jGrabar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jGrabarActionPerformed(evt);
+            }
+        });
+        jPCalcularPrestamo.add(jGrabar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, -1, -1));
 
         getContentPane().add(jPCalcularPrestamo, "card5");
 
@@ -475,9 +486,28 @@ public class Prestamos extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButtonBuscarSolicitarActionPerformed
-
+/**
+ * 
+ * @param evt 
+ */
     private void jBCalculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCalculoActionPerformed
         // TODO add your handling code here:
+        List<PrestamoPreconcedido>lista=MetodosBD.listarPrestamosPreconcedidos();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        if(!lista.isEmpty()){
+        String[] columnasTablaSolicitar = {"NºPrestamo", "ID Cliente", "Fecha_Oferta","Cantidad","Periodo en Meses","Interés","Plazo de Aceptación"};
+        DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar);
+        jTableCalculo.setModel(modeloTabla);
+
+        for (PrestamoPreconcedido preconcedido : lista) {
+            String[] datosPreconcedidos = {String.valueOf(preconcedido.getId()),preconcedido.getCliente().getUuid(),preconcedido.getFecha().format(formatter),
+                String.valueOf(preconcedido.getCantidad()),String.valueOf(preconcedido.getPeriodoMeses()),String.valueOf(preconcedido.getPeriodoMeses()),
+                String.valueOf(preconcedido.getPeriodoMeses())};   
+            modeloTabla.addRow(datosPreconcedidos);
+            }
+        }else{
+            JOptionPane.showMessageDialog(null, "No hay ningún préstamo preconcedido","Cálculo de los Préstamos preconcedidos",JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_jBCalculoActionPerformed
 
     private void jBVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVolverActionPerformed
@@ -587,6 +617,19 @@ public class Prestamos extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButtonBuscarMostrarActionPerformed
+/**
+ * 
+ * @param evt 
+ */
+    private void jGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGrabarActionPerformed
+        // TODO add your handling code here:
+        File fichero=new File("PrestamosPreconcedidos.txt");
+        List<PrestamoPreconcedido>lista=MetodosBD.listarPrestamosPreconcedidos();
+        if(!fichero.exists()){
+            Ficheros.escribirLineaALineaDeListPrestamosPreconcedidos(fichero, lista);
+            JOptionPane.showMessageDialog(null, "Se ha grabado en un fichero correctamente","Fichero Preconcedidos",JOptionPane.INFORMATION_MESSAGE);
+        }
+    }//GEN-LAST:event_jGrabarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -644,6 +687,7 @@ public class Prestamos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonProcesarSolicitar;
     private javax.swing.JButton jButtonVolverSolicitar;
     private javax.swing.JComboBox<String> jComboBoxFiltroMostrar;
+    private javax.swing.JButton jGrabar;
     private javax.swing.JLabel jLCalculoPrestamo;
     private javax.swing.JLabel jLFirmarPrestamo1;
     private javax.swing.JLabel jLPrestamoConcedido;
@@ -664,11 +708,11 @@ public class Prestamos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPanePreconcedido;
     private javax.swing.JScrollPane jScrollPanePrestamo;
     private javax.swing.JTextField jTIntroDNI;
+    private javax.swing.JTable jTableCalculo;
     private javax.swing.JTable jTableMostrar;
     private javax.swing.JTable jTableSolicitar;
     private javax.swing.JTextField jTextFieldDNISolicitar;
     private javax.swing.JTextField jTextFieldDatoMostrar;
-    private javax.swing.JLabel lblFondoCalcular;
     private javax.swing.JLabel lblFondoFirmar;
     private javax.swing.JLabel lblFondoMostrar;
     private javax.swing.JLabel lblFondoSolicitar;
