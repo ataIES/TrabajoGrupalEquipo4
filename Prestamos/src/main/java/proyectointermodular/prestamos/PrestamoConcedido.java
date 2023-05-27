@@ -28,13 +28,22 @@ public class PrestamoConcedido {
         this.pagos = pagos;
     }
 
+    /**
+     * Método getPrestamoPreconcedido que devuelve el valor del atributo prestamoPreconcedido.
+     *
+     * @return Devuelve un PrestamoPreconcedido.
+     */
     public PrestamoPreconcedido getPrestamoPreconcedido() {
         return prestamoPreconcedido;
     }
 
+    /**
+     * Método getPagos que devuelve el valor del atributo pagos.
+     *
+     * @return Devuelve un List<code>Pago</code>
+     */
     public List<Pago> getPagos() {
         return pagos;
     }
-    
 
 }

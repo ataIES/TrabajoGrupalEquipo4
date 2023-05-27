@@ -17,11 +17,11 @@ public class Funciones {
      * Método estático aptoParaPrestamo que recibe por parámetro un objeto Cliente y devuelve un boolean si es apto para recibir un préstamo o no.
      *
      * @param cliente Parámetro de tipo Cliente.
-     * @return Devuelve un boolean.
+     * @return Devuelve un Cliente.
      */
-    public static boolean aptoParaPrestamo(Cliente cliente) {
+    public static Cliente aptoParaPrestamo(Cliente cliente) {
 
-        boolean apto = false;
+        Cliente clienteApto = null;
 
         if (!esMorosoOJudical(cliente)) { //Si el cliente NO es moroso/asunto judicial
 
@@ -29,9 +29,11 @@ public class Funciones {
 
                 if (esCasado(cliente)) { //Si el cliente está casado
 
-                    Cliente pareja = cliente.getPerfil().getPareja(); //Recuperamos el objeto pareja para saber si está casado con un cliente del banco.
+                    String idConyuge = cliente.getPerfil().getIdConyuge();
 
-                    if (pareja != null) { //Si el objeto pareja no es null es que existe como cliente. Hay que analizar a la pareja.
+                    if (idConyuge != null) { //Si idConyuge no es null es que existe como cliente. Hay que analizar a la pareja.
+
+                        Cliente pareja = MetodosBD.clientePorId(idConyuge);
 
                         if (pareja.getPerfil().isGananciales()) { //Si están casados en régimen ganancial.
 
@@ -40,7 +42,8 @@ public class Funciones {
                                 if (!esDesempleadoOEstudianteOAmoCasa(pareja)) { //Si la pareja no está desempleado, estudiante o amo de casa.
 
                                     if (tieneBasesMinimas(pareja)) { //Si cumple con las bases mínimas la pareja es APTA para solicitar un préstamo.
-                                        apto = true;
+                                        //apto = true;
+                                        clienteApto = pareja;
                                     } else { //Si no cumple con las bases mínimas la pareja no es APTA para solicitar un préstamo.
                                         System.out.println("Préstamo no concedido: No cumple con las bases mínimas.");
                                     }
@@ -68,7 +71,8 @@ public class Funciones {
             } else { //El cliente está trabajando por cuenta propia, ajena o es pensionista.
 
                 if (tieneBasesMinimas(cliente)) { //Si cumple con las bases mínimas el cliente es APTO para solicitar un préstamo.
-                    apto = true;
+                    //apto = true;
+                    clienteApto = cliente;
                 } else { //Si no cumple con las bases mínimas el cliente no es APTO para solicitar un préstamo.
                     System.out.println("Préstamo no concedido: No cumple con las bases mínimas.");
                 }
@@ -78,7 +82,8 @@ public class Funciones {
             System.out.println("Préstamo no concedido: Morosidad o asuntos judiciales.");
         }
 
-        return apto;
+        //return apto;
+        return clienteApto;
 
     }
 

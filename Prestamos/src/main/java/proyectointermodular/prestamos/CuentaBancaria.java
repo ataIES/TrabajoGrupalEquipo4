@@ -43,28 +43,57 @@ public class CuentaBancaria {
         this.movimientos = movimientos;
     }
 
+    /**
+     * Método toString que devuelve toda la información del objeto.
+     *
+     * @return Devuelve un String.
+     */
     @Override
     public String toString() {
         return "\nCuentaBancaria{" + "IBAN=" + IBAN + ", tipoCuenta=" + tipoCuenta + ", saldoActual=" + saldoActual + ", nominaUltMes=" + nominaUltMes + ", mediaNominaAnual=" + mediaNominaAnual + ", mesesCotizados=" + mesesCotizados + ", movimientos=" + movimientos + '}';
     }
 
-    //GETs
+    /**
+     * Método getNominaUltMes que devuelve el valor del atributo nominaUltMes.
+     *
+     * @return Devuelve un double.
+     */
     public double getNominaUltMes() {
         return nominaUltMes;
     }
 
+    /**
+     * Método getMediaNominaAnual que devuelve el valor del atributo mediaNominaAnual.
+     *
+     * @return Devuelve un double.
+     */
     public double getMediaNominaAnual() {
         return mediaNominaAnual;
     }
 
+    /**
+     * Método getMesesCotizados que devuelve el valor del atributo mesesCotizados.
+     *
+     * @return Devuelve un int.
+     */
     public int getMesesCotizados() {
         return mesesCotizados;
     }
 
+    /**
+     * Método getIBAN que devuelve el valor del atributo IBAN.
+     *
+     * @return Devuelve un String.
+     */
     public String getIBAN() {
         return IBAN;
     }
 
+    /**
+     * Método getTipoCuenta que devuelve el valor del atributo tipoCuenta.
+     *
+     * @return Devuelve un TipoCuenta.
+     */
     public TipoCuenta getTipoCuenta() {
         return tipoCuenta;
     }

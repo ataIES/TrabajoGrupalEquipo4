@@ -18,7 +18,7 @@ public class Perfil {
     private SituacionLaboral situacionLaboral;
     private boolean esMoroso;
     private boolean procesoJudicial;
-    private Cliente pareja;
+    private String idConyuge;
     private boolean gananciales;
 
     /**
@@ -30,49 +30,77 @@ public class Perfil {
      * @param situacionLaboral Parámetro de tipo SituacionLaboral que será un Enum de situaciones laborales.
      * @param esMoroso Parámetro de tipo boolean que será true si es moroso y false si no lo es.
      * @param procesoJudicial Parámetro de tipo boolean que será true si tiene asuntos judiciales y false si no los tiene.
-     * @param pareja Parámetro de tipo Cliente que será su pareja en caso de que también sea cliente del banco.
+     * @param idConyuge Parámetro de tipo String que será el id del cónyuge cliente del banco.
      * @param gananciales Parámetro de tipo boolean que será true si están casados en regimen ganacial o false si no lo están.
      */
-    public Perfil(String usuario, String password, SituacionCivil situacionCivil, SituacionLaboral situacionLaboral, boolean esMoroso, boolean procesoJudicial, Cliente pareja, boolean gananciales) {
+    public Perfil(String usuario, String password, SituacionCivil situacionCivil, SituacionLaboral situacionLaboral, boolean esMoroso, boolean procesoJudicial, String idConyuge, boolean gananciales) {
         this.usuario = usuario;
         this.password = password;
         this.situacionCivil = situacionCivil;
         this.situacionLaboral = situacionLaboral;
         this.esMoroso = esMoroso;
         this.procesoJudicial = procesoJudicial;
-        this.pareja = pareja;
+        this.idConyuge = idConyuge;
         this.gananciales = gananciales;
     }
 
     @Override
     public String toString() {
-        return "\nPerfil{" + "usuario=" + usuario + ", password=" + password + ", situacionCivil=" + situacionCivil + ", situacionLaboral=" + situacionLaboral + ", esMoroso=" + esMoroso + ", procesoJudicial=" + procesoJudicial + ", pareja=" + pareja + ", gananciales=" + gananciales + '}';
+        return "Perfil{" + "usuario=" + usuario + ", password=" + password + ", situacionCivil=" + situacionCivil + ", situacionLaboral=" + situacionLaboral + ", esMoroso=" + esMoroso + ", procesoJudicial=" + procesoJudicial + ", idConyuge=" + idConyuge + ", gananciales=" + gananciales + '}';
     }
 
-    
-    //GETs
+    /**
+     * Método isEsMoroso que devuelve el valor del atributo esMoroso.
+     *
+     * @return Devuelve un boolean.
+     */
     public boolean isEsMoroso() {
         return esMoroso;
     }
 
+    /**
+     * Método isProcesoJudicial que devuelve el valor del atributo procesoJudicial.
+     *
+     * @return Devuelve un boolean.
+     */
     public boolean isProcesoJudicial() {
         return procesoJudicial;
     }
 
+    /**
+     * Método getSituacionLaboral que devuelve el valor del atributo situacionLaboral.
+     *
+     * @return Devuelve un SituacionLaboral.
+     */
     public SituacionLaboral getSituacionLaboral() {
         return situacionLaboral;
     }
 
+    /**
+     * Método getSituacionCivil que devuelve el valor del atributo situacionCivil.
+     *
+     * @return Devuelve un SituacionCivil.
+     */
     public SituacionCivil getSituacionCivil() {
         return situacionCivil;
     }
 
-    public Cliente getPareja() {
-        return pareja;
-    }
-
+    /**
+     * Método isGananciales que devuelve el valor del atributo gananciales.
+     *
+     * @return Devuelve un boolean.
+     */
     public boolean isGananciales() {
         return gananciales;
+    }
+
+    /**
+     * Método getIdConyuge que devuelve el valor del atributo idConyuge.
+     *
+     * @return Devuelve un String.
+     */
+    public String getIdConyuge() {
+        return idConyuge;
     }
 
 }
