@@ -55,6 +55,7 @@ public class Prestamos extends javax.swing.JFrame {
         //Fondo JPanels
         ImageIcon fondo = new ImageIcon(getClass().getClassLoader().getResource("Imagen/fondo.jpg"));
         fondoJPanels(fondo, lblFondoSolicitar);
+        fondoJPanels(fondo, lblFondoCalculo);
         fondoJPanels(fondo, lblFondoMostrar);
         fondoJPanels(fondo, lblFondoFirmar);
 
@@ -97,6 +98,7 @@ public class Prestamos extends javax.swing.JFrame {
         jBCalculo = new javax.swing.JButton();
         jBVolver = new javax.swing.JButton();
         jGrabar = new javax.swing.JButton();
+        lblFondoCalculo = new javax.swing.JLabel();
         jPMostrar = new javax.swing.JPanel();
         jBVolverMostrar = new javax.swing.JButton();
         jLabelMostrar = new javax.swing.JLabel();
@@ -115,9 +117,11 @@ public class Prestamos extends javax.swing.JFrame {
         jBPLimpiar = new javax.swing.JButton();
         jBFirmar = new javax.swing.JButton();
         jScrollPaneConcedidos = new javax.swing.JScrollPane();
+        jTableConcedidosFirmar = new javax.swing.JTable();
         jBPreconcedidos2 = new javax.swing.JButton();
         jLFirmarPrestamo1 = new javax.swing.JLabel();
         jScrollPanePreconcedido = new javax.swing.JScrollPane();
+        jTablePreconcedidosFirmar = new javax.swing.JTable();
         jLPrestamoPreconcedido1 = new javax.swing.JLabel();
         jBVolver1 = new javax.swing.JButton();
         lblFondoFirmar = new javax.swing.JLabel();
@@ -164,7 +168,7 @@ public class Prestamos extends javax.swing.JFrame {
             }
         });
         jPPortada.add(jBBFirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 520, -1, -1));
-        jPPortada.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(-6, 0, 810, 580));
+        jPPortada.add(lblLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 804, 580));
         lblLogo.getAccessibleContext().setAccessibleName("Logo");
 
         getContentPane().add(jPPortada, "card2");
@@ -221,7 +225,7 @@ public class Prestamos extends javax.swing.JFrame {
             }
         });
         jPSolicitar.add(jButtonProcesarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, -1, -1));
-        jPSolicitar.add(lblFondoSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 580));
+        jPSolicitar.add(lblFondoSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 804, 580));
 
         getContentPane().add(jPSolicitar, "card3");
 
@@ -240,10 +244,10 @@ public class Prestamos extends javax.swing.JFrame {
 
         jScrollPanePrestamo.setViewportView(jTableCalculo);
 
-        jPCalcularPrestamo.add(jScrollPanePrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 80, 620, 250));
+        jPCalcularPrestamo.add(jScrollPanePrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 730, 380));
 
         jLCalculoPrestamo.setText("Cálculo de Prestamos");
-        jPCalcularPrestamo.add(jLCalculoPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 130, 30));
+        jPCalcularPrestamo.add(jLCalculoPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 130, 30));
 
         jBCalculo.setText("Calcular");
         jBCalculo.addActionListener(new java.awt.event.ActionListener() {
@@ -251,7 +255,7 @@ public class Prestamos extends javax.swing.JFrame {
                 jBCalculoActionPerformed(evt);
             }
         });
-        jPCalcularPrestamo.add(jBCalculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 390, -1, -1));
+        jPCalcularPrestamo.add(jBCalculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, -1, -1));
 
         jBVolver.setText("Volver");
         jBVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -259,15 +263,16 @@ public class Prestamos extends javax.swing.JFrame {
                 jBVolverActionPerformed(evt);
             }
         });
-        jPCalcularPrestamo.add(jBVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 390, -1, -1));
+        jPCalcularPrestamo.add(jBVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 520, -1, -1));
 
-        jGrabar.setText("Grabar");
+        jGrabar.setText("Generar informe");
         jGrabar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jGrabarActionPerformed(evt);
             }
         });
-        jPCalcularPrestamo.add(jGrabar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 390, -1, -1));
+        jPCalcularPrestamo.add(jGrabar, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 520, -1, -1));
+        jPCalcularPrestamo.add(lblFondoCalculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 804, 580));
 
         getContentPane().add(jPCalcularPrestamo, "card5");
 
@@ -280,7 +285,7 @@ public class Prestamos extends javax.swing.JFrame {
                 jBVolverMostrarActionPerformed(evt);
             }
         });
-        jPMostrar.add(jBVolverMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 530, -1, -1));
+        jPMostrar.add(jBVolverMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 520, -1, -1));
 
         jLabelMostrar.setText("Mostrar datos de clientes y préstamos");
         jPMostrar.add(jLabelMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
@@ -321,25 +326,25 @@ public class Prestamos extends javax.swing.JFrame {
         ));
         jScrollPane1Mostrar.setViewportView(jTableMostrar);
 
-        jPMostrar.add(jScrollPane1Mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 690, 300));
-        jPMostrar.add(lblFondoMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 580));
+        jPMostrar.add(jScrollPane1Mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 730, 390));
+        jPMostrar.add(lblFondoMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 804, 580));
 
         getContentPane().add(jPMostrar, "card4");
 
         jPFirmar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLPrestamoConcedido.setText("Préstamos Concedidos");
-        jPFirmar.add(jLPrestamoConcedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 330, -1, -1));
+        jPFirmar.add(jLPrestamoConcedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
         DNI.setText("DNI");
-        jPFirmar.add(DNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, -1, -1));
+        jPFirmar.add(DNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
         jTIntroDNI.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTIntroDNIActionPerformed(evt);
             }
         });
-        jPFirmar.add(jTIntroDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 90, 150, -1));
+        jPFirmar.add(jTIntroDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 150, -1));
 
         jBPLimpiar.setText("Limpiar");
         jBPLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -348,7 +353,7 @@ public class Prestamos extends javax.swing.JFrame {
                 jBPLimpiarActionPerformed(evt);
             }
         });
-        jPFirmar.add(jBPLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, -1, -1));
+        jPFirmar.add(jBPLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, -1, -1));
 
         jBFirmar.setText("Firmar");
         jBFirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -357,7 +362,7 @@ public class Prestamos extends javax.swing.JFrame {
                 jBFirmarActionPerformed(evt);
             }
         });
-        jPFirmar.add(jBFirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 220, -1, -1));
+        jPFirmar.add(jBFirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
 
         jScrollPaneConcedidos.addAncestorListener(new javax.swing.event.AncestorListener() {
             public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
@@ -368,7 +373,18 @@ public class Prestamos extends javax.swing.JFrame {
             public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
             }
         });
-        jPFirmar.add(jScrollPaneConcedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 360, 690, 170));
+
+        jTableConcedidosFirmar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPaneConcedidos.setViewportView(jTableConcedidosFirmar);
+
+        jPFirmar.add(jScrollPaneConcedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 730, 200));
 
         jBPreconcedidos2.setText("Mostrar ");
         jBPreconcedidos2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -377,14 +393,25 @@ public class Prestamos extends javax.swing.JFrame {
                 jBPreconcedidos2ActionPerformed(evt);
             }
         });
-        jPFirmar.add(jBPreconcedidos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 90, -1, -1));
+        jPFirmar.add(jBPreconcedidos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
 
         jLFirmarPrestamo1.setText("Firmar Préstamo");
-        jPFirmar.add(jLFirmarPrestamo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 30, -1, -1));
-        jPFirmar.add(jScrollPanePreconcedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 570, 150));
+        jPFirmar.add(jLFirmarPrestamo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+
+        jTablePreconcedidosFirmar.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPanePreconcedido.setViewportView(jTablePreconcedidosFirmar);
+
+        jPFirmar.add(jScrollPanePreconcedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 730, 150));
 
         jLPrestamoPreconcedido1.setText("Préstamos Preconcedidos");
-        jPFirmar.add(jLPrestamoPreconcedido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 130, -1, -1));
+        jPFirmar.add(jLPrestamoPreconcedido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         jBVolver1.setText("Volver");
         jBVolver1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -394,7 +421,7 @@ public class Prestamos extends javax.swing.JFrame {
             }
         });
         jPFirmar.add(jBVolver1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 540, -1, -1));
-        jPFirmar.add(lblFondoFirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 800, 580));
+        jPFirmar.add(lblFondoFirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 804, 580));
 
         getContentPane().add(jPFirmar, "card6");
 
@@ -486,28 +513,56 @@ public class Prestamos extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButtonBuscarSolicitarActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jBCalculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCalculoActionPerformed
         // TODO add your handling code here:
-        List<PrestamoPreconcedido>lista=MetodosBD.listarPrestamosPreconcedidos();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        if(!lista.isEmpty()){
-        String[] columnasTablaSolicitar = {"NºPrestamo", "ID Cliente", "Fecha_Oferta","Cantidad","Periodo en Meses","Interés","Plazo de Aceptación"};
-        DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar);
-        jTableCalculo.setModel(modeloTabla);
 
-        for (PrestamoPreconcedido preconcedido : lista) {
-            String[] datosPreconcedidos = {String.valueOf(preconcedido.getId()),preconcedido.getCliente().getUuid(),preconcedido.getFecha().format(formatter),
-                String.valueOf(preconcedido.getCantidad()),String.valueOf(preconcedido.getPeriodoMeses()),String.valueOf(preconcedido.getPeriodoMeses()),
-                String.valueOf(preconcedido.getPeriodoMeses())};   
-            modeloTabla.addRow(datosPreconcedidos);
+        //Procesar clientes
+        List<Cliente> clientes = MetodosBD.listarClientes();
+
+        if (!clientes.isEmpty()) {
+
+            for (Cliente clienteApto : clientes) {
+
+                if (Funciones.aptoParaPrestamo(clienteApto) != null) {
+                    System.out.println("Apto para préstamo");
+                    System.out.println("Cantidad: " + Funciones.cantidadPrestamo(clienteApto));
+                    MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido(15, 2, 24, clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto)));
+                } else {
+                    System.out.println("No apto para préstamo.");
+                }
             }
-        }else{
-            JOptionPane.showMessageDialog(null, "No hay ningún préstamo preconcedido","Cálculo de los Préstamos preconcedidos",JOptionPane.ERROR_MESSAGE);
+
+            JOptionPane.showMessageDialog(null, "Cálculo masivo generado.", "Cálculo de los Préstamos preconcedidos", JOptionPane.INFORMATION_MESSAGE, null);
+
+        } else {
+            System.out.println("Está vacía.");
         }
+
+        //Mostrar préstamos preconcedidos generados
+        List<PrestamoPreconcedido> lista = MetodosBD.listarPrestamosPreconcedidos();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+        if (!lista.isEmpty()) {
+
+            String[] columnasTablaSolicitar = {"NºPrestamo", "DNI Cliente", "Fecha_Oferta", "Cantidad", "Periodo en Meses", "Interés", "Plazo de Aceptación"};
+            DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar);
+            jTableCalculo.setModel(modeloTabla);
+
+            for (PrestamoPreconcedido preconcedido : lista) {
+                String[] datosPreconcedidos = {String.valueOf(preconcedido.getId()), preconcedido.getCliente().getDni(), preconcedido.getFecha().format(formatter),
+                    String.valueOf(preconcedido.getCantidad()), String.valueOf(preconcedido.getPeriodoMeses()), String.valueOf(preconcedido.getTipoInteres()),
+                    String.valueOf(preconcedido.getPlazoAceptacion())};
+                modeloTabla.addRow(datosPreconcedidos);
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "No hay ningún préstamo preconcedido", "Cálculo de los Préstamos preconcedidos", JOptionPane.ERROR_MESSAGE);
+        }
+
     }//GEN-LAST:event_jBCalculoActionPerformed
 
     private void jBVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVolverActionPerformed
@@ -617,18 +672,21 @@ public class Prestamos extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButtonBuscarMostrarActionPerformed
-/**
- * 
- * @param evt 
- */
+    /**
+     *
+     * @param evt
+     */
     private void jGrabarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jGrabarActionPerformed
         // TODO add your handling code here:
-        File fichero=new File("PrestamosPreconcedidos.txt");
-        List<PrestamoPreconcedido>lista=MetodosBD.listarPrestamosPreconcedidos();
-        if(!fichero.exists()){
+
+        File fichero = new File(System.getenv("userprofile") + "\\Documents", "PrestamosPreconcedidos.txt");
+        List<PrestamoPreconcedido> lista = MetodosBD.listarPrestamosPreconcedidos();
+
+        if (!fichero.exists()) {
             Ficheros.escribirLineaALineaDeListPrestamosPreconcedidos(fichero, lista);
-            JOptionPane.showMessageDialog(null, "Se ha grabado en un fichero correctamente","Fichero Preconcedidos",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Se ha grabado en un fichero correctamente", "Fichero Preconcedidos", JOptionPane.INFORMATION_MESSAGE);
         }
+
     }//GEN-LAST:event_jGrabarActionPerformed
 
     /**
@@ -709,10 +767,13 @@ public class Prestamos extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPanePrestamo;
     private javax.swing.JTextField jTIntroDNI;
     private javax.swing.JTable jTableCalculo;
+    private javax.swing.JTable jTableConcedidosFirmar;
     private javax.swing.JTable jTableMostrar;
+    private javax.swing.JTable jTablePreconcedidosFirmar;
     private javax.swing.JTable jTableSolicitar;
     private javax.swing.JTextField jTextFieldDNISolicitar;
     private javax.swing.JTextField jTextFieldDatoMostrar;
+    private javax.swing.JLabel lblFondoCalculo;
     private javax.swing.JLabel lblFondoFirmar;
     private javax.swing.JLabel lblFondoMostrar;
     private javax.swing.JLabel lblFondoSolicitar;
