@@ -190,6 +190,12 @@ public class Prestamos extends javax.swing.JFrame {
 
         jLabelDNISolicitar.setText("DNI");
         jPSolicitar.add(jLabelDNISolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+
+        jTextFieldDNISolicitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDNISolicitarActionPerformed(evt);
+            }
+        });
         jPSolicitar.add(jTextFieldDNISolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 170, -1));
 
         jButtonBuscarSolicitar.setText("Buscar");
@@ -295,6 +301,11 @@ public class Prestamos extends javax.swing.JFrame {
 
         jComboBoxFiltroMostrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Localidad" }));
         jComboBoxFiltroMostrar.setToolTipText("");
+        jComboBoxFiltroMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxFiltroMostrarActionPerformed(evt);
+            }
+        });
         jPMostrar.add(jComboBoxFiltroMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
         jPMostrar.add(jTextFieldDatoMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 180, -1));
 
@@ -474,6 +485,8 @@ public class Prestamos extends javax.swing.JFrame {
     private void jButtonLimpiarMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimpiarMostrarActionPerformed
         // TODO add your handling code here:
         jTextFieldDatoMostrar.setText("");
+        jTableMostrar.setModel(new DefaultTableModel());
+        jButtonProcesarSolicitar.setEnabled(false);
     }//GEN-LAST:event_jButtonLimpiarMostrarActionPerformed
 
 
@@ -588,11 +601,37 @@ public class Prestamos extends javax.swing.JFrame {
 
     private void jBPLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPLimpiarActionPerformed
         // TODO add your handling code here:
-        jTextFieldDatoMostrar.setText("");
+        jTIntroDNI.setText("");
+        jTablePreconcedidosFirmar.setModel(new DefaultTableModel());
+        jTableConcedidosFirmar.setModel(new DefaultTableModel());
+        
     }//GEN-LAST:event_jBPLimpiarActionPerformed
 
     private void jBFirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFirmarActionPerformed
         // TODO add your handling code here:
+        int fila = jTablePreconcedidosFirmar.getSelectedRow();
+        if (fila != -1) {
+            
+            String dni = (String)jTablePreconcedidosFirmar .getValueAt(fila, 0);
+            int num = (int)jTablePreconcedidosFirmar .getValueAt(fila, 3);
+            
+            Cliente cliente = MetodosBD.clientePorDni(dni);
+            PrestamoPreconcedido prestamo = MetodosBD.prestamoPreconcedidoPorIdClienteNum(cliente.getUuid(), num);
+            
+            double cantidadSinTasas = prestamo.getCantidad() / prestamo.getPeriodoMeses();
+            double tasas = cantidadSinTasas * prestamo.getTipoInteres() / 100;
+            double cantidadFinal = cantidadSinTasas + tasas;
+            
+            LocalDate fecha = LocalDate.now();
+            
+            PrestamoConcedido prestamoC= new PrestamoConcedido(prestamo, null, cliente, fecha, cantidadFinal);
+            
+            MetodosBD.insertarPrestamoConcedido(prestamoC);
+        } else {
+        JOptionPane.showMessageDialog(null,
+                        "hay que seleccionar un préstamo primero",
+                        "Advertencia", JOptionPane.WARNING_MESSAGE,null);
+        }
     }//GEN-LAST:event_jBFirmarActionPerformed
 
     private void jScrollPaneConcedidosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jScrollPaneConcedidosAncestorAdded
@@ -600,7 +639,38 @@ public class Prestamos extends javax.swing.JFrame {
     }//GEN-LAST:event_jScrollPaneConcedidosAncestorAdded
 
     private void jBPreconcedidos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPreconcedidos2ActionPerformed
-        // TODO add your handling code here:
+        
+        String[] columnasTablaSolicitar = {"DNI", "Nombre", "Apellidos", "Numero", "Cantidad"};
+        DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar);
+        jTableMostrar.setModel(modeloTabla);
+        
+        String dni = jTIntroDNI.getText();
+            List<PrestamoPreconcedido> prestamos = MetodosBD.listarPrestamosPreconcedidosPorDNI(dni);
+            
+            for (PrestamoPreconcedido prestamo : prestamos) {
+                
+                Cliente cliente = prestamo.getCliente();
+                String[] datosPrestamo = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), String.valueOf(prestamo.getCantidad()) };
+                modeloTabla.addRow(datosPrestamo);
+            }
+        
+        String[] columnasTablaSolicitar2 = {"DNI", "Nombre", "Apellidos", "Numero", "Cantidad Mensual"};
+        DefaultTableModel modeloTabla2 = new DefaultTableModel(null, columnasTablaSolicitar2);
+        jTableMostrar.setModel(modeloTabla2);
+            
+            Cliente aux = MetodosBD.clientePorDni(dni);
+            
+            List<PrestamoConcedido> prestamosConcedidos = MetodosBD.listarPrestamosConcedidosPorId(aux.getUuid());
+            
+            for (PrestamoConcedido prestamoConcedido : prestamosConcedidos) {
+                
+                Cliente cliente = prestamoConcedido.getCliente();
+                String[] datosPrestamo = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), String.valueOf(prestamoConcedido.getCantidad()) };
+                modeloTabla.addRow(datosPrestamo);
+            }
+        
+        
+        
     }//GEN-LAST:event_jBPreconcedidos2ActionPerformed
 
     private void jBVolver1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVolver1ActionPerformed
@@ -661,14 +731,33 @@ public class Prestamos extends javax.swing.JFrame {
 //        DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar);
 //        jTableMostrar.setModel(modeloTabla);
 //        modeloTabla.addRow(datosCliente);
-        List<Cliente> clientes = MetodosBD.listarClientes();
-        String[] columnasTablaSolicitar = {"DNI", "Nombre", "Apellidos"};
+        String opc = jComboBoxFiltroMostrar.getSelectedItem().toString();
+        String[] columnasTablaSolicitar = {"DNI", "Nombre", "Apellidos", "Numero", "Cantidad"};
         DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar);
         jTableMostrar.setModel(modeloTabla);
-
-        for (Cliente cliente : clientes) {
-            String[] datosCliente = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos()};
-            modeloTabla.addRow(datosCliente);
+        
+        if (opc.equalsIgnoreCase("DNI")) {
+            
+            String dni = jTextFieldDatoMostrar.getText();
+            List<PrestamoPreconcedido> prestamos = MetodosBD.listarPrestamosPreconcedidosPorDNI(dni);
+            
+            for (PrestamoPreconcedido prestamo : prestamos) {
+                
+                Cliente cliente = prestamo.getCliente();
+                String[] datosPrestamo = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), String.valueOf(prestamo.getCantidad()) };
+                modeloTabla.addRow(datosPrestamo);
+            }
+        }else if (opc.equalsIgnoreCase("localidad")){
+            
+            String ciudad = jTextFieldDatoMostrar.getText();
+            List<PrestamoPreconcedido> prestamos = MetodosBD.listarPrestamosPreconcedidosPorLocalidad(ciudad);
+            
+            for (PrestamoPreconcedido prestamo : prestamos) {
+                
+                Cliente cliente = prestamo.getCliente();
+                String[] datosPrestamo = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(),String.valueOf(prestamo.getId()), String.valueOf(prestamo.getCantidad()) };
+                modeloTabla.addRow(datosPrestamo);
+            }
         }
 
     }//GEN-LAST:event_jButtonBuscarMostrarActionPerformed
@@ -688,6 +777,14 @@ public class Prestamos extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jGrabarActionPerformed
+
+    private void jComboBoxFiltroMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFiltroMostrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxFiltroMostrarActionPerformed
+
+    private void jTextFieldDNISolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDNISolicitarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDNISolicitarActionPerformed
 
     /**
      * @param args the command line arguments
