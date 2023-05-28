@@ -103,12 +103,14 @@ public class Ficheros {
         }
 
     }
+
     /**
-     * 
-     * @param fichero
-     * @param lista 
+     * Método estático escribirLineaALineaDeListPrestamosConcedidos que recibe por parámetro un objeto File y un List de PrestamoConcedido. Recorre la colección y lo graba en el fichero.
+     *
+     * @param fichero Parámetro de tipo File que será el fichero.
+     * @param lista Parámetro de tipo List<code>PrestamoConcedido</code>
      */
-     public static void escribirLineaALineaDeListPrestamosConcedidos(File fichero, List<PrestamoConcedido> lista) {
+    public static void escribirLineaALineaDeListPrestamosConcedidos(File fichero, List<PrestamoConcedido> lista) {
 
         BufferedWriter bW = null;
 
@@ -135,5 +137,5 @@ public class Ficheros {
             }
         }
 
-     }
+    }
 }
