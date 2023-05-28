@@ -4,6 +4,7 @@
  */
 package proyectointermodular.prestamos;
 
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -11,7 +12,7 @@ import java.util.List;
  *
  * @author Víctor Sánchez Llada, César Torre, Efrén Gutiérrez y Adrián Tresgallo.
  */
-public class PrestamoConcedido {
+public class PrestamoConcedido extends Prestamo{
 
     //Atributos
     private PrestamoPreconcedido prestamoPreconcedido;
@@ -23,10 +24,13 @@ public class PrestamoConcedido {
      * @param prestamoPreconcedido Parámetro de tipo PrestamoPreconcedido que será el préstamo preconcedido.
      * @param pagos Parámetro de tipo List<code><Pago></code> que será el listado de pagos.
      */
-    public PrestamoConcedido(PrestamoPreconcedido prestamoPreconcedido, List<Pago> pagos) {
+
+    public PrestamoConcedido(PrestamoPreconcedido prestamoPreconcedido, List<Pago> pagos, Cliente cliente, LocalDate fecha, double cantidad) {
+        super(cliente, fecha, cantidad);
         this.prestamoPreconcedido = prestamoPreconcedido;
         this.pagos = pagos;
     }
+    
 
     /**
      * Método getPrestamoPreconcedido que devuelve el valor del atributo prestamoPreconcedido.
