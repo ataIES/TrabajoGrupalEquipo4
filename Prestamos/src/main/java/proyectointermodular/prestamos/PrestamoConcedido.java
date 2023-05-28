@@ -12,25 +12,42 @@ import java.util.List;
  *
  * @author Víctor Sánchez Llada, César Torre, Efrén Gutiérrez y Adrián Tresgallo.
  */
-public class PrestamoConcedido extends Prestamo{
+public class PrestamoConcedido extends Prestamo {
 
     //Atributos
     private PrestamoPreconcedido prestamoPreconcedido;
     private List<Pago> pagos;
 
     /**
-     * Constructor por parámetros que recibe el valor de todos los atributos y crea un objeto PrestamoConcedido.
+     * Constructor por parámetros que recibe el valor de todos los atributos excepto el id y crea un objeto PrestamoConcedido.
      *
      * @param prestamoPreconcedido Parámetro de tipo PrestamoPreconcedido que será el préstamo preconcedido.
-     * @param pagos Parámetro de tipo List<code><Pago></code> que será el listado de pagos.
+     * @param pagos Parámetro de tipo List<code>Pago</code> que será el listado de pagos.
+     * @param cliente Parámetro de tipo Cliente que será el cliente.
+     * @param fecha Parámetro de tipo LocalDate que será la fecha de la firma.
+     * @param cantidad Parámetro de tipo double que será la cantidad mensual.
      */
-
     public PrestamoConcedido(PrestamoPreconcedido prestamoPreconcedido, List<Pago> pagos, Cliente cliente, LocalDate fecha, double cantidad) {
         super(cliente, fecha, cantidad);
         this.prestamoPreconcedido = prestamoPreconcedido;
         this.pagos = pagos;
     }
-    
+
+    /**
+     * Constructor por parámetros que recibe el valor de todos los atributos y crea un objeto PrestamoConcedido.
+     *
+     * @param prestamoPreconcedido Parámetro de tipo PrestamoPreconcedido que será el préstamo preconcedido.
+     * @param pagos Parámetro de tipo List<code>Pago</code> que será el listado de pagos.
+     * @param id Parámetro de tipo int que será el id.
+     * @param cliente Parámetro de tipo Cliente que será el cliente.
+     * @param fecha Parámetro de tipo LocalDate que será la fecha de la firma.
+     * @param cantidad Parámetro de tipo double que será la cantidad mensual.
+     */
+    public PrestamoConcedido(PrestamoPreconcedido prestamoPreconcedido, List<Pago> pagos, int id, Cliente cliente, LocalDate fecha, double cantidad) {
+        super(id, cliente, fecha, cantidad);
+        this.prestamoPreconcedido = prestamoPreconcedido;
+        this.pagos = pagos;
+    }
 
     /**
      * Método getPrestamoPreconcedido que devuelve el valor del atributo prestamoPreconcedido.
