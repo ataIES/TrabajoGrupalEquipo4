@@ -182,7 +182,7 @@ public class Prestamos extends javax.swing.JFrame {
 
         jScrollPaneClientesSolicitar.setViewportView(jTableSolicitar);
 
-        jPSolicitar.add(jScrollPaneClientesSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 720, 190));
+        jPSolicitar.add(jScrollPaneClientesSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 730, 190));
 
         jButtonVolverSolicitar.setText("Volver");
         jButtonVolverSolicitar.setToolTipText("Volver al menú principal.");
@@ -195,14 +195,14 @@ public class Prestamos extends javax.swing.JFrame {
         jPSolicitar.add(jButtonVolverSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 520, -1, -1));
 
         jLabelDNISolicitar.setText("DNI:");
-        jPSolicitar.add(jLabelDNISolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
+        jPSolicitar.add(jLabelDNISolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         jTextFieldDNISolicitar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldDNISolicitarKeyPressed(evt);
             }
         });
-        jPSolicitar.add(jTextFieldDNISolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 170, -1));
+        jPSolicitar.add(jTextFieldDNISolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, 170, -1));
 
         jButtonBuscarSolicitar.setText("Buscar");
         jButtonBuscarSolicitar.setToolTipText("Buscar cliente.");
@@ -212,7 +212,7 @@ public class Prestamos extends javax.swing.JFrame {
                 jButtonBuscarSolicitarActionPerformed(evt);
             }
         });
-        jPSolicitar.add(jButtonBuscarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
+        jPSolicitar.add(jButtonBuscarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 90, -1, -1));
 
         jButtonLimpiarSolicitar.setText("Limpiar");
         jButtonLimpiarSolicitar.setToolTipText("Limpiar datos.");
@@ -222,13 +222,13 @@ public class Prestamos extends javax.swing.JFrame {
                 jButtonLimpiarSolicitarActionPerformed(evt);
             }
         });
-        jPSolicitar.add(jButtonLimpiarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 50, -1, -1));
+        jPSolicitar.add(jButtonLimpiarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 90, -1, -1));
 
         jLabelTituloSolicitar.setText("Solicitar préstamo");
-        jPSolicitar.add(jLabelTituloSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
+        jPSolicitar.add(jLabelTituloSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         jLabelDatosClienteSolicitar.setText("Datos cliente:");
-        jPSolicitar.add(jLabelDatosClienteSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        jPSolicitar.add(jLabelDatosClienteSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         jButtonProcesarSolicitar.setText("Solicitud de préstamo");
         jButtonProcesarSolicitar.setToolTipText("Solicitar préstamo para el cliente seleccionado.");
@@ -239,27 +239,27 @@ public class Prestamos extends javax.swing.JFrame {
                 jButtonProcesarSolicitarActionPerformed(evt);
             }
         });
-        jPSolicitar.add(jButtonProcesarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 350, -1, -1));
+        jPSolicitar.add(jButtonProcesarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 430, -1, -1));
 
         jComboBoxPeriodoMesesSolicitar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3", "6", "12", "24", "48" }));
         jComboBoxPeriodoMesesSolicitar.setToolTipText("");
-        jPSolicitar.add(jComboBoxPeriodoMesesSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 50, -1));
+        jPSolicitar.add(jComboBoxPeriodoMesesSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 50, -1));
 
         jLabelPeriodoMesesSolicitar.setText("Periodo meses:");
-        jPSolicitar.add(jLabelPeriodoMesesSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
+        jPSolicitar.add(jLabelPeriodoMesesSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, -1));
 
         jLabelTipoInteresSolicitar.setText("Tipo interés (%):");
         jLabelTipoInteresSolicitar.setToolTipText("");
-        jPSolicitar.add(jLabelTipoInteresSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, -1, -1));
+        jPSolicitar.add(jLabelTipoInteresSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, -1, -1));
 
         jComboBoxTipoInteresSolicitar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "1.5", "2.5", "3.5" }));
-        jPSolicitar.add(jComboBoxTipoInteresSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 50, -1));
+        jPSolicitar.add(jComboBoxTipoInteresSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 50, -1));
 
         jLabelPlazoAceptacionSolicitar.setText("Plazo aceptación (días):");
-        jPSolicitar.add(jLabelPlazoAceptacionSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, -1, -1));
+        jPSolicitar.add(jLabelPlazoAceptacionSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, -1, -1));
 
         jComboBoxPlazoAceptacionSolicitar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "20", "30" }));
-        jPSolicitar.add(jComboBoxPlazoAceptacionSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, 50, -1));
+        jPSolicitar.add(jComboBoxPlazoAceptacionSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 430, 50, -1));
         jPSolicitar.add(lblFondoSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 804, 580));
 
         getContentPane().add(jPSolicitar, "card3");
@@ -270,10 +270,10 @@ public class Prestamos extends javax.swing.JFrame {
 
         jScrollPanePrestamo.setViewportView(jTableCalculo);
 
-        jPCalcularPrestamo.add(jScrollPanePrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 730, 380));
+        jPCalcularPrestamo.add(jScrollPanePrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 730, 410));
 
         jLCalculoPrestamo.setText("Cálculo de Prestamos");
-        jPCalcularPrestamo.add(jLCalculoPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 130, 30));
+        jPCalcularPrestamo.add(jLCalculoPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, 30));
 
         jBCalculo.setText("Calcular");
         jBCalculo.setToolTipText("Ejecutar el cálculo masivo de préstamos.");
@@ -318,21 +318,21 @@ public class Prestamos extends javax.swing.JFrame {
         jPMostrar.add(jBVolverMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 520, -1, -1));
 
         jLabelMostrar.setText("Mostrar datos de clientes y préstamos");
-        jPMostrar.add(jLabelMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, -1, -1));
+        jPMostrar.add(jLabelMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         jLabelFiltroMostrar.setText("Filtro:");
-        jPMostrar.add(jLabelFiltroMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
+        jPMostrar.add(jLabelFiltroMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
         jComboBoxFiltroMostrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Localidad" }));
         jComboBoxFiltroMostrar.setToolTipText("Filtro de búsqueda.");
-        jPMostrar.add(jComboBoxFiltroMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
+        jPMostrar.add(jComboBoxFiltroMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
 
         jTextFieldDatoMostrar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldDatoMostrarKeyPressed(evt);
             }
         });
-        jPMostrar.add(jTextFieldDatoMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 180, -1));
+        jPMostrar.add(jTextFieldDatoMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 180, -1));
 
         jButtonBuscarMostrar.setText("Buscar");
         jButtonBuscarMostrar.setToolTipText("Buscar cliente/s.");
@@ -342,7 +342,7 @@ public class Prestamos extends javax.swing.JFrame {
                 jButtonBuscarMostrarActionPerformed(evt);
             }
         });
-        jPMostrar.add(jButtonBuscarMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, -1));
+        jPMostrar.add(jButtonBuscarMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 90, -1, -1));
 
         jButtonLimpiarMostrar.setText("Limpiar");
         jButtonLimpiarMostrar.setToolTipText("Limpiar datos.");
@@ -352,7 +352,7 @@ public class Prestamos extends javax.swing.JFrame {
                 jButtonLimpiarMostrarActionPerformed(evt);
             }
         });
-        jPMostrar.add(jButtonLimpiarMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 70, -1, -1));
+        jPMostrar.add(jButtonLimpiarMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 90, -1, -1));
 
         jTableMostrar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -364,7 +364,7 @@ public class Prestamos extends javax.swing.JFrame {
         ));
         jScrollPane1Mostrar.setViewportView(jTableMostrar);
 
-        jPMostrar.add(jScrollPane1Mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 730, 390));
+        jPMostrar.add(jScrollPane1Mostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 730, 370));
         jPMostrar.add(lblFondoMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 804, 580));
 
         getContentPane().add(jPMostrar, "card4");
@@ -374,15 +374,15 @@ public class Prestamos extends javax.swing.JFrame {
         jLPrestamoConcedido.setText("Préstamos Concedidos");
         jPFirmar.add(jLPrestamoConcedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
-        DNI.setText("DNI");
-        jPFirmar.add(DNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
+        DNI.setText("DNI:");
+        jPFirmar.add(DNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 70, -1, -1));
 
         jTIntroDNI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTIntroDNIKeyPressed(evt);
             }
         });
-        jPFirmar.add(jTIntroDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 150, -1));
+        jPFirmar.add(jTIntroDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 70, 150, -1));
 
         jBPLimpiar.setText("Limpiar");
         jBPLimpiar.setToolTipText("Limpiar datos.");
@@ -392,7 +392,7 @@ public class Prestamos extends javax.swing.JFrame {
                 jBPLimpiarActionPerformed(evt);
             }
         });
-        jPFirmar.add(jBPLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, -1, -1));
+        jPFirmar.add(jBPLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 70, -1, -1));
 
         jBFirmar.setText("Firmar");
         jBFirmar.setToolTipText("Firmar préstamo preconcedido seleccionado.");
@@ -402,7 +402,7 @@ public class Prestamos extends javax.swing.JFrame {
                 jBFirmarActionPerformed(evt);
             }
         });
-        jPFirmar.add(jBFirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
+        jPFirmar.add(jBFirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, -1, -1));
 
         jTableConcedidosFirmar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -424,10 +424,10 @@ public class Prestamos extends javax.swing.JFrame {
                 jBPreconcedidos2ActionPerformed(evt);
             }
         });
-        jPFirmar.add(jBPreconcedidos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
+        jPFirmar.add(jBPreconcedidos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, -1));
 
         jLFirmarPrestamo1.setText("Firmar Préstamo");
-        jPFirmar.add(jLFirmarPrestamo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, -1, -1));
+        jPFirmar.add(jLFirmarPrestamo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         jTablePreconcedidosFirmar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -439,10 +439,10 @@ public class Prestamos extends javax.swing.JFrame {
         ));
         jScrollPanePreconcedido.setViewportView(jTablePreconcedidosFirmar);
 
-        jPFirmar.add(jScrollPanePreconcedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 730, 150));
+        jPFirmar.add(jScrollPanePreconcedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 730, 150));
 
         jLPrestamoPreconcedido1.setText("Préstamos Preconcedidos");
-        jPFirmar.add(jLPrestamoPreconcedido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
+        jPFirmar.add(jLPrestamoPreconcedido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
         jBVolver1.setText("Volver");
         jBVolver1.setToolTipText("Volver al menú principal.");
