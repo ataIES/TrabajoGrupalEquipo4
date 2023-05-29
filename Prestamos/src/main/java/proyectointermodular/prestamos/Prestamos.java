@@ -570,7 +570,7 @@ public class Prestamos extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         /*
-        DNI 98765432M casado con cliente y movimientos
+        98765432M casado con cliente y movimientos
         87654321V con morosidad
         54321098G no requisitos minimos
          */
