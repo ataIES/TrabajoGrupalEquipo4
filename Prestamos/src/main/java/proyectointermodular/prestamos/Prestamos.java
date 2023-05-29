@@ -198,11 +198,6 @@ public class Prestamos extends javax.swing.JFrame {
         jLabelDNISolicitar.setText("DNI");
         jPSolicitar.add(jLabelDNISolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
-        jTextFieldDNISolicitar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDNISolicitarActionPerformed(evt);
-            }
-        });
         jTextFieldDNISolicitar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldDNISolicitarKeyPressed(evt);
@@ -253,15 +248,6 @@ public class Prestamos extends javax.swing.JFrame {
         jPCalcularPrestamo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jScrollPanePrestamo.setForeground(new java.awt.Color(255, 255, 255));
-        jScrollPanePrestamo.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jScrollPanePrestamoAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
 
         jScrollPanePrestamo.setViewportView(jTableCalculo);
 
@@ -320,11 +306,6 @@ public class Prestamos extends javax.swing.JFrame {
 
         jComboBoxFiltroMostrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Localidad" }));
         jComboBoxFiltroMostrar.setToolTipText("Filtro de búsqueda.");
-        jComboBoxFiltroMostrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxFiltroMostrarActionPerformed(evt);
-            }
-        });
         jPMostrar.add(jComboBoxFiltroMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
 
         jTextFieldDatoMostrar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -377,11 +358,6 @@ public class Prestamos extends javax.swing.JFrame {
         DNI.setText("DNI");
         jPFirmar.add(DNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 60, -1, -1));
 
-        jTIntroDNI.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTIntroDNIActionPerformed(evt);
-            }
-        });
         jTIntroDNI.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTIntroDNIKeyPressed(evt);
@@ -408,16 +384,6 @@ public class Prestamos extends javax.swing.JFrame {
             }
         });
         jPFirmar.add(jBFirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 60, -1, -1));
-
-        jScrollPaneConcedidos.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                jScrollPaneConcedidosAncestorAdded(evt);
-            }
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
 
         jTableConcedidosFirmar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -647,10 +613,6 @@ public class Prestamos extends javax.swing.JFrame {
         jPMostrar.setVisible(false);
     }//GEN-LAST:event_jBCalcularActionPerformed
 
-    private void jTIntroDNIActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTIntroDNIActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTIntroDNIActionPerformed
-
     private void jBPLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPLimpiarActionPerformed
         // TODO add your handling code here:
         jTIntroDNI.setText("");
@@ -702,10 +664,6 @@ public class Prestamos extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jBFirmarActionPerformed
-
-    private void jScrollPaneConcedidosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jScrollPaneConcedidosAncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jScrollPaneConcedidosAncestorAdded
 
     private void jBPreconcedidos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPreconcedidos2ActionPerformed
         
@@ -798,10 +756,6 @@ public class Prestamos extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonProcesarSolicitarActionPerformed
 
-    private void jScrollPanePrestamoAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jScrollPanePrestamoAncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jScrollPanePrestamoAncestorAdded
-
     private void jButtonBuscarMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarMostrarActionPerformed
         // TODO add your handling code here:
 
@@ -867,14 +821,6 @@ public class Prestamos extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jGrabarActionPerformed
-
-    private void jComboBoxFiltroMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFiltroMostrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxFiltroMostrarActionPerformed
-
-    private void jTextFieldDNISolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDNISolicitarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDNISolicitarActionPerformed
 
     private void jTextFieldDNISolicitarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDNISolicitarKeyPressed
         // TODO add your handling code here:
