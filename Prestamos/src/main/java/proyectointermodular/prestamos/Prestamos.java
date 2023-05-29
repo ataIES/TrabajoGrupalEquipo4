@@ -252,7 +252,7 @@ public class Prestamos extends javax.swing.JFrame {
         jLabelTipoInteresSolicitar.setToolTipText("");
         jPSolicitar.add(jLabelTipoInteresSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, -1, -1));
 
-        jComboBoxTipoInteresSolicitar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        jComboBoxTipoInteresSolicitar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "1.5", "2.5", "3.5" }));
         jPSolicitar.add(jComboBoxTipoInteresSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 50, -1));
 
         jLabelPlazoAceptacionSolicitar.setText("Plazo aceptación (días):");
@@ -767,7 +767,7 @@ public class Prestamos extends javax.swing.JFrame {
                 System.out.println("Apto para préstamo");
                 System.out.println("Cantidad: " + Funciones.cantidadPrestamo(clienteApto));
                 JOptionPane.showMessageDialog(null, "Apto para préstamo. Cantidad = " + Funciones.cantidadPrestamo(clienteApto), "Informativo", JOptionPane.INFORMATION_MESSAGE, null);
-                MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido(15, 2, 24, clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
+                MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido(Integer.parseInt(jComboBoxPeriodoMesesSolicitar.getSelectedItem().toString()), Double.parseDouble(jComboBoxTipoInteresSolicitar.getSelectedItem().toString()), Integer.parseInt(jComboBoxPlazoAceptacionSolicitar.getSelectedItem().toString()), clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
             } else {
                 System.out.println("No apto para préstamo.");
             }
