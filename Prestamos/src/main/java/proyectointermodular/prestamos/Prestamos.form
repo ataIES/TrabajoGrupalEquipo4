@@ -281,6 +281,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelPeriodoMesesSolicitar">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Periodo meses:"/>
           </Properties>
           <Constraints>
@@ -291,6 +294,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelTipoInteresSolicitar">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Tipo inter&#xe9;s (%):"/>
             <Property name="toolTipText" type="java.lang.String" value=""/>
           </Properties>
@@ -322,6 +328,9 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabelPlazoAceptacionSolicitar">
           <Properties>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="Plazo aceptaci&#xf3;n (d&#xed;as):"/>
           </Properties>
           <Constraints>
@@ -397,11 +406,11 @@
         </Container>
         <Component class="javax.swing.JLabel" name="jLCalculoPrestamo">
           <Properties>
-            <Property name="text" type="java.lang.String" value="C&#xe1;lculo de Prestamos"/>
+            <Property name="text" type="java.lang.String" value="C&#xe1;lculo de pr&#xe9;stamos preconcedidos"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="30" y="30" width="130" height="30"/>
+              <AbsoluteConstraints x="30" y="30" width="210" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -607,7 +616,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="jLPrestamoConcedido">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Pr&#xe9;stamos Concedidos"/>
+            <Property name="text" type="java.lang.String" value="Pr&#xe9;stamos concedidos"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -665,7 +674,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="690" y="110" width="-1" height="-1"/>
+              <AbsoluteConstraints x="690" y="300" width="-1" height="-1"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -706,7 +715,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLFirmarPrestamo1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Firmar Pr&#xe9;stamo"/>
+            <Property name="text" type="java.lang.String" value="Firmar pr&#xe9;stamo preconcedido"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -734,7 +743,7 @@
         </Container>
         <Component class="javax.swing.JLabel" name="jLPrestamoPreconcedido1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Pr&#xe9;stamos Preconcedidos"/>
+            <Property name="text" type="java.lang.String" value="Pr&#xe9;stamos preconcedidos"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">

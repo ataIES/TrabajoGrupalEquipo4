@@ -245,9 +245,11 @@ public class Prestamos extends javax.swing.JFrame {
         jComboBoxPeriodoMesesSolicitar.setToolTipText("");
         jPSolicitar.add(jComboBoxPeriodoMesesSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 50, -1));
 
+        jLabelPeriodoMesesSolicitar.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPeriodoMesesSolicitar.setText("Periodo meses:");
         jPSolicitar.add(jLabelPeriodoMesesSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 430, -1, -1));
 
+        jLabelTipoInteresSolicitar.setForeground(new java.awt.Color(255, 255, 255));
         jLabelTipoInteresSolicitar.setText("Tipo interés (%):");
         jLabelTipoInteresSolicitar.setToolTipText("");
         jPSolicitar.add(jLabelTipoInteresSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, -1, -1));
@@ -255,6 +257,7 @@ public class Prestamos extends javax.swing.JFrame {
         jComboBoxTipoInteresSolicitar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "1.5", "2.5", "3.5" }));
         jPSolicitar.add(jComboBoxTipoInteresSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 50, -1));
 
+        jLabelPlazoAceptacionSolicitar.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPlazoAceptacionSolicitar.setText("Plazo aceptación (días):");
         jPSolicitar.add(jLabelPlazoAceptacionSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, -1, -1));
 
@@ -272,8 +275,8 @@ public class Prestamos extends javax.swing.JFrame {
 
         jPCalcularPrestamo.add(jScrollPanePrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 730, 410));
 
-        jLCalculoPrestamo.setText("Cálculo de Prestamos");
-        jPCalcularPrestamo.add(jLCalculoPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 130, 30));
+        jLCalculoPrestamo.setText("Cálculo de préstamos preconcedidos");
+        jPCalcularPrestamo.add(jLCalculoPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 210, 30));
 
         jBCalculo.setText("Calcular");
         jBCalculo.setToolTipText("Ejecutar el cálculo masivo de préstamos.");
@@ -371,7 +374,7 @@ public class Prestamos extends javax.swing.JFrame {
 
         jPFirmar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLPrestamoConcedido.setText("Préstamos Concedidos");
+        jLPrestamoConcedido.setText("Préstamos concedidos");
         jPFirmar.add(jLPrestamoConcedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
 
         DNI.setText("DNI:");
@@ -402,7 +405,7 @@ public class Prestamos extends javax.swing.JFrame {
                 jBFirmarActionPerformed(evt);
             }
         });
-        jPFirmar.add(jBFirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 110, -1, -1));
+        jPFirmar.add(jBFirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 300, -1, -1));
 
         jTableConcedidosFirmar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -426,7 +429,7 @@ public class Prestamos extends javax.swing.JFrame {
         });
         jPFirmar.add(jBPreconcedidos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, -1));
 
-        jLFirmarPrestamo1.setText("Firmar Préstamo");
+        jLFirmarPrestamo1.setText("Firmar préstamo preconcedido");
         jPFirmar.add(jLFirmarPrestamo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
         jTablePreconcedidosFirmar.setModel(new javax.swing.table.DefaultTableModel(
@@ -441,7 +444,7 @@ public class Prestamos extends javax.swing.JFrame {
 
         jPFirmar.add(jScrollPanePreconcedido, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 730, 150));
 
-        jLPrestamoPreconcedido1.setText("Préstamos Preconcedidos");
+        jLPrestamoPreconcedido1.setText("Préstamos preconcedidos");
         jPFirmar.add(jLPrestamoPreconcedido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, -1));
 
         jBVolver1.setText("Volver");
