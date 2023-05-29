@@ -135,6 +135,7 @@ public class Prestamos extends javax.swing.JFrame {
         jTablePreconcedidosFirmar = new javax.swing.JTable();
         jLPrestamoPreconcedido1 = new javax.swing.JLabel();
         jBVolver1 = new javax.swing.JButton();
+        jButtonGenerarInformePrestamosConcedidosActionPerformed = new javax.swing.JButton();
         lblFondoFirmar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -468,6 +469,15 @@ public class Prestamos extends javax.swing.JFrame {
             }
         });
         jPFirmar.add(jBVolver1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 540, -1, -1));
+
+        jButtonGenerarInformePrestamosConcedidosActionPerformed.setText("Generar informe");
+        jButtonGenerarInformePrestamosConcedidosActionPerformed.setToolTipText("Generar informe de préstamos concedidos.");
+        jButtonGenerarInformePrestamosConcedidosActionPerformed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGenerarInformePrestamosConcedidosActionPerformedActionPerformed(evt);
+            }
+        });
+        jPFirmar.add(jButtonGenerarInformePrestamosConcedidosActionPerformed, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, -1, -1));
         jPFirmar.add(lblFondoFirmar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 804, 580));
 
         getContentPane().add(jPFirmar, "card6");
@@ -485,14 +495,6 @@ public class Prestamos extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPPortada.setVisible(false);
         jPSolicitar.setVisible(true);
-
-        //Pruebas
-        /*
-        List<Cliente> clientes = MetodosBD.listarClientes();
-        for (Cliente cliente : clientes) {
-            System.out.println(cliente.toString());
-        }
-         */
     }//GEN-LAST:event_jBSolicitarActionPerformed
 
     /**
@@ -569,7 +571,6 @@ public class Prestamos extends javax.swing.JFrame {
         87654321V con morosidad
         54321098G no requisitos minimos
          */
-        jTextFieldDNISolicitar.setText("98765432M");
         String dni = jTextFieldDNISolicitar.getText();
 
         if (Funciones.esCadenaValida(dni, "[0-9]{7,8}[A-Z a-z]")) {
@@ -580,8 +581,6 @@ public class Prestamos extends javax.swing.JFrame {
             if (cliente != null) {
 
                 jButtonProcesarSolicitar.setEnabled(true);
-                System.out.println(cliente.toString());
-
                 String[] columnasTablaSolicitar = {"DNI", "Nombre", "Apellidos", "IBAN", "Tipo cuenta"};
                 String[] datosCliente = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), cliente.getCuentaBancaria().getIBAN(), cliente.getCuentaBancaria().getTipoCuenta().name()};
                 DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar) {
@@ -596,11 +595,11 @@ public class Prestamos extends javax.swing.JFrame {
                 modeloTabla.addRow(datosCliente);
 
             } else {
-                JOptionPane.showMessageDialog(null, "No existe como cliente del banco.", "Informativo", JOptionPane.INFORMATION_MESSAGE, null);
+                JOptionPane.showMessageDialog(null, "No existe como cliente del banco.", "Informativo", JOptionPane.WARNING_MESSAGE, null);
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "El DNI no tiene el formato correcto.", "Informativo", JOptionPane.INFORMATION_MESSAGE, null);
+            JOptionPane.showMessageDialog(null, "El DNI no tiene el formato correcto.", "Informativo", JOptionPane.WARNING_MESSAGE, null);
             jButtonLimpiarSolicitarActionPerformed(evt);
         }
 
@@ -622,17 +621,16 @@ public class Prestamos extends javax.swing.JFrame {
             for (Cliente clienteApto : clientes) {
 
                 if (Funciones.aptoParaPrestamo(clienteApto) != null) {
-                    System.out.println("Apto para préstamo");
-                    System.out.println("Cantidad: " + Funciones.cantidadPrestamo(clienteApto));
+                    System.out.println(clienteApto.getDni() + " Apto para préstamo" + " | Cantidad: " + Funciones.cantidadPrestamo(clienteApto));
                     MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido(15, 2, 24, clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
                 } else {
                     System.out.println("No apto para préstamo.");
                 }
             }
 
-            JOptionPane.showMessageDialog(null, "Cálculo masivo generado.", "Cálculo de los Préstamos preconcedidos", JOptionPane.INFORMATION_MESSAGE, null);
-
+            //JOptionPane.showMessageDialog(null, "Cálculo masivo generado.", "Cálculo de los Préstamos preconcedidos", JOptionPane.INFORMATION_MESSAGE, null);
         } else {
+            JOptionPane.showMessageDialog(null, "La lista de clientes está vacía. No se ha generado ningún cálculo.", "Cálculo de los Préstamos preconcedidos", JOptionPane.ERROR_MESSAGE, null);
             System.out.println("Está vacía.");
         }
 
@@ -719,6 +717,7 @@ public class Prestamos extends javax.swing.JFrame {
         int fila = jTablePreconcedidosFirmar.getSelectedRow();
 
         if (fila != -1) {
+
             LocalDate fecha = LocalDate.now();
             String dni = jTIntroDNI.getText();
             int num = Integer.parseInt(jTablePreconcedidosFirmar.getValueAt(fila, 0).toString());
@@ -729,18 +728,20 @@ public class Prestamos extends javax.swing.JFrame {
             if (!prestamo.isFirmado()) {
 
                 if (Funciones.esFechaAnterior(fecha, prestamo.getFecha().plusDays(prestamo.getPlazoAceptacion()))) {
+
                     double cantidadSinTasas = prestamo.getCantidad() / prestamo.getPeriodoMeses();
-                    double tasas = cantidadSinTasas * prestamo.getTipoInteres() / 100;
+                    double tasas = (cantidadSinTasas * prestamo.getTipoInteres()) / 100;
                     double cantidadFinal = cantidadSinTasas + tasas;
 
-                    PrestamoConcedido prestamoC = new PrestamoConcedido(prestamo, null, cliente, fecha, cantidadSinTasas);
+                    PrestamoConcedido prestamoC = new PrestamoConcedido(prestamo, null, cliente, fecha, cantidadFinal);
 
                     MetodosBD.insertarPrestamoConcedido(prestamoC);
 
                     JOptionPane.showMessageDialog(null, "Préstamo concedido guardado.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
                     jBPreconcedidos2ActionPerformed(evt);
+
                 } else {
-                    JOptionPane.showMessageDialog(null, "La fecha de la oferta ya no es válida.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
+                    JOptionPane.showMessageDialog(null, "La fecha de la oferta ya no es válida.", "Firma de préstamo", JOptionPane.WARNING_MESSAGE, null);
                 }
 
             } else {
@@ -748,9 +749,7 @@ public class Prestamos extends javax.swing.JFrame {
             }
 
         } else {
-            JOptionPane.showMessageDialog(null,
-                    "hay que seleccionar un préstamo primero",
-                    "Advertencia", JOptionPane.WARNING_MESSAGE, null);
+            JOptionPane.showMessageDialog(null, "Debes seleccionar un préstamo para poder firmarle.", "Firma de préstamo", JOptionPane.WARNING_MESSAGE, null);
         }
 
     }//GEN-LAST:event_jBFirmarActionPerformed
@@ -763,7 +762,9 @@ public class Prestamos extends javax.swing.JFrame {
     private void jBPreconcedidos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPreconcedidos2ActionPerformed
 
         String dni = jTIntroDNI.getText();
+
         if (Funciones.esCadenaValida(dni, "[0-9]{7,8}[A-Z a-z]")) {
+
             jTIntroDNI.setEnabled(false);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             String[] columnasTablaPrestamosPre = {"Nº Préstamo", "Fecha oferta", "Cantidad", "Periodo en Meses", "Interés", "Plazo de Aceptación", "Firmado"};
@@ -802,8 +803,9 @@ public class Prestamos extends javax.swing.JFrame {
                 String[] datosPrestamo = {String.valueOf(prestamoConcedido.getId()), prestamoConcedido.getFecha().format(formatter), String.valueOf(prestamoConcedido.getCantidad()), String.valueOf(prestamoConcedido.getPrestamoPreconcedido().getId())};
                 modeloTablaPrestamosCon.addRow(datosPrestamo);
             }
+
         } else {
-            JOptionPane.showMessageDialog(null, "El DNI no tiene el formato correcto.", "Informativo", JOptionPane.INFORMATION_MESSAGE, null);
+            JOptionPane.showMessageDialog(null, "El DNI no tiene el formato correcto.", "Firma de préstamo", JOptionPane.WARNING_MESSAGE, null);
             jBPLimpiarActionPerformed(evt);
         }
 
@@ -848,20 +850,15 @@ public class Prestamos extends javax.swing.JFrame {
 
         String dni = jTextFieldDNISolicitar.getText();
 
-        if (dni == null || dni.equals("")) {
-            JOptionPane.showMessageDialog(null, "DNI vacío.", "Informativo", JOptionPane.INFORMATION_MESSAGE, null);
+        Cliente clienteApto = Funciones.aptoParaPrestamo(MetodosBD.clientePorDni(dni));
+
+        if (clienteApto != null) {
+            System.out.println(clienteApto.getDni() + " Apto para préstamo");
+            System.out.println("Cantidad: " + Funciones.cantidadPrestamo(clienteApto));
+            MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido(Integer.parseInt(jComboBoxPeriodoMesesSolicitar.getSelectedItem().toString()), Double.parseDouble(jComboBoxTipoInteresSolicitar.getSelectedItem().toString()), Integer.parseInt(jComboBoxPlazoAceptacionSolicitar.getSelectedItem().toString()), clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
+            JOptionPane.showMessageDialog(null, "Apto para préstamo. Cantidad = " + Funciones.cantidadPrestamo(clienteApto), "Solicitar préstamo", JOptionPane.INFORMATION_MESSAGE, null);
         } else {
-
-            Cliente clienteApto = Funciones.aptoParaPrestamo(MetodosBD.clientePorDni(dni));
-
-            if (clienteApto != null) {
-                System.out.println("Apto para préstamo");
-                System.out.println("Cantidad: " + Funciones.cantidadPrestamo(clienteApto));
-                JOptionPane.showMessageDialog(null, "Apto para préstamo. Cantidad = " + Funciones.cantidadPrestamo(clienteApto), "Informativo", JOptionPane.INFORMATION_MESSAGE, null);
-                MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido(Integer.parseInt(jComboBoxPeriodoMesesSolicitar.getSelectedItem().toString()), Double.parseDouble(jComboBoxTipoInteresSolicitar.getSelectedItem().toString()), Integer.parseInt(jComboBoxPlazoAceptacionSolicitar.getSelectedItem().toString()), clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
-            } else {
-                System.out.println("No apto para préstamo.");
-            }
+            JOptionPane.showMessageDialog(null, "El cliente es no apto para préstamo.", "Solicitar préstamo", JOptionPane.WARNING_MESSAGE, null);
         }
 
     }//GEN-LAST:event_jButtonProcesarSolicitarActionPerformed
@@ -874,15 +871,6 @@ public class Prestamos extends javax.swing.JFrame {
     private void jButtonBuscarMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarMostrarActionPerformed
         // TODO add your handling code here:
 
-//        Cliente cliente = MetodosBD.clientePorDni("32109876J");
-//        PrestamoPreconcedido prestamoPre = MetodosBD.prestamoPrePorIdCliente(cliente.getUuid());
-//        //System.out.println(MetodosBD.prestamoPrePorIdCliente(cliente.getUuid()).toString());
-//
-//        String[] columnasTablaSolicitar = {"DNI", "Nombre", "Apellidos", "Cantidad", "Fecha oferta"};
-//        String[] datosCliente = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), String.valueOf(prestamoPre.getCantidad()), prestamoPre.getFecha().toString()};
-//        DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar);
-//        jTableMostrar.setModel(modeloTabla);
-//        modeloTabla.addRow(datosCliente);
         String opc = jComboBoxFiltroMostrar.getSelectedItem().toString();
         String[] columnasTablaSolicitar = {"DNI", "Nombre", "Apellidos", "Numero préstamo", "Cantidad"};
         DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar) {
@@ -898,14 +886,21 @@ public class Prestamos extends javax.swing.JFrame {
         if (opc.equalsIgnoreCase("DNI")) {
 
             String dni = jTextFieldDatoMostrar.getText();
-            List<PrestamoPreconcedido> prestamos = MetodosBD.listarPrestamosPreconcedidosPorDNI(dni);
 
-            for (PrestamoPreconcedido prestamo : prestamos) {
+            if (Funciones.esCadenaValida(dni, "[0-9]{7,8}[A-Z a-z]")) {
+                List<PrestamoPreconcedido> prestamos = MetodosBD.listarPrestamosPreconcedidosPorDNI(dni);
 
-                Cliente cliente = prestamo.getCliente();
-                String[] datosPrestamo = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), String.valueOf(prestamo.getId()), String.valueOf(prestamo.getCantidad())};
-                modeloTabla.addRow(datosPrestamo);
+                for (PrestamoPreconcedido prestamo : prestamos) {
+
+                    Cliente cliente = prestamo.getCliente();
+                    String[] datosPrestamo = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), String.valueOf(prestamo.getId()), String.valueOf(prestamo.getCantidad())};
+                    modeloTabla.addRow(datosPrestamo);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "El DNI no tiene el formato correcto.", "Informativo", JOptionPane.WARNING_MESSAGE, null);
+                jButtonLimpiarMostrarActionPerformed(evt);
             }
+
         } else if (opc.equalsIgnoreCase("localidad")) {
 
             String ciudad = jTextFieldDatoMostrar.getText();
@@ -934,7 +929,16 @@ public class Prestamos extends javax.swing.JFrame {
 
         if (!fichero.exists()) {
             Ficheros.escribirLineaALineaDeListPrestamosPreconcedidos(fichero, lista);
-            JOptionPane.showMessageDialog(null, "Se ha grabado en un fichero correctamente", "Fichero Preconcedidos", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Se ha grabado en un fichero correctamente", "Fichero preconcedidos", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+
+            if (Ficheros.eliminar(fichero)) {
+                Ficheros.escribirLineaALineaDeListPrestamosPreconcedidos(fichero, lista);
+                JOptionPane.showMessageDialog(null, "Se ha grabado en un fichero correctamente", "Fichero preconcedidos", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se puede eliminar el fichero.", "Fichero concedidos", JOptionPane.ERROR_MESSAGE);
+            }
+
         }
 
     }//GEN-LAST:event_jGrabarActionPerformed
@@ -950,8 +954,6 @@ public class Prestamos extends javax.swing.JFrame {
             // Acción a ejecutar cuando se presione Enter
             jButtonBuscarSolicitarActionPerformed(null);
         }
-
-
     }//GEN-LAST:event_jTextFieldDNISolicitarKeyPressed
 
     /**
@@ -965,7 +967,6 @@ public class Prestamos extends javax.swing.JFrame {
             // Acción a ejecutar cuando se presione Enter
             jButtonBuscarMostrarActionPerformed(null);
         }
-
     }//GEN-LAST:event_jTextFieldDatoMostrarKeyPressed
 
     /**
@@ -979,8 +980,29 @@ public class Prestamos extends javax.swing.JFrame {
             // Acción a ejecutar cuando se presione Enter
             jBPreconcedidos2ActionPerformed(null);
         }
-
     }//GEN-LAST:event_jTIntroDNIKeyPressed
+
+    private void jButtonGenerarInformePrestamosConcedidosActionPerformedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerarInformePrestamosConcedidosActionPerformedActionPerformed
+        // TODO add your handling code here:
+
+        File fichero = new File(System.getenv("userprofile") + "\\Documents", "PrestamosConcedidos.txt");
+        List<PrestamoConcedido> lista = MetodosBD.listarPrestamosConcedidos();
+
+        if (!fichero.exists()) {
+            Ficheros.escribirLineaALineaDeListPrestamosConcedidos(fichero, lista);
+            JOptionPane.showMessageDialog(null, "Se ha grabado en un fichero correctamente", "Fichero Concedidos", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+
+            if (Ficheros.eliminar(fichero)) {
+                Ficheros.escribirLineaALineaDeListPrestamosConcedidos(fichero, lista);
+                JOptionPane.showMessageDialog(null, "Se ha grabado en un fichero correctamente", "Fichero Concedidos", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(null, "No se puede eliminar el fichero.", "Fichero Concedidos", JOptionPane.INFORMATION_MESSAGE);
+            }
+
+        }
+
+    }//GEN-LAST:event_jButtonGenerarInformePrestamosConcedidosActionPerformedActionPerformed
 
     /**
      * @param args the command line arguments
@@ -1033,6 +1055,7 @@ public class Prestamos extends javax.swing.JFrame {
     private javax.swing.JButton jBVolverMostrar;
     private javax.swing.JButton jButtonBuscarMostrar;
     private javax.swing.JButton jButtonBuscarSolicitar;
+    private javax.swing.JButton jButtonGenerarInformePrestamosConcedidosActionPerformed;
     private javax.swing.JButton jButtonLimpiarMostrar;
     private javax.swing.JButton jButtonLimpiarSolicitar;
     private javax.swing.JButton jButtonProcesarSolicitar;

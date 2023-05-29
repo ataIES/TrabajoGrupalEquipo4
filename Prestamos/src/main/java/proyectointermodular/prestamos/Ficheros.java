@@ -8,6 +8,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 /**
@@ -54,42 +55,14 @@ public class Ficheros {
             bW = new BufferedWriter(new FileWriter(fichero));
 
             for (PrestamoPreconcedido elemento : lista) {
-                bW.write(elemento.toString());
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                bW.write("Nº Préstamo preconcedido: " + elemento.getId() + " | DNI: " + elemento.getCliente().getDni() + " | Fecha oferta: " + elemento.getFecha().format(formatter) + " | Cantidad: " + String.format("%,.2f", elemento.getCantidad()) + " | Periodo en meses: " + elemento.getPeriodoMeses() + " | Tipo interés (%): " + String.format("%,.2f", elemento.getTipoInteres()) + " | Plazo aceptación (días): " + elemento.getPlazoAceptacion());
                 //bR.write(System.lineSeparator());
                 bW.newLine();
             }
 
             System.out.println("Fichero " + fichero.getAbsolutePath() + " grabado.");
 
-        } catch (IOException ex) {
-            System.err.println(ex.toString());
-        } finally {
-            if (bW != null) {
-                try {
-                    bW.close();
-                } catch (IOException ex) {
-                    System.err.println("Error al cerrar el flujo de escritura.");
-                }
-            }
-        }
-
-    }
-
-    /**
-     * Método estático escribirLineaALinea que recibe por parámetro un objeto File y uno tipo String y escribe línea a línea la información del String.
-     *
-     * @param fichero Parámetro de tipo File que será el fichero donde escribir.
-     * @param cadenaLinea Parámetro de tipo String que será el texto a escribir en un línea.
-     */
-    public static void escribirLineaALinea(File fichero, String cadenaLinea) {
-
-        BufferedWriter bW = null;
-
-        try {
-            bW = new BufferedWriter(new FileWriter(fichero, true));
-            bW.write(cadenaLinea);
-            //bW.write(System.lineSeparator());
-            bW.newLine();
         } catch (IOException ex) {
             System.err.println(ex.toString());
         } finally {
@@ -118,7 +91,8 @@ public class Ficheros {
             bW = new BufferedWriter(new FileWriter(fichero));
 
             for (PrestamoConcedido elemento : lista) {
-                bW.write(elemento.toString());
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                bW.write("Nº Préstamo concedido: " + elemento.getId() + " | DNI: " + elemento.getCliente().getDni() + " | Fecha firma: " + elemento.getFecha().format(formatter) + " | Cantidad mensual: " + String.format("%,.2f", elemento.getCantidad()));
                 //bR.write(System.lineSeparator());
                 bW.newLine();
             }
@@ -138,4 +112,5 @@ public class Ficheros {
         }
 
     }
+
 }
