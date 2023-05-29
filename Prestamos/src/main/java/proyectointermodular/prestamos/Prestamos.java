@@ -625,7 +625,7 @@ public class Prestamos extends javax.swing.JFrame {
 
                 if (Funciones.aptoParaPrestamo(clienteApto) != null) {
                     System.out.println(clienteApto.getDni() + " Apto para préstamo" + " | Cantidad: " + Funciones.cantidadPrestamo(clienteApto));
-                    MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido((int) (Math.random() * (24 - 3)) + 3, Math.random()*3, (int) (Math.random() * (30 - 10)) + 10, clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
+                    MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido((int) (Math.random() * (24 - 3)) + 3, Math.random() * 3, (int) (Math.random() * (30 - 10)) + 10, clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
                 } else {
                     System.out.println("No apto para préstamo.");
                 }
@@ -876,7 +876,7 @@ public class Prestamos extends javax.swing.JFrame {
 
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String opc = jComboBoxFiltroMostrar.getSelectedItem().toString();
-        String[] columnasTablaSolicitar = {"DNI", "Nombre", "Apellidos", "Fecha nacimiento" , "Localidad", "Cantidad €", "Firmado"};
+        String[] columnasTablaSolicitar = {"DNI", "Nombre", "Apellidos", "Fecha nacimiento", "Localidad", "Cantidad €", "Firmado"};
         DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar) {
             // Sobrescribir el método isCellEditable para que devuelva siempre false
             @Override
@@ -917,16 +917,16 @@ public class Prestamos extends javax.swing.JFrame {
                 modeloTabla.addRow(datosPrestamo);
             }
         } else if (opc.equalsIgnoreCase("ninguno")) {
-            
+
             jTextFieldDatoMostrar.setEnabled(false);
             List<PrestamoPreconcedido> prestamos = MetodosBD.listarPrestamosPreconcedidos();
-            
+
             for (PrestamoPreconcedido prestamo : prestamos) {
                 Cliente cliente = prestamo.getCliente();
                 String[] datosPrestamo = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), cliente.getFechaNacimiento().format(formatter), cliente.getLocalidad(), String.valueOf(prestamo.getCantidad()), prestamo.isFirmado() ? "Sí" : "No"};
                 modeloTabla.addRow(datosPrestamo);
             }
-            
+
         }
 
     }//GEN-LAST:event_jButtonBuscarMostrarActionPerformed
