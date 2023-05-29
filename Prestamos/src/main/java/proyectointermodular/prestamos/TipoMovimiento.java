@@ -6,9 +6,32 @@ package proyectointermodular.prestamos;
 
 /**
  * Enumerado que contiene los tipos de movimientos que se pueden realizar.
- * 
+ *
  * @author Víctor Sánchez Llada, César Torre, Efrén Gutiérrez y Adrián Tresgallo.
  */
 public enum TipoMovimiento {
-    PAGO_TARJETA, RECIBO, RETIRADA_CAJERO, NOMINA, BIZUM, DEPOSITO;
+    /**
+     * El tipo de movimiento es pago con tarjeta.
+     */
+    PAGO_TARJETA,
+    /**
+     * El tipo de movimiento es recibo.
+     */
+    RECIBO,
+    /**
+     * El tipo de movimiento es retirada en cajero.
+     */
+    RETIRADA_CAJERO,
+    /**
+     * El tipo de movimiento es nómina.
+     */
+    NOMINA,
+    /**
+     * EL tipo de movimiento es Bizum.
+     */
+    BIZUM,
+    /**
+     * El tipo de movimiento es depósito.
+     */
+    DEPOSITO;
 }

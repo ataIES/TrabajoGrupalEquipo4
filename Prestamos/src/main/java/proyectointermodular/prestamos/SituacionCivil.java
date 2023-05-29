@@ -10,5 +10,20 @@ package proyectointermodular.prestamos;
  * @author Víctor Sánchez Llada, César Torre, Efrén Gutiérrez y Adrián Tresgallo.
  */
 public enum SituacionCivil {
-    CASADO, SOLTERO, DIVORCIADO, VIUDO;
+    /**
+     * Su situación civil es casad@.
+     */
+    CASADO,
+    /**
+     * Su situación civil es solter@.
+     */
+    SOLTERO,
+    /**
+     * Su situación civil es divorciad@.
+     */
+    DIVORCIADO,
+    /**
+     * Su situación civil es viud@.
+     */
+    VIUDO;
 }

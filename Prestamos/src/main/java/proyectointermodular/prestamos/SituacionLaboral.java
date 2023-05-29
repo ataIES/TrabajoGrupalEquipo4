@@ -6,9 +6,32 @@ package proyectointermodular.prestamos;
 
 /**
  * Enumerado que contiene las situaciones laborales que pueden tener los clientes.
- * 
+ *
  * @author Víctor Sánchez Llada, César Torre, Efrén Gutiérrez y Adrián Tresgallo.
  */
 public enum SituacionLaboral {
-    DESEMPLEADO, ESTUDIANTE, AMO_DE_CASA, CUENTA_AJENA, CUENTA_PROPIA, PENSIONISTA;
+    /**
+     * Su situación laboral es desemplead@.
+     */
+    DESEMPLEADO,
+    /**
+     * Su situación laboral es estudiante.
+     */
+    ESTUDIANTE,
+    /**
+     * Su situación laboral es am@ de casa.
+     */
+    AMO_DE_CASA,
+    /**
+     * Su situación laboral es cuenta ajena.
+     */
+    CUENTA_AJENA,
+    /**
+     * Su situación laboral es cuenta propia.
+     */
+    CUENTA_PROPIA,
+    /**
+     * Su siatuación laboral es pensionista.
+     */
+    PENSIONISTA;
 }

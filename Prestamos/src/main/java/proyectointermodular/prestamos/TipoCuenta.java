@@ -6,9 +6,24 @@ package proyectointermodular.prestamos;
 
 /**
  * Enumerado que contiene los tipos de cuenta que pueden ser las cuentas bancarias.
- * 
+ *
  * @author Víctor Sánchez Llada, César Torre, Efrén Gutiérrez y Adrián Tresgallo.
  */
 public enum TipoCuenta {
-    CUENTA_DE_AHORRO, CUENTA_CORRIENTE, CUENTA_EMPRESA, CUENTA_PERSONAL;
+    /**
+     * El tipo de cuenta es de ahorro.
+     */
+    CUENTA_DE_AHORRO,
+    /**
+     * El tipo de cuenta es corriente.
+     */
+    CUENTA_CORRIENTE,
+    /**
+     * El tipo de cuenta es empresa.
+     */
+    CUENTA_EMPRESA,
+    /**
+     * El tiepo de cuenta es personal.
+     */
+    CUENTA_PERSONAL;
 }
