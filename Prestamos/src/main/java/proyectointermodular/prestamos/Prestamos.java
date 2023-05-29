@@ -953,7 +953,7 @@ public class Prestamos extends javax.swing.JFrame {
 
             if (Ficheros.eliminar(fichero)) {
                 Ficheros.escribirLineaALineaDeListPrestamosPreconcedidos(fichero, lista);
-                JOptionPane.showMessageDialog(null, "Se ha grabado en un fichero correctamente", "Fichero preconcedidos", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se ha generado un informe en:\n" + fichero.getAbsolutePath(), "Fichero preconcedidos", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "No se puede eliminar el fichero.", "Fichero concedidos", JOptionPane.ERROR_MESSAGE);
             }
@@ -1014,7 +1014,7 @@ public class Prestamos extends javax.swing.JFrame {
 
             if (Ficheros.eliminar(fichero)) {
                 Ficheros.escribirLineaALineaDeListPrestamosConcedidos(fichero, lista);
-                JOptionPane.showMessageDialog(null, "Se ha grabado en un fichero correctamente", "Fichero Concedidos", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se ha generado un informe en:\n" + fichero.getAbsolutePath(), "Fichero Concedidos", JOptionPane.INFORMATION_MESSAGE);
             } else {
                 JOptionPane.showMessageDialog(null, "No se puede eliminar el fichero.", "Fichero Concedidos", JOptionPane.INFORMATION_MESSAGE);
             }
