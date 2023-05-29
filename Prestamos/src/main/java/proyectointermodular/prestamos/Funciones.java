@@ -20,6 +20,12 @@ public class Funciones {
      * @param cliente Parámetro de tipo Cliente.
      * @return Devuelve un Cliente.
      */
+    /**
+     * Método estático aptoParaPrestamo que recibe por parámetro un objeto Cliente y devuelve un boolean si es apto para recibir un préstamo o no.
+     *
+     * @param cliente Parámetro de tipo Cliente.
+     * @return Devuelve un Cliente.
+     */
     public static Cliente aptoParaPrestamo(Cliente cliente) {
 
         Cliente clienteApto = null;
@@ -46,27 +52,27 @@ public class Funciones {
                                         //apto = true;
                                         clienteApto = pareja;
                                     } else { //Si no cumple con las bases mínimas la pareja no es APTA para solicitar un préstamo.
-                                        System.out.println("Préstamo no concedido: No cumple con las bases mínimas.");
+                                        System.out.println(pareja.getDni() + " Préstamo no concedido: No cumple con las bases mínimas.");
                                     }
 
                                 } else { //Si la pareja es desempleada, estudiante o amo de casa.
-                                    System.out.println("Préstamo no concedido: Pareja Desempleado, estudiante o amo de casa.");
+                                    System.out.println(pareja.getDni() + " Préstamo no concedido: Pareja Desempleado, estudiante o amo de casa.");
                                 }
 
                             } else { //Pareja con morosidad o asuntos judiciales.
-                                System.out.println("Préstamo no concedido: Morosidad o asuntos judiciales.");
+                                System.out.println(pareja.getDni() + " Préstamo no concedido: Morosidad o asuntos judiciales.");
                             }
 
                         } else { //Si no tienen régimen ganancial.
-                            System.out.println("Préstamo no concedido: Su pareja es cliente del banco pero tienen no tienen régimen ganancial.");
+                            System.out.println(cliente.getDni() + " Préstamo no concedido: Su pareja es cliente del banco pero tienen no tienen régimen ganancial.");
                         }
 
                     } else { //Casado pero la pareja no es cliente del banco.
-                        System.out.println("Préstamo no concedido: Casado pero su pareja no es cliente del banco.");
+                        System.out.println(cliente.getDni() + " Préstamo no concedido: Casado pero su pareja no es cliente del banco.");
                     }
 
                 } else { //Es desempleado, estudiante o amo de casa y no está casado.
-                    System.out.println("Préstamo no concedido: Desempleado, estudiante o amo de casa + Casado no.");
+                    System.out.println(cliente.getDni() + " Préstamo no concedido: Desempleado, estudiante o amo de casa + Casado no.");
                 }
 
             } else { //El cliente está trabajando por cuenta propia, ajena o es pensionista.
@@ -75,12 +81,12 @@ public class Funciones {
                     //apto = true;
                     clienteApto = cliente;
                 } else { //Si no cumple con las bases mínimas el cliente no es APTO para solicitar un préstamo.
-                    System.out.println("Préstamo no concedido: No cumple con las bases mínimas.");
+                    System.out.println(cliente.getDni() + " Préstamo no concedido: No cumple con las bases mínimas.");
                 }
             }
 
         } else { //Si el cliente TIENE morosidad o proceso judicial.
-            System.out.println("Préstamo no concedido: Morosidad o asuntos judiciales.");
+            System.out.println(cliente.getDni() + " Préstamo no concedido: Morosidad o asuntos judiciales.");
         }
 
         //return apto;
@@ -161,15 +167,15 @@ public class Funciones {
                 if (cliente.getCuentaBancaria().getNominaUltMes() >= 1000) { //Si la última nómina es >= 1000. Es APTO para solicitar un préstamo.
                     basesMinimas = true;
                 } else { //Si la última nómina es < 1000. No es APTO para solicitar un préstamo.
-                    System.out.println("Préstamo no concedido: La cantidad de la última nómina no cumple los requisitos.");
+                    System.out.println(cliente.getDni() + " Préstamo no concedido: La cantidad de la última nómina no cumple los requisitos.");
                 }
 
             } else { //Si la media anual de la nómina es < 1000.
-                System.out.println("Préstamo no concedido: La media anual de la nómina no cumple los requisitos.");
+                System.out.println(cliente.getDni() + " Préstamo no concedido: La media anual de la nómina no cumple los requisitos.");
             }
 
         } else { //Si no tiene 12 meses cotizados
-            System.out.println("Préstamo no concedido: No tiene cotizados al menos 12 meses.");
+            System.out.println(cliente.getDni() + " Préstamo no concedido: No tiene cotizados al menos 12 meses.");
         }
 
         return basesMinimas;
