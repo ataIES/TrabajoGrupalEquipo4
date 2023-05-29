@@ -570,9 +570,13 @@ public class Prestamos extends javax.swing.JFrame {
         // TODO add your handling code here:
 
         /*
-        98765432M casado con cliente y movimientos
+        23456789G apto
+        76543210S apto
+        98765432M apto
         87654321V con morosidad
-        54321098G no requisitos minimos
+        54321098G no requisitos mínimos
+        87654321P pareja cliente pero sin regimen ganancial
+        65432109V pareja cliente pero tiene morosidad/asuntos judiciales
          */
         String dni = jTextFieldDNISolicitar.getText();
 
