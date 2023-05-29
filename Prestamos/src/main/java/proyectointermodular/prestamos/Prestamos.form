@@ -268,7 +268,7 @@
                 <StringItem index="4" value="48"/>
               </StringArray>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="toolTipText" type="java.lang.String" value="Periodo en meses en los que se devolver&#xe1; el pr&#xe9;stamo."/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -316,6 +316,7 @@
                 <StringItem index="3" value="3.5"/>
               </StringArray>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Tipo de inter&#xe9;s del pr&#xe9;stamo en %."/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -348,6 +349,7 @@
                 <StringItem index="2" value="30"/>
               </StringArray>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" value="Plazo de aceptaci&#xf3;n del pr&#xe9;stamo en d&#xed;as."/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

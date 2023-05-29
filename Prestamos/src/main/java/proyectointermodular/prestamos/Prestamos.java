@@ -242,7 +242,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPSolicitar.add(jButtonProcesarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 430, -1, -1));
 
         jComboBoxPeriodoMesesSolicitar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3", "6", "12", "24", "48" }));
-        jComboBoxPeriodoMesesSolicitar.setToolTipText("");
+        jComboBoxPeriodoMesesSolicitar.setToolTipText("Periodo en meses en los que se devolverá el préstamo.");
         jPSolicitar.add(jComboBoxPeriodoMesesSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 50, -1));
 
         jLabelPeriodoMesesSolicitar.setForeground(new java.awt.Color(255, 255, 255));
@@ -255,6 +255,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPSolicitar.add(jLabelTipoInteresSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, -1, -1));
 
         jComboBoxTipoInteresSolicitar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "1.5", "2.5", "3.5" }));
+        jComboBoxTipoInteresSolicitar.setToolTipText("Tipo de interés del préstamo en %.");
         jPSolicitar.add(jComboBoxTipoInteresSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 50, -1));
 
         jLabelPlazoAceptacionSolicitar.setForeground(new java.awt.Color(255, 255, 255));
@@ -262,6 +263,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPSolicitar.add(jLabelPlazoAceptacionSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 430, -1, -1));
 
         jComboBoxPlazoAceptacionSolicitar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "20", "30" }));
+        jComboBoxPlazoAceptacionSolicitar.setToolTipText("Plazo de aceptación del préstamo en días.");
         jPSolicitar.add(jComboBoxPlazoAceptacionSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 430, 50, -1));
         jPSolicitar.add(lblFondoSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 804, 580));
 
