@@ -42,4 +42,14 @@ public class Pago {
         this.cantidad = cantidad;
     }
 
+    /**
+     * Método toString que devuelve toda la información del objeto.
+     *
+     * @return Devuelve un String.
+     */
+    @Override
+    public String toString() {
+        return "Pago{" + "id=" + id + ", fecha=" + fecha + ", cantidad=" + cantidad + '}';
+    }
+
 }
