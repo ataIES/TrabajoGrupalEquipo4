@@ -7,6 +7,7 @@ package proyectointermodular.prestamos;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.KeyEvent;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -20,6 +21,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -134,6 +136,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPPortada.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jBSolicitar.setText("Solicitar");
+        jBSolicitar.setToolTipText("Solicitud de préstamo preconcedido.");
         jBSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBSolicitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +146,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPPortada.add(jBSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, -1, -1));
 
         jBCalcular.setText("Calcular");
+        jBCalcular.setToolTipText("Cálculo masivo de préstamos preconcedidos.");
         jBCalcular.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBCalcular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -152,6 +156,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPPortada.add(jBCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 520, -1, -1));
 
         jBMostrar.setText("Mostrar");
+        jBMostrar.setToolTipText("Mostrar datos de clientes y préstamos.");
         jBMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,6 +166,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPPortada.add(jBMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 520, -1, -1));
 
         jBBFirmar.setText("Firmar");
+        jBBFirmar.setToolTipText("Firma de préstamos preconcedidos.");
         jBBFirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBBFirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,6 +186,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPSolicitar.add(jScrollPaneClientesSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 720, 190));
 
         jButtonVolverSolicitar.setText("Volver");
+        jButtonVolverSolicitar.setToolTipText("Volver al menú principal.");
         jButtonVolverSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonVolverSolicitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -196,9 +203,15 @@ public class Prestamos extends javax.swing.JFrame {
                 jTextFieldDNISolicitarActionPerformed(evt);
             }
         });
+        jTextFieldDNISolicitar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldDNISolicitarKeyPressed(evt);
+            }
+        });
         jPSolicitar.add(jTextFieldDNISolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 170, -1));
 
         jButtonBuscarSolicitar.setText("Buscar");
+        jButtonBuscarSolicitar.setToolTipText("Buscar cliente.");
         jButtonBuscarSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBuscarSolicitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -208,6 +221,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPSolicitar.add(jButtonBuscarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
 
         jButtonLimpiarSolicitar.setText("Limpiar");
+        jButtonLimpiarSolicitar.setToolTipText("Limpiar datos.");
         jButtonLimpiarSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonLimpiarSolicitar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -223,6 +237,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPSolicitar.add(jLabelDatosClienteSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
 
         jButtonProcesarSolicitar.setText("Solicitud de préstamo");
+        jButtonProcesarSolicitar.setToolTipText("Solicitar préstamo para el cliente seleccionado.");
         jButtonProcesarSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonProcesarSolicitar.setEnabled(false);
         jButtonProcesarSolicitar.addActionListener(new java.awt.event.ActionListener() {
@@ -256,6 +271,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPCalcularPrestamo.add(jLCalculoPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, 130, 30));
 
         jBCalculo.setText("Calcular");
+        jBCalculo.setToolTipText("Ejecutar el cálculo masivo de préstamos.");
         jBCalculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCalculoActionPerformed(evt);
@@ -264,6 +280,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPCalcularPrestamo.add(jBCalculo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, -1, -1));
 
         jBVolver.setText("Volver");
+        jBVolver.setToolTipText("Volver al menú principal.");
         jBVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBVolverActionPerformed(evt);
@@ -272,6 +289,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPCalcularPrestamo.add(jBVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 520, -1, -1));
 
         jGrabar.setText("Generar informe");
+        jGrabar.setToolTipText("Guardar en un fichero de texto el informe de préstamos cálculados.");
         jGrabar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jGrabarActionPerformed(evt);
@@ -285,6 +303,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPMostrar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jBVolverMostrar.setText("Volver");
+        jBVolverMostrar.setToolTipText("Volver al menú principal.");
         jBVolverMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBVolverMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -300,16 +319,23 @@ public class Prestamos extends javax.swing.JFrame {
         jPMostrar.add(jLabelFiltroMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 70, -1, -1));
 
         jComboBoxFiltroMostrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Localidad" }));
-        jComboBoxFiltroMostrar.setToolTipText("");
+        jComboBoxFiltroMostrar.setToolTipText("Filtro de búsqueda.");
         jComboBoxFiltroMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxFiltroMostrarActionPerformed(evt);
             }
         });
         jPMostrar.add(jComboBoxFiltroMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 70, -1, -1));
+
+        jTextFieldDatoMostrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTextFieldDatoMostrarKeyPressed(evt);
+            }
+        });
         jPMostrar.add(jTextFieldDatoMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 180, -1));
 
         jButtonBuscarMostrar.setText("Buscar");
+        jButtonBuscarMostrar.setToolTipText("Buscar cliente/s.");
         jButtonBuscarMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonBuscarMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -319,6 +345,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPMostrar.add(jButtonBuscarMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, -1, -1));
 
         jButtonLimpiarMostrar.setText("Limpiar");
+        jButtonLimpiarMostrar.setToolTipText("Limpiar datos.");
         jButtonLimpiarMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonLimpiarMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -355,9 +382,15 @@ public class Prestamos extends javax.swing.JFrame {
                 jTIntroDNIActionPerformed(evt);
             }
         });
+        jTIntroDNI.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jTIntroDNIKeyPressed(evt);
+            }
+        });
         jPFirmar.add(jTIntroDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 60, 150, -1));
 
         jBPLimpiar.setText("Limpiar");
+        jBPLimpiar.setToolTipText("Limpiar datos.");
         jBPLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBPLimpiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -367,6 +400,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPFirmar.add(jBPLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 60, -1, -1));
 
         jBFirmar.setText("Firmar");
+        jBFirmar.setToolTipText("Firmar préstamo preconcedido seleccionado.");
         jBFirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBFirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -397,7 +431,8 @@ public class Prestamos extends javax.swing.JFrame {
 
         jPFirmar.add(jScrollPaneConcedidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, 730, 200));
 
-        jBPreconcedidos2.setText("Mostrar ");
+        jBPreconcedidos2.setText("Buscar");
+        jBPreconcedidos2.setToolTipText("Buscar cliente.");
         jBPreconcedidos2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBPreconcedidos2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -425,6 +460,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPFirmar.add(jLPrestamoPreconcedido1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         jBVolver1.setText("Volver");
+        jBVolver1.setToolTipText("Volver al menú principal.");
         jBVolver1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBVolver1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -467,6 +503,7 @@ public class Prestamos extends javax.swing.JFrame {
         jTextFieldDNISolicitar.setText("");
         jTableSolicitar.setModel(new DefaultTableModel());
         jButtonProcesarSolicitar.setEnabled(false);
+        jTextFieldDNISolicitar.setEnabled(true);
     }//GEN-LAST:event_jButtonLimpiarSolicitarActionPerformed
 
     private void jBVolverMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBVolverMostrarActionPerformed
@@ -503,6 +540,7 @@ public class Prestamos extends javax.swing.JFrame {
 
         if (Funciones.esCadenaValida(dni, "[0-9]{7,8}[A-Z a-z]")) {
 
+            jTextFieldDNISolicitar.setEnabled(false);
             Cliente cliente = MetodosBD.clientePorDni(dni);
 
             if (cliente != null) {
@@ -512,8 +550,15 @@ public class Prestamos extends javax.swing.JFrame {
 
                 String[] columnasTablaSolicitar = {"DNI", "Nombre", "Apellidos", "IBAN", "Tipo cuenta"};
                 String[] datosCliente = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), cliente.getCuentaBancaria().getIBAN(), cliente.getCuentaBancaria().getTipoCuenta().name()};
-                DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar);
+                DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar) {
+                    // Sobrescribir el método isCellEditable para que devuelva siempre false
+                    @Override
+                    public boolean isCellEditable(int row, int column) {
+                        return false; // No permitir la edición de ninguna celda
+                    }
+                };
                 jTableSolicitar.setModel(modeloTabla);
+                jTableSolicitar.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
                 modeloTabla.addRow(datosCliente);
 
             } else {
@@ -562,8 +607,15 @@ public class Prestamos extends javax.swing.JFrame {
         if (!lista.isEmpty()) {
 
             String[] columnasTablaSolicitar = {"NºPrestamo", "DNI Cliente", "Fecha_Oferta", "Cantidad", "Periodo en Meses", "Interés", "Plazo de Aceptación"};
-            DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar);
+            DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar) {
+                // Sobrescribir el método isCellEditable para que devuelva siempre false
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false; // No permitir la edición de ninguna celda
+                }
+            };
             jTableCalculo.setModel(modeloTabla);
+            jTableCalculo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
             for (PrestamoPreconcedido preconcedido : lista) {
                 String[] datosPreconcedidos = {String.valueOf(preconcedido.getId()), preconcedido.getCliente().getDni(), preconcedido.getFecha().format(formatter),
@@ -604,6 +656,7 @@ public class Prestamos extends javax.swing.JFrame {
         jTIntroDNI.setText("");
         jTablePreconcedidosFirmar.setModel(new DefaultTableModel());
         jTableConcedidosFirmar.setModel(new DefaultTableModel());
+        jTIntroDNI.setEnabled(true);
 
     }//GEN-LAST:event_jBPLimpiarActionPerformed
 
@@ -652,10 +705,18 @@ public class Prestamos extends javax.swing.JFrame {
 
         String dni = jTIntroDNI.getText();
         if (Funciones.esCadenaValida(dni, "[0-9]{7,8}[A-Z a-z]")) {
+            jTIntroDNI.setEnabled(false);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
             String[] columnasTablaPrestamosPre = {"Nº Préstamo", "Fecha_Oferta", "Cantidad", "Periodo en Meses", "Interés", "Plazo de Aceptación"};
-            DefaultTableModel modeloTablaPrestamosPre = new DefaultTableModel(null, columnasTablaPrestamosPre);
+            DefaultTableModel modeloTablaPrestamosPre = new DefaultTableModel(null, columnasTablaPrestamosPre) {
+                // Sobrescribir el método isCellEditable para que devuelva siempre false
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false; // No permitir la edición de ninguna celda
+                }
+            };
             jTablePreconcedidosFirmar.setModel(modeloTablaPrestamosPre);
+            jTablePreconcedidosFirmar.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
             List<PrestamoPreconcedido> prestamos = MetodosBD.listarPrestamosPreconcedidosPorDNI(dni);
 
@@ -665,8 +726,15 @@ public class Prestamos extends javax.swing.JFrame {
             }
 
             String[] columnasTablaPrestamosCon = {"Nº Préstamo", "Fecha firma", "Cantidad mensual"};
-            DefaultTableModel modeloTablaPrestamosCon = new DefaultTableModel(null, columnasTablaPrestamosCon);
+            DefaultTableModel modeloTablaPrestamosCon = new DefaultTableModel(null, columnasTablaPrestamosCon) {
+                // Sobrescribir el método isCellEditable para que devuelva siempre false
+                @Override
+                public boolean isCellEditable(int row, int column) {
+                    return false; // No permitir la edición de ninguna celda
+                }
+            };
             jTableConcedidosFirmar.setModel(modeloTablaPrestamosCon);
+            jTableConcedidosFirmar.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
             Cliente aux = MetodosBD.clientePorDni(dni);
             List<PrestamoConcedido> prestamosConcedidos = MetodosBD.listarPrestamosConcedidosPorId(aux.getUuid());
@@ -742,8 +810,15 @@ public class Prestamos extends javax.swing.JFrame {
 //        modeloTabla.addRow(datosCliente);
         String opc = jComboBoxFiltroMostrar.getSelectedItem().toString();
         String[] columnasTablaSolicitar = {"DNI", "Nombre", "Apellidos", "Numero préstamo", "Cantidad"};
-        DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar);
+        DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar) {
+            // Sobrescribir el método isCellEditable para que devuelva siempre false
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false; // No permitir la edición de ninguna celda
+            }
+        };
         jTableMostrar.setModel(modeloTabla);
+        jTableMostrar.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         if (opc.equalsIgnoreCase("DNI")) {
 
@@ -794,6 +869,34 @@ public class Prestamos extends javax.swing.JFrame {
     private void jTextFieldDNISolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDNISolicitarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldDNISolicitarActionPerformed
+
+    private void jTextFieldDNISolicitarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDNISolicitarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            // Acción a ejecutar cuando se presione Enter
+            jButtonBuscarSolicitarActionPerformed(null);
+        }
+
+
+    }//GEN-LAST:event_jTextFieldDNISolicitarKeyPressed
+
+    private void jTextFieldDatoMostrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldDatoMostrarKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            // Acción a ejecutar cuando se presione Enter
+            jButtonBuscarMostrarActionPerformed(null);
+        }
+
+    }//GEN-LAST:event_jTextFieldDatoMostrarKeyPressed
+
+    private void jTIntroDNIKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTIntroDNIKeyPressed
+        // TODO add your handling code here:
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            // Acción a ejecutar cuando se presione Enter
+            jBPreconcedidos2ActionPerformed(null);
+        }
+
+    }//GEN-LAST:event_jTIntroDNIKeyPressed
 
     /**
      * @param args the command line arguments

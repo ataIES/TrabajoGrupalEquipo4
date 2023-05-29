@@ -39,6 +39,7 @@
         <Component class="javax.swing.JButton" name="jBSolicitar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Solicitar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Solicitud de pr&#xe9;stamo preconcedido."/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -55,6 +56,7 @@
         <Component class="javax.swing.JButton" name="jBCalcular">
           <Properties>
             <Property name="text" type="java.lang.String" value="Calcular"/>
+            <Property name="toolTipText" type="java.lang.String" value="C&#xe1;lculo masivo de pr&#xe9;stamos preconcedidos."/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -71,6 +73,7 @@
         <Component class="javax.swing.JButton" name="jBMostrar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Mostrar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Mostrar datos de clientes y pr&#xe9;stamos."/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -87,6 +90,7 @@
         <Component class="javax.swing.JButton" name="jBBFirmar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Firmar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Firma de pr&#xe9;stamos preconcedidos."/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -147,6 +151,7 @@
         <Component class="javax.swing.JButton" name="jButtonVolverSolicitar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Volver"/>
+            <Property name="toolTipText" type="java.lang.String" value="Volver al men&#xfa; principal."/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -173,6 +178,7 @@
         <Component class="javax.swing.JTextField" name="jTextFieldDNISolicitar">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldDNISolicitarActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldDNISolicitarKeyPressed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -183,6 +189,7 @@
         <Component class="javax.swing.JButton" name="jButtonBuscarSolicitar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Buscar cliente."/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -199,6 +206,7 @@
         <Component class="javax.swing.JButton" name="jButtonLimpiarSolicitar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Limpiar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Limpiar datos."/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -235,6 +243,7 @@
         <Component class="javax.swing.JButton" name="jButtonProcesarSolicitar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Solicitud de pr&#xe9;stamo"/>
+            <Property name="toolTipText" type="java.lang.String" value="Solicitar pr&#xe9;stamo para el cliente seleccionado."/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -311,6 +320,7 @@
         <Component class="javax.swing.JButton" name="jBCalculo">
           <Properties>
             <Property name="text" type="java.lang.String" value="Calcular"/>
+            <Property name="toolTipText" type="java.lang.String" value="Ejecutar el c&#xe1;lculo masivo de pr&#xe9;stamos."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBCalculoActionPerformed"/>
@@ -324,6 +334,7 @@
         <Component class="javax.swing.JButton" name="jBVolver">
           <Properties>
             <Property name="text" type="java.lang.String" value="Volver"/>
+            <Property name="toolTipText" type="java.lang.String" value="Volver al men&#xfa; principal."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBVolverActionPerformed"/>
@@ -337,6 +348,7 @@
         <Component class="javax.swing.JButton" name="jGrabar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Generar informe"/>
+            <Property name="toolTipText" type="java.lang.String" value="Guardar en un fichero de texto el informe de pr&#xe9;stamos c&#xe1;lculados."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jGrabarActionPerformed"/>
@@ -370,6 +382,7 @@
         <Component class="javax.swing.JButton" name="jBVolverMostrar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Volver"/>
+            <Property name="toolTipText" type="java.lang.String" value="Volver al men&#xfa; principal."/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -411,7 +424,7 @@
                 <StringItem index="1" value="Localidad"/>
               </StringArray>
             </Property>
-            <Property name="toolTipText" type="java.lang.String" value=""/>
+            <Property name="toolTipText" type="java.lang.String" value="Filtro de b&#xfa;squeda."/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxFiltroMostrarActionPerformed"/>
@@ -426,6 +439,9 @@
           </Constraints>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldDatoMostrar">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTextFieldDatoMostrarKeyPressed"/>
+          </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
               <AbsoluteConstraints x="180" y="70" width="180" height="-1"/>
@@ -435,6 +451,7 @@
         <Component class="javax.swing.JButton" name="jButtonBuscarMostrar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Buscar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Buscar cliente/s."/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -451,6 +468,7 @@
         <Component class="javax.swing.JButton" name="jButtonLimpiarMostrar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Limpiar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Limpiar datos."/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -525,6 +543,7 @@
         <Component class="javax.swing.JTextField" name="jTIntroDNI">
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTIntroDNIActionPerformed"/>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="jTIntroDNIKeyPressed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -535,6 +554,7 @@
         <Component class="javax.swing.JButton" name="jBPLimpiar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Limpiar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Limpiar datos."/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -551,6 +571,7 @@
         <Component class="javax.swing.JButton" name="jBFirmar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Firmar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Firmar pr&#xe9;stamo preconcedido seleccionado."/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -587,7 +608,8 @@
         </Container>
         <Component class="javax.swing.JButton" name="jBPreconcedidos2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Mostrar "/>
+            <Property name="text" type="java.lang.String" value="Buscar"/>
+            <Property name="toolTipText" type="java.lang.String" value="Buscar cliente."/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
@@ -642,6 +664,7 @@
         <Component class="javax.swing.JButton" name="jBVolver1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Volver"/>
+            <Property name="toolTipText" type="java.lang.String" value="Volver al men&#xfa; principal."/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
