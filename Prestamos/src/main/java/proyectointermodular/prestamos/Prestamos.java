@@ -588,7 +588,7 @@ public class Prestamos extends javax.swing.JFrame {
                 if (Funciones.aptoParaPrestamo(clienteApto) != null) {
                     System.out.println("Apto para préstamo");
                     System.out.println("Cantidad: " + Funciones.cantidadPrestamo(clienteApto));
-                    MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido(15, 2, 24, clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto)));
+                    MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido(15, 2, 24, clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
                 } else {
                     System.out.println("No apto para préstamo.");
                 }
@@ -674,19 +674,25 @@ public class Prestamos extends javax.swing.JFrame {
             Cliente cliente = MetodosBD.clientePorDni(dni);
             PrestamoPreconcedido prestamo = MetodosBD.prestamoPreconcedidoPorIdClienteNum(cliente.getUuid(), num);
 
-            if (Funciones.esFechaAnterior(fecha, prestamo.getFecha().plusDays(prestamo.getPlazoAceptacion()))) {
-                double cantidadSinTasas = prestamo.getCantidad() / prestamo.getPeriodoMeses();
-                double tasas = cantidadSinTasas * prestamo.getTipoInteres() / 100;
-                double cantidadFinal = cantidadSinTasas + tasas;
+            if (!prestamo.isFirmado()) {
+                
+                if (Funciones.esFechaAnterior(fecha, prestamo.getFecha().plusDays(prestamo.getPlazoAceptacion()))) {
+                    double cantidadSinTasas = prestamo.getCantidad() / prestamo.getPeriodoMeses();
+                    double tasas = cantidadSinTasas * prestamo.getTipoInteres() / 100;
+                    double cantidadFinal = cantidadSinTasas + tasas;
 
-                PrestamoConcedido prestamoC = new PrestamoConcedido(prestamo, null, cliente, fecha, cantidadSinTasas);
+                    PrestamoConcedido prestamoC = new PrestamoConcedido(prestamo, null, cliente, fecha, cantidadSinTasas);
 
-                MetodosBD.insertarPrestamoConcedido(prestamoC);
+                    MetodosBD.insertarPrestamoConcedido(prestamoC);
 
-                JOptionPane.showMessageDialog(null, "Préstamo concedido guardado.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
-                jBPreconcedidos2ActionPerformed(evt);
+                    JOptionPane.showMessageDialog(null, "Préstamo concedido guardado.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
+                    jBPreconcedidos2ActionPerformed(evt);
+                } else {
+                    JOptionPane.showMessageDialog(null, "La fecha de la oferta ya no es válida.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
+                }
+                
             } else {
-                JOptionPane.showMessageDialog(null, "La fecha de la oferta ya no es válida.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
+                JOptionPane.showMessageDialog(null, "El préstamo preconcedido seleccionado ya está firmado.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
             }
 
         } else {
@@ -784,7 +790,7 @@ public class Prestamos extends javax.swing.JFrame {
                 System.out.println("Apto para préstamo");
                 System.out.println("Cantidad: " + Funciones.cantidadPrestamo(clienteApto));
                 JOptionPane.showMessageDialog(null, "Apto para préstamo. Cantidad = " + Funciones.cantidadPrestamo(clienteApto), "Informativo", JOptionPane.INFORMATION_MESSAGE, null);
-                MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido(15, 2, 24, clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto)));
+                MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido(15, 2, 24, clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
             } else {
                 System.out.println("No apto para préstamo.");
             }

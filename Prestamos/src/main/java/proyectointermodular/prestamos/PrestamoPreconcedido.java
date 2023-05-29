@@ -18,6 +18,7 @@ public class PrestamoPreconcedido extends Prestamo implements Serializable {
     private int periodoMeses;
     private double tipoInteres;
     private int plazoAceptacion;
+    private boolean firmado;
 
     /**
      * Constructor por parámetros que recibe el valor de todos los atributos excepto el id y crea el objeto PrestamoPreconcedido.
@@ -28,12 +29,14 @@ public class PrestamoPreconcedido extends Prestamo implements Serializable {
      * @param cliente Parámetro de tipo Cliente que será el cliente.
      * @param fecha Parámetro de tipo LocalDate que será la fecha. Podrá tomar diferentes formas: en un préstamo preconcedido será la fecha de la oferta y un préstamo concedido será la fecha de firma.
      * @param cantidad Parámetro de tipo double que será la cantidad.
+     * @param firmado Parámetro de tipo boolean que indica si está firmado.
      */
-    public PrestamoPreconcedido(int periodoMeses, double tipoInteres, int plazoAceptacion, Cliente cliente, LocalDate fecha, double cantidad) {
+    public PrestamoPreconcedido(int periodoMeses, double tipoInteres, int plazoAceptacion, Cliente cliente, LocalDate fecha, double cantidad, boolean firmado) {
         super(cliente, fecha, cantidad);
         this.periodoMeses = periodoMeses;
         this.tipoInteres = tipoInteres;
         this.plazoAceptacion = plazoAceptacion;
+        this.firmado = firmado;
     }
 
     /**
@@ -46,12 +49,14 @@ public class PrestamoPreconcedido extends Prestamo implements Serializable {
      * @param cliente Parámetro de tipo Cliente que será el cliente.
      * @param fecha Parámetro de tipo LocalDate que será la fecha. Podrá tomar diferentes formas: en un préstamo preconcedido será la fecha de la oferta y un préstamo concedido será la fecha de firma.
      * @param cantidad Parámetro de tipo double que será la cantidad.
+     * @param firmado Parámetro de tipo boolean que indica si está firmado.
      */
-    public PrestamoPreconcedido(int periodoMeses, double tipoInteres, int plazoAceptacion, int id, Cliente cliente, LocalDate fecha, double cantidad) {
+    public PrestamoPreconcedido(int periodoMeses, double tipoInteres, int plazoAceptacion, int id, Cliente cliente, LocalDate fecha, double cantidad, boolean firmado) {
         super(id, cliente, fecha, cantidad);
         this.periodoMeses = periodoMeses;
         this.tipoInteres = tipoInteres;
         this.plazoAceptacion = plazoAceptacion;
+        this.firmado = firmado;
     }
 
     /**
@@ -89,6 +94,15 @@ public class PrestamoPreconcedido extends Prestamo implements Serializable {
      */
     public int getPlazoAceptacion() {
         return plazoAceptacion;
+    }
+
+    /**
+     * Método isFirmado que devuelve el valor del atributo firmado.
+     *
+     * @return Devuelve un boolean.
+     */
+    public boolean isFirmado() {
+        return firmado;
     }
 
 }
