@@ -341,7 +341,7 @@ public class Prestamos extends javax.swing.JFrame {
         jLabelFiltroMostrar.setText("Filtro:");
         jPMostrar.add(jLabelFiltroMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, -1, -1));
 
-        jComboBoxFiltroMostrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Localidad" }));
+        jComboBoxFiltroMostrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "DNI", "Localidad" }));
         jComboBoxFiltroMostrar.setToolTipText("Filtro de búsqueda.");
         jPMostrar.add(jComboBoxFiltroMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
 
@@ -558,6 +558,7 @@ public class Prestamos extends javax.swing.JFrame {
         jTextFieldDatoMostrar.setText("");
         jTableMostrar.setModel(new DefaultTableModel());
         jButtonProcesarSolicitar.setEnabled(false);
+        jTextFieldDatoMostrar.setEnabled(true);
     }//GEN-LAST:event_jButtonLimpiarMostrarActionPerformed
 
     /**
@@ -642,7 +643,7 @@ public class Prestamos extends javax.swing.JFrame {
 
         if (!lista.isEmpty()) {
 
-            String[] columnasTablaSolicitar = {"NºPrestamo", "DNI Cliente", "Fecha_Oferta", "Cantidad", "Periodo en Meses", "Interés", "Plazo de Aceptación"};
+            String[] columnasTablaSolicitar = {"NºPrestamo", "DNI Cliente", "Fecha_Oferta", "Cantidad €", "Periodo en Meses", "Interés %", "Plazo de Aceptación"};
             DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar) {
                 // Sobrescribir el método isCellEditable para que devuelva siempre false
                 @Override
@@ -769,7 +770,7 @@ public class Prestamos extends javax.swing.JFrame {
 
             jTIntroDNI.setEnabled(false);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            String[] columnasTablaPrestamosPre = {"Nº Préstamo", "Fecha oferta", "Cantidad", "Periodo en Meses", "Interés", "Plazo de Aceptación", "Firmado"};
+            String[] columnasTablaPrestamosPre = {"Nº Préstamo", "Fecha oferta", "Cantidad €", "Periodo en Meses", "Interés %", "Plazo de Aceptación", "Firmado"};
             DefaultTableModel modeloTablaPrestamosPre = new DefaultTableModel(null, columnasTablaPrestamosPre) {
                 // Sobrescribir el método isCellEditable para que devuelva siempre false
                 @Override
@@ -787,7 +788,7 @@ public class Prestamos extends javax.swing.JFrame {
                 modeloTablaPrestamosPre.addRow(datosPrestamo);
             }
 
-            String[] columnasTablaPrestamosCon = {"Nº Préstamo", "Fecha firma", "Cantidad mensual", "Nº P. Preconcedido"};
+            String[] columnasTablaPrestamosCon = {"Nº Préstamo", "Fecha firma", "Cantidad mensual €", "Nº P. Preconcedido"};
             DefaultTableModel modeloTablaPrestamosCon = new DefaultTableModel(null, columnasTablaPrestamosCon) {
                 // Sobrescribir el método isCellEditable para que devuelva siempre false
                 @Override
@@ -860,7 +861,7 @@ public class Prestamos extends javax.swing.JFrame {
             MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido(Integer.parseInt(jComboBoxPeriodoMesesSolicitar.getSelectedItem().toString()), Double.parseDouble(jComboBoxTipoInteresSolicitar.getSelectedItem().toString()), Integer.parseInt(jComboBoxPlazoAceptacionSolicitar.getSelectedItem().toString()), clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
             JOptionPane.showMessageDialog(null, "Apto para préstamo. Cantidad = " + Funciones.cantidadPrestamo(clienteApto), "Solicitar préstamo", JOptionPane.INFORMATION_MESSAGE, null);
         } else {
-            JOptionPane.showMessageDialog(null, "El cliente es no apto para préstamo.", "Solicitar préstamo", JOptionPane.WARNING_MESSAGE, null);
+            JOptionPane.showMessageDialog(null, "El cliente no es apto para préstamo.", "Solicitar préstamo", JOptionPane.WARNING_MESSAGE, null);
         }
 
     }//GEN-LAST:event_jButtonProcesarSolicitarActionPerformed
@@ -873,8 +874,9 @@ public class Prestamos extends javax.swing.JFrame {
     private void jButtonBuscarMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarMostrarActionPerformed
         // TODO add your handling code here:
 
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String opc = jComboBoxFiltroMostrar.getSelectedItem().toString();
-        String[] columnasTablaSolicitar = {"DNI", "Nombre", "Apellidos", "Numero préstamo", "Cantidad"};
+        String[] columnasTablaSolicitar = {"DNI", "Nombre", "Apellidos", "Fecha nacimiento" , "Localidad", "Cantidad €", "Firmado"};
         DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar) {
             // Sobrescribir el método isCellEditable para que devuelva siempre false
             @Override
@@ -895,7 +897,7 @@ public class Prestamos extends javax.swing.JFrame {
                 for (PrestamoPreconcedido prestamo : prestamos) {
 
                     Cliente cliente = prestamo.getCliente();
-                    String[] datosPrestamo = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), String.valueOf(prestamo.getId()), String.valueOf(prestamo.getCantidad())};
+                    String[] datosPrestamo = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), cliente.getFechaNacimiento().format(formatter), cliente.getLocalidad(), String.valueOf(prestamo.getCantidad()), prestamo.isFirmado() ? "Sí" : "No"};
                     modeloTabla.addRow(datosPrestamo);
                 }
             } else {
@@ -911,9 +913,20 @@ public class Prestamos extends javax.swing.JFrame {
             for (PrestamoPreconcedido prestamo : prestamos) {
 
                 Cliente cliente = prestamo.getCliente();
-                String[] datosPrestamo = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), String.valueOf(prestamo.getId()), String.valueOf(prestamo.getCantidad())};
+                String[] datosPrestamo = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), cliente.getFechaNacimiento().format(formatter), cliente.getLocalidad(), String.valueOf(prestamo.getCantidad()), prestamo.isFirmado() ? "Sí" : "No"};
                 modeloTabla.addRow(datosPrestamo);
             }
+        } else if (opc.equalsIgnoreCase("ninguno")) {
+            
+            jTextFieldDatoMostrar.setEnabled(false);
+            List<PrestamoPreconcedido> prestamos = MetodosBD.listarPrestamosPreconcedidos();
+            
+            for (PrestamoPreconcedido prestamo : prestamos) {
+                Cliente cliente = prestamo.getCliente();
+                String[] datosPrestamo = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), cliente.getFechaNacimiento().format(formatter), cliente.getLocalidad(), String.valueOf(prestamo.getCantidad()), prestamo.isFirmado() ? "Sí" : "No"};
+                modeloTabla.addRow(datosPrestamo);
+            }
+            
         }
 
     }//GEN-LAST:event_jButtonBuscarMostrarActionPerformed

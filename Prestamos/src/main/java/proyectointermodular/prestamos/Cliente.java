@@ -141,4 +141,22 @@ public class Cliente {
         return apellidos;
     }
 
+    /**
+     * Método getLocalidad que devuelve el valor del atributo localidad.
+     *
+     * @return Devuelve un String.
+     */
+    public String getLocalidad() {
+        return localidad;
+    }
+
+    /**
+     * Método getFechaNacimiento que devuelve el valor del atributo fecha de nacimiento.
+     *
+     * @return Devuelve un LocalDate.
+     */
+    public LocalDate getFechaNacimiento() {
+        return fechaNacimiento;
+    }
+
 }
