@@ -713,7 +713,7 @@ public class Prestamos extends javax.swing.JFrame {
         if (Funciones.esCadenaValida(dni, "[0-9]{7,8}[A-Z a-z]")) {
             jTIntroDNI.setEnabled(false);
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            String[] columnasTablaPrestamosPre = {"Nº Préstamo", "Fecha_Oferta", "Cantidad", "Periodo en Meses", "Interés", "Plazo de Aceptación"};
+            String[] columnasTablaPrestamosPre = {"Nº Préstamo", "Fecha oferta", "Cantidad", "Periodo en Meses", "Interés", "Plazo de Aceptación", "Firmado"};
             DefaultTableModel modeloTablaPrestamosPre = new DefaultTableModel(null, columnasTablaPrestamosPre) {
                 // Sobrescribir el método isCellEditable para que devuelva siempre false
                 @Override
@@ -727,11 +727,11 @@ public class Prestamos extends javax.swing.JFrame {
             List<PrestamoPreconcedido> prestamos = MetodosBD.listarPrestamosPreconcedidosPorDNI(dni);
 
             for (PrestamoPreconcedido prestamo : prestamos) {
-                String[] datosPrestamo = {String.valueOf(prestamo.getId()), prestamo.getFecha().format(formatter), String.valueOf(prestamo.getCantidad()), String.valueOf(prestamo.getPeriodoMeses()), String.valueOf(prestamo.getTipoInteres()), String.valueOf(prestamo.getPlazoAceptacion())};
+                String[] datosPrestamo = {String.valueOf(prestamo.getId()), prestamo.getFecha().format(formatter), String.valueOf(prestamo.getCantidad()), String.valueOf(prestamo.getPeriodoMeses()), String.valueOf(prestamo.getTipoInteres()), String.valueOf(prestamo.getPlazoAceptacion()), prestamo.isFirmado() ? "Sí" : "No"};
                 modeloTablaPrestamosPre.addRow(datosPrestamo);
             }
 
-            String[] columnasTablaPrestamosCon = {"Nº Préstamo", "Fecha firma", "Cantidad mensual"};
+            String[] columnasTablaPrestamosCon = {"Nº Préstamo", "Fecha firma", "Cantidad mensual", "Nº P. Preconcedido"};
             DefaultTableModel modeloTablaPrestamosCon = new DefaultTableModel(null, columnasTablaPrestamosCon) {
                 // Sobrescribir el método isCellEditable para que devuelva siempre false
                 @Override
@@ -746,7 +746,7 @@ public class Prestamos extends javax.swing.JFrame {
             List<PrestamoConcedido> prestamosConcedidos = MetodosBD.listarPrestamosConcedidosPorId(aux.getUuid());
 
             for (PrestamoConcedido prestamoConcedido : prestamosConcedidos) {
-                String[] datosPrestamo = {String.valueOf(prestamoConcedido.getId()), prestamoConcedido.getFecha().format(formatter), String.valueOf(prestamoConcedido.getCantidad())};
+                String[] datosPrestamo = {String.valueOf(prestamoConcedido.getId()), prestamoConcedido.getFecha().format(formatter), String.valueOf(prestamoConcedido.getCantidad()), String.valueOf(prestamoConcedido.getPrestamoPreconcedido().getId())};
                 modeloTablaPrestamosCon.addRow(datosPrestamo);
             }
         } else {
