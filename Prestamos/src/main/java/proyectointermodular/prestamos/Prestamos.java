@@ -609,33 +609,39 @@ public class Prestamos extends javax.swing.JFrame {
 
     private void jBFirmarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBFirmarActionPerformed
         // TODO add your handling code here:
+
         //jTextFieldDNISolicitar.setText("98765432M");
         int fila = jTablePreconcedidosFirmar.getSelectedRow();
-        if (fila != -1) {
 
+        if (fila != -1) {
+            LocalDate fecha = LocalDate.now();
             String dni = jTIntroDNI.getText();
             int num = Integer.parseInt(jTablePreconcedidosFirmar.getValueAt(fila, 0).toString());
 
             Cliente cliente = MetodosBD.clientePorDni(dni);
             PrestamoPreconcedido prestamo = MetodosBD.prestamoPreconcedidoPorIdClienteNum(cliente.getUuid(), num);
 
-            double cantidadSinTasas = prestamo.getCantidad() / prestamo.getPeriodoMeses();
-            double tasas = cantidadSinTasas * prestamo.getTipoInteres() / 100;
-            double cantidadFinal = cantidadSinTasas + tasas;
+            if (Funciones.esFechaAnterior(fecha, prestamo.getFecha().plusDays(prestamo.getPlazoAceptacion()))) {
+                double cantidadSinTasas = prestamo.getCantidad() / prestamo.getPeriodoMeses();
+                double tasas = cantidadSinTasas * prestamo.getTipoInteres() / 100;
+                double cantidadFinal = cantidadSinTasas + tasas;
 
-            LocalDate fecha = LocalDate.now();
+                PrestamoConcedido prestamoC = new PrestamoConcedido(prestamo, null, cliente, fecha, cantidadSinTasas);
 
-            PrestamoConcedido prestamoC = new PrestamoConcedido(prestamo, null, cliente, fecha, cantidadSinTasas);
+                MetodosBD.insertarPrestamoConcedido(prestamoC);
 
-            MetodosBD.insertarPrestamoConcedido(prestamoC);
+                JOptionPane.showMessageDialog(null, "Préstamo concedido guardado.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
+                jBPreconcedidos2ActionPerformed(evt);
+            } else {
+                JOptionPane.showMessageDialog(null, "La fecha de la oferta ya no es válida.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
+            }
 
-            JOptionPane.showMessageDialog(null, "Préstamo concedido guardado.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
-            jBPreconcedidos2ActionPerformed(evt);
         } else {
             JOptionPane.showMessageDialog(null,
                     "hay que seleccionar un préstamo primero",
                     "Advertencia", JOptionPane.WARNING_MESSAGE, null);
         }
+
     }//GEN-LAST:event_jBFirmarActionPerformed
 
     private void jScrollPaneConcedidosAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jScrollPaneConcedidosAncestorAdded
@@ -644,31 +650,35 @@ public class Prestamos extends javax.swing.JFrame {
 
     private void jBPreconcedidos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBPreconcedidos2ActionPerformed
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        String[] columnasTablaPrestamosPre = {"Nº Préstamo", "Fecha_Oferta", "Cantidad", "Periodo en Meses", "Interés", "Plazo de Aceptación"};
-        DefaultTableModel modeloTablaPrestamosPre = new DefaultTableModel(null, columnasTablaPrestamosPre);
-        jTablePreconcedidosFirmar.setModel(modeloTablaPrestamosPre);
-
         String dni = jTIntroDNI.getText();
-        List<PrestamoPreconcedido> prestamos = MetodosBD.listarPrestamosPreconcedidosPorDNI(dni);
+        if (Funciones.esCadenaValida(dni, "[0-9]{7,8}[A-Z a-z]")) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+            String[] columnasTablaPrestamosPre = {"Nº Préstamo", "Fecha_Oferta", "Cantidad", "Periodo en Meses", "Interés", "Plazo de Aceptación"};
+            DefaultTableModel modeloTablaPrestamosPre = new DefaultTableModel(null, columnasTablaPrestamosPre);
+            jTablePreconcedidosFirmar.setModel(modeloTablaPrestamosPre);
 
-        for (PrestamoPreconcedido prestamo : prestamos) {
-            String[] datosPrestamo = {String.valueOf(prestamo.getId()), prestamo.getFecha().format(formatter), String.valueOf(prestamo.getCantidad()), String.valueOf(prestamo.getPeriodoMeses()), String.valueOf(prestamo.getTipoInteres()), String.valueOf(prestamo.getPlazoAceptacion())};
-            modeloTablaPrestamosPre.addRow(datosPrestamo);
+            List<PrestamoPreconcedido> prestamos = MetodosBD.listarPrestamosPreconcedidosPorDNI(dni);
+
+            for (PrestamoPreconcedido prestamo : prestamos) {
+                String[] datosPrestamo = {String.valueOf(prestamo.getId()), prestamo.getFecha().format(formatter), String.valueOf(prestamo.getCantidad()), String.valueOf(prestamo.getPeriodoMeses()), String.valueOf(prestamo.getTipoInteres()), String.valueOf(prestamo.getPlazoAceptacion())};
+                modeloTablaPrestamosPre.addRow(datosPrestamo);
+            }
+
+            String[] columnasTablaPrestamosCon = {"Nº Préstamo", "Fecha firma", "Cantidad mensual"};
+            DefaultTableModel modeloTablaPrestamosCon = new DefaultTableModel(null, columnasTablaPrestamosCon);
+            jTableConcedidosFirmar.setModel(modeloTablaPrestamosCon);
+
+            Cliente aux = MetodosBD.clientePorDni(dni);
+            List<PrestamoConcedido> prestamosConcedidos = MetodosBD.listarPrestamosConcedidosPorId(aux.getUuid());
+
+            for (PrestamoConcedido prestamoConcedido : prestamosConcedidos) {
+                String[] datosPrestamo = {String.valueOf(prestamoConcedido.getId()), prestamoConcedido.getFecha().format(formatter), String.valueOf(prestamoConcedido.getCantidad())};
+                modeloTablaPrestamosCon.addRow(datosPrestamo);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "El DNI no tiene el formato correcto.", "Informativo", JOptionPane.INFORMATION_MESSAGE, null);
+            jBPLimpiarActionPerformed(evt);
         }
-
-        String[] columnasTablaPrestamosCon = {"Nº Préstamo", "Fecha firma", "Cantidad mensual"};
-        DefaultTableModel modeloTablaPrestamosCon = new DefaultTableModel(null, columnasTablaPrestamosCon);
-        jTableConcedidosFirmar.setModel(modeloTablaPrestamosCon);
-
-        Cliente aux = MetodosBD.clientePorDni(dni);
-        List<PrestamoConcedido> prestamosConcedidos = MetodosBD.listarPrestamosConcedidosPorId(aux.getUuid());
-
-        for (PrestamoConcedido prestamoConcedido : prestamosConcedidos) {
-            String[] datosPrestamo = {String.valueOf(prestamoConcedido.getId()), prestamoConcedido.getFecha().format(formatter), String.valueOf(prestamoConcedido.getCantidad())};
-            modeloTablaPrestamosCon.addRow(datosPrestamo);
-        }
-
 
     }//GEN-LAST:event_jBPreconcedidos2ActionPerformed
 
