@@ -15,11 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase métodos BD que contiene los métodos necesarios para operar con la base
- * de datos.
+ * Clase métodos BD que contiene los métodos necesarios para operar con la base de datos.
  *
- * @author Víctor Sánchez Llada, César Torre, Efrén Gutiérrez y Adrián
- * Tresgallo.
+ * @author Víctor Sánchez Llada, César Torre, Efrén Gutiérrez y Adrián Tresgallo.
  */
 public class MetodosBD {
 
@@ -547,10 +545,11 @@ public class MetodosBD {
     }
 
     /**
-     * Metodo para generar un prestamo por su id y el del cliente
+     * Metodo para generar un prestamo por su id y el del cliente.
      *
-     * @param idCliente
-     * @return
+     * @param idCliente Parámetro de tipo String que será el id del cliente.
+     * @param num Parámetro de tipo int que será el número de préstamo.
+     * @return Devuelve un PrestamoPreconcedido.
      */
     public static PrestamoPreconcedido prestamoPreconcedidoPorIdClienteNum(String idCliente, int num) {
 
@@ -727,7 +726,7 @@ public class MetodosBD {
      * @throws SQLException Lanza una excepción si hay algún error de SQL.
      */
     private static PrestamoPreconcedido crearPrestamoPreconcedido(final ResultSet rs) throws SQLException {
-        return new PrestamoPreconcedido(rs.getInt("periodo_meses"), rs.getDouble("tipo_interes"), rs.getInt("plazo_aceptacion_dias"), rs.getInt("numero_prestamo"), clientePorId(rs.getString("cliente_id")), rs.getDate("fecha_oferta").toLocalDate(), rs.getDouble("cantidad"));
+        return new PrestamoPreconcedido(rs.getInt("periodo_meses"), rs.getDouble("tipo_interes"), rs.getInt("plazo_aceptacion_dias"), rs.getInt("numero_prestamo"), clientePorId(rs.getString("cliente_id")), rs.getDate("fecha_oferta").toLocalDate(), rs.getDouble("cantidad"), rs.getBoolean("firmado"));
     }
 
 }
