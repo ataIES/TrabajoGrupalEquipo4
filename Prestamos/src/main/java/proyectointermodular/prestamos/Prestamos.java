@@ -85,6 +85,12 @@ public class Prestamos extends javax.swing.JFrame {
         jLabelTituloSolicitar = new javax.swing.JLabel();
         jLabelDatosClienteSolicitar = new javax.swing.JLabel();
         jButtonProcesarSolicitar = new javax.swing.JButton();
+        jComboBoxPeriodoMesesSolicitar = new javax.swing.JComboBox<>();
+        jLabelPeriodoMesesSolicitar = new javax.swing.JLabel();
+        jLabelTipoInteresSolicitar = new javax.swing.JLabel();
+        jComboBoxTipoInteresSolicitar = new javax.swing.JComboBox<>();
+        jLabelPlazoAceptacionSolicitar = new javax.swing.JLabel();
+        jComboBoxPlazoAceptacionSolicitar = new javax.swing.JComboBox<>();
         lblFondoSolicitar = new javax.swing.JLabel();
         jPCalcularPrestamo = new javax.swing.JPanel();
         jScrollPanePrestamo = new javax.swing.JScrollPane();
@@ -188,7 +194,7 @@ public class Prestamos extends javax.swing.JFrame {
         });
         jPSolicitar.add(jButtonVolverSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 520, -1, -1));
 
-        jLabelDNISolicitar.setText("DNI");
+        jLabelDNISolicitar.setText("DNI:");
         jPSolicitar.add(jLabelDNISolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
         jTextFieldDNISolicitar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -233,7 +239,27 @@ public class Prestamos extends javax.swing.JFrame {
                 jButtonProcesarSolicitarActionPerformed(evt);
             }
         });
-        jPSolicitar.add(jButtonProcesarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 310, -1, -1));
+        jPSolicitar.add(jButtonProcesarSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 350, -1, -1));
+
+        jComboBoxPeriodoMesesSolicitar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3", "6", "12", "24", "48" }));
+        jComboBoxPeriodoMesesSolicitar.setToolTipText("");
+        jPSolicitar.add(jComboBoxPeriodoMesesSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 50, -1));
+
+        jLabelPeriodoMesesSolicitar.setText("Periodo meses:");
+        jPSolicitar.add(jLabelPeriodoMesesSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 350, -1, -1));
+
+        jLabelTipoInteresSolicitar.setText("Tipo interés (%):");
+        jLabelTipoInteresSolicitar.setToolTipText("");
+        jPSolicitar.add(jLabelTipoInteresSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 350, -1, -1));
+
+        jComboBoxTipoInteresSolicitar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        jPSolicitar.add(jComboBoxTipoInteresSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 350, 50, -1));
+
+        jLabelPlazoAceptacionSolicitar.setText("Plazo aceptación (días):");
+        jPSolicitar.add(jLabelPlazoAceptacionSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 350, -1, -1));
+
+        jComboBoxPlazoAceptacionSolicitar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "20", "30" }));
+        jPSolicitar.add(jComboBoxPlazoAceptacionSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 350, 50, -1));
         jPSolicitar.add(lblFondoSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 804, 580));
 
         getContentPane().add(jPSolicitar, "card3");
@@ -899,6 +925,9 @@ public class Prestamos extends javax.swing.JFrame {
     private javax.swing.JButton jButtonProcesarSolicitar;
     private javax.swing.JButton jButtonVolverSolicitar;
     private javax.swing.JComboBox<String> jComboBoxFiltroMostrar;
+    private javax.swing.JComboBox<String> jComboBoxPeriodoMesesSolicitar;
+    private javax.swing.JComboBox<String> jComboBoxPlazoAceptacionSolicitar;
+    private javax.swing.JComboBox<String> jComboBoxTipoInteresSolicitar;
     private javax.swing.JButton jGrabar;
     private javax.swing.JLabel jLCalculoPrestamo;
     private javax.swing.JLabel jLFirmarPrestamo1;
@@ -908,6 +937,9 @@ public class Prestamos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelDatosClienteSolicitar;
     private javax.swing.JLabel jLabelFiltroMostrar;
     private javax.swing.JLabel jLabelMostrar;
+    private javax.swing.JLabel jLabelPeriodoMesesSolicitar;
+    private javax.swing.JLabel jLabelPlazoAceptacionSolicitar;
+    private javax.swing.JLabel jLabelTipoInteresSolicitar;
     private javax.swing.JLabel jLabelTituloSolicitar;
     private javax.swing.JPanel jPCalcularPrestamo;
     private javax.swing.JPanel jPFirmar;
