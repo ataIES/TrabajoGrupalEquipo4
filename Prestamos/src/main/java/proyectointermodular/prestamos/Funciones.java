@@ -4,6 +4,7 @@
  */
 package proyectointermodular.prestamos;
 
+import java.time.LocalDate;
 import java.util.regex.PatternSyntaxException;
 
 /**
@@ -192,6 +193,17 @@ public class Funciones {
                 Minúsculas, mayúsculas, vocales acentuadas, espacios y ñ -> "[a-zA-ZÑñáéíóúÁÉÍÓÚ\\s]*"
          */
         return cadena.matches(regex);
+    }
+
+    /**
+     * Método estático esFechaAnterior que recibe por parámetro una fecha supuestamente anterior y otra supuestamente posterior y comprueba que es así. Devuelve un TRUE si la fecha es anterior o FALSE si la fecha no es anterior a la posterior. Ej.: anterior(30-10-2018) posterior(31-10-2018) = TRUE.
+     *
+     * @param fechaAnterior Parámetro de tipo LocalDate que será la fecha que se supone que es anterior.
+     * @param fechaPosterior Parámetro de tipo LocalDate que será la fecha que se supone que es posterior.
+     * @return Devuelve un boolean.
+     */
+    public static boolean esFechaAnterior(LocalDate fechaAnterior, LocalDate fechaPosterior) {
+        return fechaAnterior.isBefore(fechaPosterior);
     }
 
 }
