@@ -24,7 +24,9 @@ import javax.swing.table.DefaultTableModel;
  */
 public class Prestamos extends javax.swing.JFrame {
 
-    //Atributos
+    /**
+     * Atributo de tipo AccesoBaseDatos que será la instancia de conexión a la BD.
+     */
     private AccesoBaseDatos bd = AccesoBaseDatos.getInstance();
 
     /**
