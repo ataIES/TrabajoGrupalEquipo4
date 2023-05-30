@@ -73,7 +73,7 @@ public class AccesoBaseDatosConfigProperties {
     }
 
     /**
-     * Clase privada AccesoBaseDatosHolder que tiene como constante estática un objeto AccesoBaseDatosConfigXml.
+     * Clase privada AccesoBaseDatosHolder que tiene como constante estática un objeto AccesoBaseDatosConfigProperties.
      */
     private static class AccesoBaseDatosHolder {
 
