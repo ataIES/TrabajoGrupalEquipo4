@@ -55,7 +55,7 @@
 |----------|-----------|-----------|
 |Modificar dominios de las páginas web |césar y Adrián|SI|
 |Terminar de ultimar los detalles del programa |Víctor||
-|Crear la presentación | Adrián ||
-|Terminar los diagramas de flujo |César||
-|Hacer la documentación del proyecto|Efrén||
-|Crear documento para el cliente|||
+|Crear la presentación | Adrián |SI|
+|Terminar los diagramas de flujo |César|SI|
+|Hacer la documentación del proyecto|Efrén|SI|
+|Crear documento para el cliente|Víctor|SI|
