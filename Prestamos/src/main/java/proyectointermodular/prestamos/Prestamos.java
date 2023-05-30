@@ -610,6 +610,7 @@ public class Prestamos extends javax.swing.JFrame {
         87654321P pareja cliente pero sin regimen ganancial
         65432109V pareja cliente pero tiene morosidad/asuntos judiciales
          */
+
         String dni = jTextFieldDNISolicitar.getText();
 
         if (!dni.equalsIgnoreCase("")) {
