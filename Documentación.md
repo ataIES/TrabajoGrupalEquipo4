@@ -54,7 +54,7 @@
 | Objetivos|Encargados | Conseguido|
 |----------|-----------|-----------|
 |Modificar dominios de las páginas web |césar y Adrián|SI|
-|Terminar de ultimar los detalles del programa |Víctor||
+|Terminar de ultimar los detalles del programa |Víctor|SI|
 |Crear la presentación | Adrián |SI|
 |Terminar los diagramas de flujo |César|SI|
 |Hacer la documentación del proyecto|Efrén|SI|
