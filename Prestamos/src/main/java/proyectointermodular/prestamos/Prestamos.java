@@ -653,7 +653,7 @@ public class Prestamos extends javax.swing.JFrame {
 
                 if (Funciones.aptoParaPrestamo(clienteApto, null) != null) {
                     System.out.println(clienteApto.getDni() + " Apto para préstamo" + " | Cantidad: " + Funciones.cantidadPrestamo(clienteApto));
-                    MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido((int) (Math.random() * (24 - 3)) + 3, Math.random() * 3, (int) (Math.random() * (30 - 10)) + 10, clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
+                    MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido((int) (Math.random() * (48 - 3)) + 3, Math.random() * 3.5, (int) (Math.random() * (30 - 10)) + 10, clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
                 } else {
                     System.out.println("No apto para préstamo.");
                 }
