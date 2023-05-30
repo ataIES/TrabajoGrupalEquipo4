@@ -807,7 +807,7 @@ public class Prestamos extends javax.swing.JFrame {
                         }
 
                     } else {
-                        JOptionPane.showMessageDialog(null, "El préstamo preconcedido seleccionado ya está firmado.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
+                        JOptionPane.showMessageDialog(null, "El préstamo preconcedido seleccionado ya está firmado.", "Firma de préstamo", JOptionPane.WARNING_MESSAGE, null);
                     }
 
                 } else {
