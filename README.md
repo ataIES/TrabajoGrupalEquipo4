@@ -3,7 +3,7 @@ Proyecto Equipo4
 ## PROYECTO INTERMODULAR GRUPO 4
 | Miembros del grupo| 
 |----------|
-| Efrén Gutiérrez   | Gestor|
+| Efrén Gutiérrez   |
 | César Torre    | 
 | Víctor Sánchez  | 
 | Adrian Tresgallo |
