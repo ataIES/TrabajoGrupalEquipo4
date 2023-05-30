@@ -8,3 +8,7 @@ Proyecto Equipo4
 | Víctor Sánchez  | 
 | Adrian Tresgallo |
 
+## INDICE
+1-[OBJETIVOS DIARIOS](Documentación.md)
+2-[DOCUMETACION PROYECTO](DOCUMENTACION_FINAL.md)
+3-[DOCUMENTO TÉCNICO](docTecnica)
