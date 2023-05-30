@@ -13,8 +13,9 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 /**
+ * Clase acceso a base de datos que contiene los atributos y métodos para conectarnos a una base de datos. Se usa un fichero properties.
  *
- * @author vic
+ * @author Víctor Sánchez Llada, César Torre, Efrén Gutiérrez y Adrián Tresgallo.
  */
 public class AccesoBaseDatosConfigProperties {
 
