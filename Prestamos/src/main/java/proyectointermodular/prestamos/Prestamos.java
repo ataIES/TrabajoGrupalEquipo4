@@ -303,7 +303,7 @@ public class Prestamos extends javax.swing.JFrame {
 
         jScrollPanePrestamo.setViewportView(jTableCalculo);
 
-        jPCalcularPrestamo.add(jScrollPanePrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 730, 410));
+        jPCalcularPrestamo.add(jScrollPanePrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 730, 380));
 
         jLCalculoPrestamo.setText("Cálculo de préstamos preconcedidos");
         jPCalcularPrestamo.add(jLCalculoPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 210, 30));
