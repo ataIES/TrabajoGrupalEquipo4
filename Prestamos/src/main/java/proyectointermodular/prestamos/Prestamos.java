@@ -759,16 +759,30 @@ public class Prestamos extends javax.swing.JFrame {
 
                         if (Funciones.esFechaAnterior(fecha, prestamo.getFecha().plusDays(prestamo.getPlazoAceptacion()))) {
 
-                            double cantidadSinTasas = prestamo.getCantidad() / prestamo.getPeriodoMeses();
-                            double tasas = (cantidadSinTasas * prestamo.getTipoInteres()) / 100;
-                            double cantidadFinal = cantidadSinTasas + tasas;
+                            int opcion = JOptionPane.showConfirmDialog(null, "¿Está seguro de firmar el préstamo?", "Firma de préstamo", JOptionPane.YES_NO_OPTION);
 
-                            PrestamoConcedido prestamoC = new PrestamoConcedido(prestamo, null, cliente, fecha, cantidadFinal);
+                            switch (opcion) {
+                                case JOptionPane.YES_OPTION -> {
 
-                            MetodosBD.insertarPrestamoConcedido(prestamoC);
+                                    double cantidadSinTasas = prestamo.getCantidad() / prestamo.getPeriodoMeses();
+                                    double tasas = (cantidadSinTasas * prestamo.getTipoInteres()) / 100;
+                                    double cantidadFinal = cantidadSinTasas + tasas;
 
-                            JOptionPane.showMessageDialog(null, "Préstamo preconcedido firmado.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
-                            jBPreconcedidos2ActionPerformed(evt);
+                                    PrestamoConcedido prestamoC = new PrestamoConcedido(prestamo, null, cliente, fecha, cantidadFinal);
+
+                                    MetodosBD.insertarPrestamoConcedido(prestamoC);
+
+                                    JOptionPane.showMessageDialog(null, "Préstamo preconcedido firmado.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
+                                    jBPreconcedidos2ActionPerformed(evt);
+
+                                }
+                                case JOptionPane.NO_OPTION -> {
+                                    JOptionPane.showMessageDialog(null, "La firma ha sido cancelada.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
+                                }
+                                default -> {
+                                    JOptionPane.showMessageDialog(null, "La firma ha sido cancelada.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
+                                }
+                            }
 
                         } else {
                             JOptionPane.showMessageDialog(null, "La fecha de la oferta ya no es válida.", "Firma de préstamo", JOptionPane.WARNING_MESSAGE, null);
