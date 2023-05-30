@@ -1,13 +1,13 @@
 # DOCUMENTACIÓN GRUPO 4 
 
 ### Índice
-[BASES DE DATOS]()
-[ENTORNOS DE DESARROLLO]()
-[PROGRAMACIÓN]()
-[SISTEMAS INFORMÁTICOS]()
-[LENGUAJE DE MARCAS]()
+[BASES DE DATOS](#bases-de-datosbases)
+[ENTORNOS DE DESARROLLO](#entornos-de-desarrollo)
+[PROGRAMACIÓN](#programación)
+[SISTEMAS INFORMÁTICOS](#sistemas-informáticos)
+[LENGUAJE DE MARCAS](#lenguaje-de-marcas)
 
-## BASES DE DATOS
+## BASES DE DATOS 
 
 Enmpezamos creando la base de datos "préstamos" siguiendo el enunciado entregado, generando las tablas necesarias con sus claves foráneas (como cliente_id en casi todas las tablas), unicas(como DNI ) y primarias (como cliente_id en la tabla clientes).
 ![](Imagenes/diagramaer.png)
@@ -56,9 +56,10 @@ A continuación generamos un diagrama de flujo pasa saber las posibles salidas q
 ![](Imagenes/prestamos-Flujo.jpg)
 
 Después generamos un diagrama de los posibles casos de uso para saber el comportamiento del programa a nivel usuario:
+![](Imagenes/caso-de-uso.jpg)
 
 Y para terminar un diagrama de secuencia del programa para saber la interacción de los componentes del programa desde el punto de vista de el paso de mes¡nsajes entre actores u objetos en el tiempo. Esto nos ayuda a saber el funcionamiento interno del programa 
-
+![](Imagenes/secuencia.jpg)
 
 ## PROGRAMACIÓN
 Usando el diagrama de clases anterior, creamos las clases principales que usaremos como objetos. Así nos salen las clases cliente, perfil, cuenta, etc...
@@ -161,7 +162,8 @@ Para terminar usamos java.Swing para crear una interfaz gráfica interactiva en 
 
 Empezamos creando en entorno cleiente servidor instalando las ISOS correspondientes y conectándolas a una misma red interna. Después cambiaremos las ips de ambos para que se conecten y lo comprobamos haciendo un ping.
 
-
+Después para ponerles una url personalizada a las páginas web, activamos IIS y modificamos 
+![](Imagenes/IIS%20(1).png)
 
 ## LENGUAJE DE MARCAS
 
