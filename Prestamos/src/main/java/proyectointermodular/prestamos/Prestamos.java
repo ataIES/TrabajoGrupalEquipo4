@@ -361,8 +361,14 @@ public class Prestamos extends javax.swing.JFrame {
         jComboBoxFiltroMostrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "DNI", "Localidad" }));
         jComboBoxFiltroMostrar.setToolTipText("Filtro de búsqueda.");
         jComboBoxFiltroMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jComboBoxFiltroMostrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxFiltroMostrarActionPerformed(evt);
+            }
+        });
         jPMostrar.add(jComboBoxFiltroMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
 
+        jTextFieldDatoMostrar.setEnabled(false);
         jTextFieldDatoMostrar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jTextFieldDatoMostrarKeyPressed(evt);
@@ -1209,6 +1215,26 @@ public class Prestamos extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jComboBoxPeriodoMesesSolicitarActionPerformed
+
+    /**
+     * Método jComboBoxFiltroMostrarActionPerformed que al seleccionar habilita o deshabilita el JText.
+     *
+     * @param evt Parámetro de tipo ActionEvent.
+     */
+    private void jComboBoxFiltroMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxFiltroMostrarActionPerformed
+        // TODO add your handling code here:
+
+        String seleccion = (String) jComboBoxFiltroMostrar.getSelectedItem();
+
+        if (seleccion.equalsIgnoreCase("Ninguno")) {
+            jTextFieldDatoMostrar.setEnabled(false);
+        } else if (seleccion.equalsIgnoreCase("DNI")) {
+            jTextFieldDatoMostrar.setEnabled(true);
+        } else if (seleccion.equalsIgnoreCase("Localidad")) {
+            jTextFieldDatoMostrar.setEnabled(true);
+        }
+
+    }//GEN-LAST:event_jComboBoxFiltroMostrarActionPerformed
 
     /**
      * @param args the command line arguments
