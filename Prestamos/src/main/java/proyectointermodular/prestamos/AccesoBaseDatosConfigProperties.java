@@ -66,7 +66,7 @@ public class AccesoBaseDatosConfigProperties {
     /**
      * Método estático getInstance que devuelve la instancia de conexión a la base de datos.
      *
-     * @return Devuelve un objeto AccesoBaseDatosConfigXml.INSTANCE.
+     * @return Devuelve un objeto AccesoBaseDatosConfigProperties.INSTANCE.
      */
     public static AccesoBaseDatosConfigProperties getInstance() {
         return AccesoBaseDatosHolder.INSTANCE;
