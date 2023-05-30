@@ -1,10 +1,15 @@
 # DOCUMENTACIÓN GRUPO 4 
 
 ### Índice
+
 [BASES DE DATOS](#bases-de-datosbases)
+
 [ENTORNOS DE DESARROLLO](#entornos-de-desarrollo)
+
 [PROGRAMACIÓN](#programación)
+
 [SISTEMAS INFORMÁTICOS](#sistemas-informáticos)
+
 [LENGUAJE DE MARCAS](#lenguaje-de-marcas)
 
 ## BASES DE DATOS 
