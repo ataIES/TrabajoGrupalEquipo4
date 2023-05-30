@@ -256,6 +256,7 @@ public class Prestamos extends javax.swing.JFrame {
 
         jComboBoxPeriodoMesesSolicitar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3", "6", "12", "24", "48" }));
         jComboBoxPeriodoMesesSolicitar.setToolTipText("Periodo en meses en los que se devolverá el préstamo.");
+        jComboBoxPeriodoMesesSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPSolicitar.add(jComboBoxPeriodoMesesSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 50, -1));
 
         jLabelPeriodoMesesSolicitar.setForeground(new java.awt.Color(255, 255, 255));
@@ -269,6 +270,7 @@ public class Prestamos extends javax.swing.JFrame {
 
         jComboBoxTipoInteresSolicitar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "1.5", "2", "2.5", "3", "3.5" }));
         jComboBoxTipoInteresSolicitar.setToolTipText("Tipo de interés del préstamo en %.");
+        jComboBoxTipoInteresSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPSolicitar.add(jComboBoxTipoInteresSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 50, -1));
 
         jLabelPlazoAceptacionSolicitar.setForeground(new java.awt.Color(255, 255, 255));
@@ -277,6 +279,7 @@ public class Prestamos extends javax.swing.JFrame {
 
         jComboBoxPlazoAceptacionSolicitar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "10", "15", "20", "25", "30" }));
         jComboBoxPlazoAceptacionSolicitar.setToolTipText("Plazo de aceptación del préstamo en días.");
+        jComboBoxPlazoAceptacionSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPSolicitar.add(jComboBoxPlazoAceptacionSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 430, 50, -1));
         jPSolicitar.add(lblFondoSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 804, 580));
 
@@ -295,6 +298,7 @@ public class Prestamos extends javax.swing.JFrame {
 
         jBCalculo.setText("Calcular");
         jBCalculo.setToolTipText("Ejecutar el cálculo masivo de préstamos.");
+        jBCalculo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBCalculo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBCalculoActionPerformed(evt);
@@ -304,6 +308,7 @@ public class Prestamos extends javax.swing.JFrame {
 
         jBVolver.setText("Volver");
         jBVolver.setToolTipText("Volver al menú principal.");
+        jBVolver.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jBVolver.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBVolverActionPerformed(evt);
@@ -313,6 +318,7 @@ public class Prestamos extends javax.swing.JFrame {
 
         jGrabar.setText("Generar informe");
         jGrabar.setToolTipText("Guardar en un fichero de texto el informe de préstamos cálculados.");
+        jGrabar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jGrabar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jGrabarActionPerformed(evt);
@@ -343,6 +349,7 @@ public class Prestamos extends javax.swing.JFrame {
 
         jComboBoxFiltroMostrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ninguno", "DNI", "Localidad" }));
         jComboBoxFiltroMostrar.setToolTipText("Filtro de búsqueda.");
+        jComboBoxFiltroMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPMostrar.add(jComboBoxFiltroMostrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 90, -1, -1));
 
         jTextFieldDatoMostrar.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -415,6 +422,7 @@ public class Prestamos extends javax.swing.JFrame {
         jBFirmar.setText("Firmar");
         jBFirmar.setToolTipText("Firmar préstamo preconcedido seleccionado.");
         jBFirmar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBFirmar.setEnabled(false);
         jBFirmar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jBFirmarActionPerformed(evt);
@@ -474,6 +482,7 @@ public class Prestamos extends javax.swing.JFrame {
 
         jButtonGenerarInformePrestamosConcedidosActionPerformed.setText("Generar informe");
         jButtonGenerarInformePrestamosConcedidosActionPerformed.setToolTipText("Generar informe de préstamos concedidos.");
+        jButtonGenerarInformePrestamosConcedidosActionPerformed.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonGenerarInformePrestamosConcedidosActionPerformed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonGenerarInformePrestamosConcedidosActionPerformedActionPerformed(evt);
@@ -559,6 +568,7 @@ public class Prestamos extends javax.swing.JFrame {
         jTableMostrar.setModel(new DefaultTableModel());
         jButtonProcesarSolicitar.setEnabled(false);
         jTextFieldDatoMostrar.setEnabled(true);
+        jComboBoxFiltroMostrar.setSelectedIndex(0);
     }//GEN-LAST:event_jButtonLimpiarMostrarActionPerformed
 
     /**
@@ -580,35 +590,43 @@ public class Prestamos extends javax.swing.JFrame {
          */
         String dni = jTextFieldDNISolicitar.getText();
 
-        if (Funciones.esCadenaValida(dni, "[0-9]{7,8}[A-Z a-z]")) {
+        if (!dni.equalsIgnoreCase("")) {
 
-            jTextFieldDNISolicitar.setEnabled(false);
-            Cliente cliente = MetodosBD.clientePorDni(dni);
+            if (Funciones.esCadenaValida(dni, "[0-9]{7,8}[A-Z a-z]")) {
 
-            if (cliente != null) {
+                jTextFieldDNISolicitar.setEnabled(false);
+                Cliente cliente = MetodosBD.clientePorDni(dni);
 
-                jButtonProcesarSolicitar.setEnabled(true);
-                String[] columnasTablaSolicitar = {"DNI", "Nombre", "Apellidos", "IBAN", "Tipo cuenta"};
-                String[] datosCliente = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), cliente.getCuentaBancaria().getIBAN(), cliente.getCuentaBancaria().getTipoCuenta().name()};
-                DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar) {
-                    // Sobrescribir el método isCellEditable para que devuelva siempre false
-                    @Override
-                    public boolean isCellEditable(int row, int column) {
-                        return false; // No permitir la edición de ninguna celda
-                    }
-                };
-                jTableSolicitar.setModel(modeloTabla);
-                jTableSolicitar.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-                modeloTabla.addRow(datosCliente);
+                if (cliente != null) {
+
+                    jButtonProcesarSolicitar.setEnabled(true);
+                    String[] columnasTablaSolicitar = {"DNI", "Nombre", "Apellidos", "IBAN", "Tipo cuenta"};
+                    String[] datosCliente = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), cliente.getCuentaBancaria().getIBAN(), cliente.getCuentaBancaria().getTipoCuenta().name()};
+                    DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar) {
+                        // Sobrescribir el método isCellEditable para que devuelva siempre false
+                        @Override
+                        public boolean isCellEditable(int row, int column) {
+                            return false; // No permitir la edición de ninguna celda
+                        }
+                    };
+                    jTableSolicitar.setModel(modeloTabla);
+                    jTableSolicitar.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+                    modeloTabla.addRow(datosCliente);
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "No existe como cliente del banco.", "Solicitar préstamo", JOptionPane.WARNING_MESSAGE, null);
+                    jButtonLimpiarSolicitarActionPerformed(evt);
+                }
 
             } else {
-                JOptionPane.showMessageDialog(null, "No existe como cliente del banco.", "Informativo", JOptionPane.WARNING_MESSAGE, null);
+                JOptionPane.showMessageDialog(null, "El DNI no tiene el formato correcto.", "Solicitar préstamo", JOptionPane.WARNING_MESSAGE, null);
+                jButtonLimpiarSolicitarActionPerformed(evt);
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "El DNI no tiene el formato correcto.", "Informativo", JOptionPane.WARNING_MESSAGE, null);
-            jButtonLimpiarSolicitarActionPerformed(evt);
+            JOptionPane.showMessageDialog(null, "El DNI no puede estar vacío.", "Solicitar préstamo", JOptionPane.WARNING_MESSAGE, null);
         }
+
 
     }//GEN-LAST:event_jButtonBuscarSolicitarActionPerformed
 
@@ -635,38 +653,38 @@ public class Prestamos extends javax.swing.JFrame {
                 }
             }
 
+            //Mostrar préstamos preconcedidos generados
+            List<PrestamoPreconcedido> lista = MetodosBD.listarPrestamosPreconcedidos();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+            if (!lista.isEmpty()) {
+
+                String[] columnasTablaSolicitar = {"NºPrestamo", "DNI Cliente", "Fecha_Oferta", "Cantidad €", "Periodo en Meses", "Interés %", "Plazo de Aceptación"};
+                DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar) {
+                    // Sobrescribir el método isCellEditable para que devuelva siempre false
+                    @Override
+                    public boolean isCellEditable(int row, int column) {
+                        return false; // No permitir la edición de ninguna celda
+                    }
+                };
+                jTableCalculo.setModel(modeloTabla);
+                jTableCalculo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+                for (PrestamoPreconcedido preconcedido : lista) {
+                    String[] datosPreconcedidos = {String.valueOf(preconcedido.getId()), preconcedido.getCliente().getDni(), preconcedido.getFecha().format(formatter),
+                        String.valueOf(preconcedido.getCantidad()), String.valueOf(preconcedido.getPeriodoMeses()), String.valueOf(preconcedido.getTipoInteres()),
+                        String.valueOf(preconcedido.getPlazoAceptacion())};
+                    modeloTabla.addRow(datosPreconcedidos);
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "No hay ningún préstamo preconcedido", "Cálculo de los Préstamos preconcedidos", JOptionPane.ERROR_MESSAGE);
+            }
+
             //JOptionPane.showMessageDialog(null, "Cálculo masivo generado.", "Cálculo de los Préstamos preconcedidos", JOptionPane.INFORMATION_MESSAGE, null);
         } else {
             JOptionPane.showMessageDialog(null, "La lista de clientes está vacía. No se ha generado ningún cálculo.", "Cálculo de los Préstamos preconcedidos", JOptionPane.ERROR_MESSAGE, null);
             System.out.println("Está vacía.");
-        }
-
-        //Mostrar préstamos preconcedidos generados
-        List<PrestamoPreconcedido> lista = MetodosBD.listarPrestamosPreconcedidos();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-
-        if (!lista.isEmpty()) {
-
-            String[] columnasTablaSolicitar = {"NºPrestamo", "DNI Cliente", "Fecha_Oferta", "Cantidad €", "Periodo en Meses", "Interés %", "Plazo de Aceptación"};
-            DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar) {
-                // Sobrescribir el método isCellEditable para que devuelva siempre false
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    return false; // No permitir la edición de ninguna celda
-                }
-            };
-            jTableCalculo.setModel(modeloTabla);
-            jTableCalculo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-            for (PrestamoPreconcedido preconcedido : lista) {
-                String[] datosPreconcedidos = {String.valueOf(preconcedido.getId()), preconcedido.getCliente().getDni(), preconcedido.getFecha().format(formatter),
-                    String.valueOf(preconcedido.getCantidad()), String.valueOf(preconcedido.getPeriodoMeses()), String.valueOf(preconcedido.getTipoInteres()),
-                    String.valueOf(preconcedido.getPlazoAceptacion())};
-                modeloTabla.addRow(datosPreconcedidos);
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(null, "No hay ningún préstamo preconcedido", "Cálculo de los Préstamos preconcedidos", JOptionPane.ERROR_MESSAGE);
         }
 
     }//GEN-LAST:event_jBCalculoActionPerformed
@@ -709,7 +727,7 @@ public class Prestamos extends javax.swing.JFrame {
         jTablePreconcedidosFirmar.setModel(new DefaultTableModel());
         jTableConcedidosFirmar.setModel(new DefaultTableModel());
         jTIntroDNI.setEnabled(true);
-
+        jBFirmar.setEnabled(false);
     }//GEN-LAST:event_jBPLimpiarActionPerformed
 
     /**
@@ -770,50 +788,82 @@ public class Prestamos extends javax.swing.JFrame {
 
         String dni = jTIntroDNI.getText();
 
-        if (Funciones.esCadenaValida(dni, "[0-9]{7,8}[A-Z a-z]")) {
+        if (!dni.equalsIgnoreCase("")) {
 
-            jTIntroDNI.setEnabled(false);
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            String[] columnasTablaPrestamosPre = {"Nº Préstamo", "Fecha oferta", "Cantidad €", "Periodo en Meses", "Interés %", "Plazo de Aceptación", "Firmado"};
-            DefaultTableModel modeloTablaPrestamosPre = new DefaultTableModel(null, columnasTablaPrestamosPre) {
-                // Sobrescribir el método isCellEditable para que devuelva siempre false
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    return false; // No permitir la edición de ninguna celda
+            if (Funciones.esCadenaValida(dni, "[0-9]{7,8}[A-Z a-z]")) {
+
+                Cliente aux = MetodosBD.clientePorDni(dni);
+
+                if (aux != null) {
+
+                    jTIntroDNI.setEnabled(false);
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    String[] columnasTablaPrestamosPre = {"Nº Préstamo", "Fecha oferta", "Cantidad €", "Periodo en Meses", "Interés %", "Plazo de Aceptación", "Firmado"};
+                    DefaultTableModel modeloTablaPrestamosPre = new DefaultTableModel(null, columnasTablaPrestamosPre) {
+                        // Sobrescribir el método isCellEditable para que devuelva siempre false
+                        @Override
+                        public boolean isCellEditable(int row, int column) {
+                            return false; // No permitir la edición de ninguna celda
+                        }
+                    };
+                    jTablePreconcedidosFirmar.setModel(modeloTablaPrestamosPre);
+                    jTablePreconcedidosFirmar.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+                    List<PrestamoPreconcedido> prestamos = MetodosBD.listarPrestamosPreconcedidosPorDNI(dni);
+
+                    if (!prestamos.isEmpty()) {
+
+                        jBFirmar.setEnabled(true);
+
+                        for (PrestamoPreconcedido prestamo : prestamos) {
+                            String[] datosPrestamo = {String.valueOf(prestamo.getId()), prestamo.getFecha().format(formatter), String.valueOf(prestamo.getCantidad()), String.valueOf(prestamo.getPeriodoMeses()), String.valueOf(prestamo.getTipoInteres()), String.valueOf(prestamo.getPlazoAceptacion()), prestamo.isFirmado() ? "Sí" : "No"};
+                            modeloTablaPrestamosPre.addRow(datosPrestamo);
+                        }
+
+                    } else {
+                        jTablePreconcedidosFirmar.setModel(new DefaultTableModel());
+                        JOptionPane.showMessageDialog(null, "No se encuentran préstamos preconcedidos para el DNI introducido.", "Firma de préstamo", JOptionPane.WARNING_MESSAGE, null);
+                    }
+
+                    String[] columnasTablaPrestamosCon = {"Nº Préstamo", "Fecha firma", "Cantidad mensual €", "Nº P. Preconcedido"};
+                    DefaultTableModel modeloTablaPrestamosCon = new DefaultTableModel(null, columnasTablaPrestamosCon) {
+                        // Sobrescribir el método isCellEditable para que devuelva siempre false
+                        @Override
+                        public boolean isCellEditable(int row, int column) {
+                            return false; // No permitir la edición de ninguna celda
+                        }
+                    };
+                    jTableConcedidosFirmar.setModel(modeloTablaPrestamosCon);
+                    jTableConcedidosFirmar.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+                    List<PrestamoConcedido> prestamosConcedidos = MetodosBD.listarPrestamosConcedidosPorId(aux.getUuid());
+
+                    if (!prestamosConcedidos.isEmpty()) {
+
+                        for (PrestamoConcedido prestamoConcedido : prestamosConcedidos) {
+                            String[] datosPrestamo = {String.valueOf(prestamoConcedido.getId()), prestamoConcedido.getFecha().format(formatter), String.valueOf(prestamoConcedido.getCantidad()), String.valueOf(prestamoConcedido.getPrestamoPreconcedido().getId())};
+                            modeloTablaPrestamosCon.addRow(datosPrestamo);
+                        }
+
+                    } else {
+                        jTableConcedidosFirmar.setModel(new DefaultTableModel());
+                        JOptionPane.showMessageDialog(null, "No se encuentra préstamos concedidos para el DNI introducido.", "Firma de préstamo", JOptionPane.WARNING_MESSAGE, null);
+                    }
+
+                } else {
+                    jTableConcedidosFirmar.setModel(new DefaultTableModel());
+                    JOptionPane.showMessageDialog(null, "No se encuentra el cliente para el DNI introducido.", "Firma de préstamo", JOptionPane.WARNING_MESSAGE, null);
+                    jBPLimpiarActionPerformed(evt);
                 }
-            };
-            jTablePreconcedidosFirmar.setModel(modeloTablaPrestamosPre);
-            jTablePreconcedidosFirmar.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-            List<PrestamoPreconcedido> prestamos = MetodosBD.listarPrestamosPreconcedidosPorDNI(dni);
-
-            for (PrestamoPreconcedido prestamo : prestamos) {
-                String[] datosPrestamo = {String.valueOf(prestamo.getId()), prestamo.getFecha().format(formatter), String.valueOf(prestamo.getCantidad()), String.valueOf(prestamo.getPeriodoMeses()), String.valueOf(prestamo.getTipoInteres()), String.valueOf(prestamo.getPlazoAceptacion()), prestamo.isFirmado() ? "Sí" : "No"};
-                modeloTablaPrestamosPre.addRow(datosPrestamo);
-            }
-
-            String[] columnasTablaPrestamosCon = {"Nº Préstamo", "Fecha firma", "Cantidad mensual €", "Nº P. Preconcedido"};
-            DefaultTableModel modeloTablaPrestamosCon = new DefaultTableModel(null, columnasTablaPrestamosCon) {
-                // Sobrescribir el método isCellEditable para que devuelva siempre false
-                @Override
-                public boolean isCellEditable(int row, int column) {
-                    return false; // No permitir la edición de ninguna celda
-                }
-            };
-            jTableConcedidosFirmar.setModel(modeloTablaPrestamosCon);
-            jTableConcedidosFirmar.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-
-            Cliente aux = MetodosBD.clientePorDni(dni);
-            List<PrestamoConcedido> prestamosConcedidos = MetodosBD.listarPrestamosConcedidosPorId(aux.getUuid());
-
-            for (PrestamoConcedido prestamoConcedido : prestamosConcedidos) {
-                String[] datosPrestamo = {String.valueOf(prestamoConcedido.getId()), prestamoConcedido.getFecha().format(formatter), String.valueOf(prestamoConcedido.getCantidad()), String.valueOf(prestamoConcedido.getPrestamoPreconcedido().getId())};
-                modeloTablaPrestamosCon.addRow(datosPrestamo);
+            } else {
+                JOptionPane.showMessageDialog(null, "El DNI no tiene el formato correcto.", "Firma de préstamo", JOptionPane.WARNING_MESSAGE, null);
+                jBPLimpiarActionPerformed(evt);
             }
 
         } else {
-            JOptionPane.showMessageDialog(null, "El DNI no tiene el formato correcto.", "Firma de préstamo", JOptionPane.WARNING_MESSAGE, null);
             jBPLimpiarActionPerformed(evt);
+            JOptionPane.showMessageDialog(null, "El DNI no puede estar vacío.", "Firma de préstamo", JOptionPane.WARNING_MESSAGE, null);
         }
 
     }//GEN-LAST:event_jBPreconcedidos2ActionPerformed
@@ -895,40 +945,80 @@ public class Prestamos extends javax.swing.JFrame {
 
             String dni = jTextFieldDatoMostrar.getText();
 
-            if (Funciones.esCadenaValida(dni, "[0-9]{7,8}[A-Z a-z]")) {
-                List<PrestamoPreconcedido> prestamos = MetodosBD.listarPrestamosPreconcedidosPorDNI(dni);
+            if (!dni.equalsIgnoreCase("")) {
 
-                for (PrestamoPreconcedido prestamo : prestamos) {
+                if (Funciones.esCadenaValida(dni, "[0-9]{7,8}[A-Z a-z]")) {
 
-                    Cliente cliente = prestamo.getCliente();
-                    String[] datosPrestamo = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), cliente.getFechaNacimiento().format(formatter), cliente.getLocalidad(), String.valueOf(prestamo.getCantidad()), prestamo.isFirmado() ? "Sí" : "No"};
-                    modeloTabla.addRow(datosPrestamo);
+                    List<PrestamoPreconcedido> prestamos = MetodosBD.listarPrestamosPreconcedidosPorDNI(dni);
+
+                    if (!prestamos.isEmpty()) {
+
+                        for (PrestamoPreconcedido prestamo : prestamos) {
+
+                            Cliente cliente = prestamo.getCliente();
+                            String[] datosPrestamo = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), cliente.getFechaNacimiento().format(formatter), cliente.getLocalidad(), String.valueOf(prestamo.getCantidad()), prestamo.isFirmado() ? "Sí" : "No"};
+                            modeloTabla.addRow(datosPrestamo);
+                        }
+
+                    } else {
+                        jButtonLimpiarMostrarActionPerformed(evt);
+                        JOptionPane.showMessageDialog(null, "No se encuentran clientes y préstamos con el DNI introducido.", "Mostrar datos de clientes y préstamos", JOptionPane.WARNING_MESSAGE, null);
+                    }
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "El DNI no tiene el formato correcto.", "Mostrar datos de clientes y préstamos", JOptionPane.WARNING_MESSAGE, null);
+                    jButtonLimpiarMostrarActionPerformed(evt);
                 }
+
             } else {
-                JOptionPane.showMessageDialog(null, "El DNI no tiene el formato correcto.", "Informativo", JOptionPane.WARNING_MESSAGE, null);
                 jButtonLimpiarMostrarActionPerformed(evt);
+                JOptionPane.showMessageDialog(null, "El DNI no puede estar vacío.", "Mostrar datos de clientes y préstamos", JOptionPane.WARNING_MESSAGE, null);
             }
 
         } else if (opc.equalsIgnoreCase("localidad")) {
 
             String ciudad = jTextFieldDatoMostrar.getText();
-            List<PrestamoPreconcedido> prestamos = MetodosBD.listarPrestamosPreconcedidosPorLocalidad(ciudad);
 
-            for (PrestamoPreconcedido prestamo : prestamos) {
+            if (!ciudad.equalsIgnoreCase("")) {
 
-                Cliente cliente = prestamo.getCliente();
-                String[] datosPrestamo = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), cliente.getFechaNacimiento().format(formatter), cliente.getLocalidad(), String.valueOf(prestamo.getCantidad()), prestamo.isFirmado() ? "Sí" : "No"};
-                modeloTabla.addRow(datosPrestamo);
+                List<PrestamoPreconcedido> prestamos = MetodosBD.listarPrestamosPreconcedidosPorLocalidad(ciudad);
+
+                if (!prestamos.isEmpty()) {
+
+                    for (PrestamoPreconcedido prestamo : prestamos) {
+
+                        Cliente cliente = prestamo.getCliente();
+                        String[] datosPrestamo = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), cliente.getFechaNacimiento().format(formatter), cliente.getLocalidad(), String.valueOf(prestamo.getCantidad()), prestamo.isFirmado() ? "Sí" : "No"};
+                        modeloTabla.addRow(datosPrestamo);
+                    }
+
+                } else {
+                    jButtonLimpiarMostrarActionPerformed(evt);
+                    JOptionPane.showMessageDialog(null, "No se encuentran clientes y préstamos con la localidad introducida.", "Mostrar datos de clientes y préstamos", JOptionPane.WARNING_MESSAGE, null);
+                }
+
+            } else {
+                jButtonLimpiarMostrarActionPerformed(evt);
+                JOptionPane.showMessageDialog(null, "La localidad no puede estar vacía.", "Mostrar datos de clientes y préstamos", JOptionPane.WARNING_MESSAGE, null);
             }
+
         } else if (opc.equalsIgnoreCase("ninguno")) {
 
+            jTextFieldDatoMostrar.setText("");
             jTextFieldDatoMostrar.setEnabled(false);
             List<PrestamoPreconcedido> prestamos = MetodosBD.listarPrestamosPreconcedidos();
 
-            for (PrestamoPreconcedido prestamo : prestamos) {
-                Cliente cliente = prestamo.getCliente();
-                String[] datosPrestamo = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), cliente.getFechaNacimiento().format(formatter), cliente.getLocalidad(), String.valueOf(prestamo.getCantidad()), prestamo.isFirmado() ? "Sí" : "No"};
-                modeloTabla.addRow(datosPrestamo);
+            if (!prestamos.isEmpty()) {
+
+                for (PrestamoPreconcedido prestamo : prestamos) {
+                    Cliente cliente = prestamo.getCliente();
+                    String[] datosPrestamo = {cliente.getDni(), cliente.getNombre(), cliente.getApellidos(), cliente.getFechaNacimiento().format(formatter), cliente.getLocalidad(), String.valueOf(prestamo.getCantidad()), prestamo.isFirmado() ? "Sí" : "No"};
+                    modeloTabla.addRow(datosPrestamo);
+                }
+
+            } else {
+                jButtonLimpiarMostrarActionPerformed(evt);
+                JOptionPane.showMessageDialog(null, "No se encuentran clientes y préstamos.", "Mostrar datos de clientes y préstamos", JOptionPane.WARNING_MESSAGE, null);
             }
 
         }
@@ -946,18 +1036,24 @@ public class Prestamos extends javax.swing.JFrame {
         File fichero = new File(System.getenv("userprofile") + "\\Documents", "PrestamosPreconcedidos.txt");
         List<PrestamoPreconcedido> lista = MetodosBD.listarPrestamosPreconcedidos();
 
-        if (!fichero.exists()) {
-            Ficheros.escribirLineaALineaDeListPrestamosPreconcedidos(fichero, lista);
-            JOptionPane.showMessageDialog(null, "Se ha grabado en un fichero correctamente", "Fichero preconcedidos", JOptionPane.INFORMATION_MESSAGE);
-        } else {
+        if (!lista.isEmpty()) {
 
-            if (Ficheros.eliminar(fichero)) {
+            if (!fichero.exists()) {
                 Ficheros.escribirLineaALineaDeListPrestamosPreconcedidos(fichero, lista);
-                JOptionPane.showMessageDialog(null, "Se ha generado un informe en:\n" + fichero.getAbsolutePath(), "Fichero preconcedidos", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se ha generado el informe correctamente en:\n" + fichero.getAbsolutePath(), "Informe préstamos preconcedidos", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(null, "No se puede eliminar el fichero.", "Fichero concedidos", JOptionPane.ERROR_MESSAGE);
+
+                if (Ficheros.eliminar(fichero)) {
+                    Ficheros.escribirLineaALineaDeListPrestamosPreconcedidos(fichero, lista);
+                    JOptionPane.showMessageDialog(null, "Se ha generado el informe en:\n" + fichero.getAbsolutePath(), "Informe préstamos preconcedidos", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se puede eliminar el informe:\n" + fichero.getAbsolutePath(), "Informe préstamos preconcedidos", JOptionPane.ERROR_MESSAGE);
+                }
+
             }
 
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encuentran clientes y préstamos preconcedidos.", "Informe préstamos preconcedidos", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_jGrabarActionPerformed
@@ -1007,18 +1103,24 @@ public class Prestamos extends javax.swing.JFrame {
         File fichero = new File(System.getenv("userprofile") + "\\Documents", "PrestamosConcedidos.txt");
         List<PrestamoConcedido> lista = MetodosBD.listarPrestamosConcedidos();
 
-        if (!fichero.exists()) {
-            Ficheros.escribirLineaALineaDeListPrestamosConcedidos(fichero, lista);
-            JOptionPane.showMessageDialog(null, "Se ha grabado en un fichero correctamente", "Fichero Concedidos", JOptionPane.INFORMATION_MESSAGE);
-        } else {
+        if (!lista.isEmpty()) {
 
-            if (Ficheros.eliminar(fichero)) {
+            if (!fichero.exists()) {
                 Ficheros.escribirLineaALineaDeListPrestamosConcedidos(fichero, lista);
-                JOptionPane.showMessageDialog(null, "Se ha generado un informe en:\n" + fichero.getAbsolutePath(), "Fichero Concedidos", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Se ha generado el informe correctamente en:\n" + fichero.getAbsolutePath(), "Informe préstamos concedidos", JOptionPane.INFORMATION_MESSAGE);
             } else {
-                JOptionPane.showMessageDialog(null, "No se puede eliminar el fichero.", "Fichero Concedidos", JOptionPane.INFORMATION_MESSAGE);
+
+                if (Ficheros.eliminar(fichero)) {
+                    Ficheros.escribirLineaALineaDeListPrestamosConcedidos(fichero, lista);
+                    JOptionPane.showMessageDialog(null, "Se ha generado el informe en:\n" + fichero.getAbsolutePath(), "Informe préstamos concedidos", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "No se puede eliminar el informe:\n" + fichero.getAbsolutePath(), "Informe préstamos concedidos", JOptionPane.ERROR_MESSAGE);
+                }
+
             }
 
+        } else {
+            JOptionPane.showMessageDialog(null, "No se encuentran clientes y préstamos concedidos.", "Informe préstamos concedidos", JOptionPane.WARNING_MESSAGE);
         }
 
     }//GEN-LAST:event_jButtonGenerarInformePrestamosConcedidosActionPerformedActionPerformed

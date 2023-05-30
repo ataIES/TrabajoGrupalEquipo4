@@ -269,6 +269,9 @@
               </StringArray>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Periodo en meses en los que se devolver&#xe1; el pr&#xe9;stamo."/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -319,6 +322,9 @@
               </StringArray>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Tipo de inter&#xe9;s del pr&#xe9;stamo en %."/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -354,6 +360,9 @@
               </StringArray>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Plazo de aceptaci&#xf3;n del pr&#xe9;stamo en d&#xed;as."/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -424,6 +433,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Calcular"/>
             <Property name="toolTipText" type="java.lang.String" value="Ejecutar el c&#xe1;lculo masivo de pr&#xe9;stamos."/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBCalculoActionPerformed"/>
@@ -438,6 +450,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Volver"/>
             <Property name="toolTipText" type="java.lang.String" value="Volver al men&#xfa; principal."/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBVolverActionPerformed"/>
@@ -452,6 +467,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Generar informe"/>
             <Property name="toolTipText" type="java.lang.String" value="Guardar en un fichero de texto el informe de pr&#xe9;stamos c&#xe1;lculados."/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jGrabarActionPerformed"/>
@@ -529,6 +547,9 @@
               </StringArray>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Filtro de b&#xfa;squeda."/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -675,6 +696,7 @@
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBFirmarActionPerformed"/>
@@ -779,6 +801,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Generar informe"/>
             <Property name="toolTipText" type="java.lang.String" value="Generar informe de pr&#xe9;stamos concedidos."/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Hand Cursor"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonGenerarInformePrestamosConcedidosActionPerformedActionPerformed"/>

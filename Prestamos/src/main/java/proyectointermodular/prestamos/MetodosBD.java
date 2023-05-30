@@ -109,27 +109,31 @@ public class MetodosBD {
 
         Cliente caux = clientePorDni(dni);
         List<PrestamoPreconcedido> listaprestamoPreconcedido = new ArrayList();
-        String uuid = caux.getUuid();
-        String sql = "SELECT * FROM " + TABLA_PRECONCEDIDOS + " WHERE cliente_id = ?";
 
-        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+        if (caux != null) {
 
-            stmt.setString(1, uuid);
+            String uuid = caux.getUuid();
+            String sql = "SELECT * FROM " + TABLA_PRECONCEDIDOS + " WHERE cliente_id = ?";
 
-            try ( ResultSet rs = stmt.executeQuery();) {
-                while (rs.next()) {
+            try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
 
-                    PrestamoPreconcedido prestamopreconcedido = crearPrestamoPreconcedido(rs);
+                stmt.setString(1, uuid);
 
-                    if (!listaprestamoPreconcedido.add(prestamopreconcedido)) {
-                        throw new Exception("Error: no se ha insertado el objeto en la colección.");
+                try ( ResultSet rs = stmt.executeQuery();) {
+                    while (rs.next()) {
+
+                        PrestamoPreconcedido prestamopreconcedido = crearPrestamoPreconcedido(rs);
+
+                        if (!listaprestamoPreconcedido.add(prestamopreconcedido)) {
+                            throw new Exception("Error: no se ha insertado el objeto en la colección.");
+                        }
                     }
                 }
+            } catch (SQLException ex) {
+                System.out.println("SQLException: " + ex.getMessage());
+            } catch (Exception ex) {
+                System.out.println(ex.getMessage());
             }
-        } catch (SQLException ex) {
-            System.out.println("SQLException: " + ex.getMessage());
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
         }
 
         return listaprestamoPreconcedido;
@@ -182,28 +186,32 @@ public class MetodosBD {
         List<PrestamoPreconcedido> listaprestamoPreconcedido = new ArrayList();
         String sql = "SELECT * FROM " + TABLA_PRECONCEDIDOS + " WHERE cliente_id = ?";
 
-        for (Cliente cliente : clientes) {
+        if (!clientes.isEmpty()) {
 
-            String uuid = cliente.getUuid();
-            try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+            for (Cliente cliente : clientes) {
 
-                stmt.setString(1, uuid);
+                String uuid = cliente.getUuid();
+                try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
 
-                try ( ResultSet rs = stmt.executeQuery();) {
-                    while (rs.next()) {
+                    stmt.setString(1, uuid);
 
-                        PrestamoPreconcedido prestamopreconcedido = crearPrestamoPreconcedido(rs);
+                    try ( ResultSet rs = stmt.executeQuery();) {
+                        while (rs.next()) {
 
-                        if (!listaprestamoPreconcedido.add(prestamopreconcedido)) {
-                            throw new Exception("Error: no se ha insertado el objeto en la colección.");
+                            PrestamoPreconcedido prestamopreconcedido = crearPrestamoPreconcedido(rs);
+
+                            if (!listaprestamoPreconcedido.add(prestamopreconcedido)) {
+                                throw new Exception("Error: no se ha insertado el objeto en la colección.");
+                            }
                         }
                     }
+                } catch (SQLException ex) {
+                    System.out.println("SQLException: " + ex.getMessage());
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
                 }
-            } catch (SQLException ex) {
-                System.out.println("SQLException: " + ex.getMessage());
-            } catch (Exception ex) {
-                System.out.println(ex.getMessage());
             }
+
         }
 
         return listaprestamoPreconcedido;
