@@ -748,29 +748,42 @@ public class Prestamos extends javax.swing.JFrame {
             int num = Integer.parseInt(jTablePreconcedidosFirmar.getValueAt(fila, 0).toString());
 
             Cliente cliente = MetodosBD.clientePorDni(dni);
-            PrestamoPreconcedido prestamo = MetodosBD.prestamoPreconcedidoPorIdClienteNum(cliente.getUuid(), num);
 
-            if (!prestamo.isFirmado()) {
+            if (cliente != null) {
 
-                if (Funciones.esFechaAnterior(fecha, prestamo.getFecha().plusDays(prestamo.getPlazoAceptacion()))) {
+                PrestamoPreconcedido prestamo = MetodosBD.prestamoPreconcedidoPorIdClienteNum(cliente.getUuid(), num);
 
-                    double cantidadSinTasas = prestamo.getCantidad() / prestamo.getPeriodoMeses();
-                    double tasas = (cantidadSinTasas * prestamo.getTipoInteres()) / 100;
-                    double cantidadFinal = cantidadSinTasas + tasas;
+                if (prestamo != null) {
 
-                    PrestamoConcedido prestamoC = new PrestamoConcedido(prestamo, null, cliente, fecha, cantidadFinal);
+                    if (!prestamo.isFirmado()) {
 
-                    MetodosBD.insertarPrestamoConcedido(prestamoC);
+                        if (Funciones.esFechaAnterior(fecha, prestamo.getFecha().plusDays(prestamo.getPlazoAceptacion()))) {
 
-                    JOptionPane.showMessageDialog(null, "Préstamo concedido guardado.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
-                    jBPreconcedidos2ActionPerformed(evt);
+                            double cantidadSinTasas = prestamo.getCantidad() / prestamo.getPeriodoMeses();
+                            double tasas = (cantidadSinTasas * prestamo.getTipoInteres()) / 100;
+                            double cantidadFinal = cantidadSinTasas + tasas;
+
+                            PrestamoConcedido prestamoC = new PrestamoConcedido(prestamo, null, cliente, fecha, cantidadFinal);
+
+                            MetodosBD.insertarPrestamoConcedido(prestamoC);
+
+                            JOptionPane.showMessageDialog(null, "Préstamo preconcedido firmado.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
+                            jBPreconcedidos2ActionPerformed(evt);
+
+                        } else {
+                            JOptionPane.showMessageDialog(null, "La fecha de la oferta ya no es válida.", "Firma de préstamo", JOptionPane.WARNING_MESSAGE, null);
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El préstamo preconcedido seleccionado ya está firmado.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
+                    }
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "La fecha de la oferta ya no es válida.", "Firma de préstamo", JOptionPane.WARNING_MESSAGE, null);
+                    JOptionPane.showMessageDialog(null, "No se encuentra el préstamo seleccionado.", "Firma de préstamo", JOptionPane.WARNING_MESSAGE, null);
                 }
 
             } else {
-                JOptionPane.showMessageDialog(null, "El préstamo preconcedido seleccionado ya está firmado.", "Firma de préstamo", JOptionPane.INFORMATION_MESSAGE, null);
+                JOptionPane.showMessageDialog(null, "No se encuentra el cliente con el DNI introducido.", "Firma de préstamo", JOptionPane.WARNING_MESSAGE, null);
             }
 
         } else {
