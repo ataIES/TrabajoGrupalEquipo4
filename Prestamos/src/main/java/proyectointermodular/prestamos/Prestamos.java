@@ -27,7 +27,8 @@ public class Prestamos extends javax.swing.JFrame {
     /**
      * Atributo de tipo AccesoBaseDatos que será la instancia de conexión a la BD.
      */
-    private AccesoBaseDatos bd = AccesoBaseDatos.getInstance();
+    private AccesoBaseDatosConfigProperties bd = AccesoBaseDatosConfigProperties.getInstance();
+    //private AccesoBaseDatos bd = AccesoBaseDatos.getInstance();
 
     /**
      * Creates new form PrestamosI

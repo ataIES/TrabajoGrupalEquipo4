@@ -37,7 +37,8 @@ public class MetodosBD {
      * return Devuelve un Connection.
      */
     private static Connection getConnection() {
-        return AccesoBaseDatos.getInstance().getConn();
+        //return AccesoBaseDatos.getInstance().getConn();
+        return AccesoBaseDatosConfigProperties.getInstance().getConn();
     }
 
     /**
