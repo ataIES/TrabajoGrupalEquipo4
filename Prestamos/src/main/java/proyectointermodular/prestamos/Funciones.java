@@ -6,6 +6,7 @@ package proyectointermodular.prestamos;
 
 import java.time.LocalDate;
 import java.util.regex.PatternSyntaxException;
+import javax.swing.JLabel;
 
 /**
  * Clase Funciones que contiene métodos estáticos auxiliares.
@@ -26,7 +27,7 @@ public class Funciones {
      * @param cliente Parámetro de tipo Cliente.
      * @return Devuelve un Cliente.
      */
-    public static Cliente aptoParaPrestamo(Cliente cliente) {
+    public static Cliente aptoParaPrestamo(Cliente cliente, JLabel jT) {
 
         Cliente clienteApto = null;
 
@@ -49,44 +50,50 @@ public class Funciones {
                                 if (!esDesempleadoOEstudianteOAmoCasa(pareja)) { //Si la pareja no está desempleado, estudiante o amo de casa.
 
                                     if (tieneBasesMinimas(pareja)) { //Si cumple con las bases mínimas la pareja es APTA para solicitar un préstamo.
-                                        //apto = true;
                                         clienteApto = pareja;
                                     } else { //Si no cumple con las bases mínimas la pareja no es APTA para solicitar un préstamo.
-                                        System.out.println(pareja.getDni() + " Préstamo no concedido: No cumple con las bases mínimas.");
+                                        System.out.println(pareja.getDni() + " Préstamo no concedido: Pareja no cumple con las bases mínimas.");
+                                        if (jT != null) jT.setText("Pareja no cumple con las bases mínimas.");
                                     }
 
                                 } else { //Si la pareja es desempleada, estudiante o amo de casa.
                                     System.out.println(pareja.getDni() + " Préstamo no concedido: Pareja Desempleado, estudiante o amo de casa.");
+                                    if (jT != null) jT.setText("Pareja Desempleado, estudiante o amo de casa.");
                                 }
 
                             } else { //Pareja con morosidad o asuntos judiciales.
-                                System.out.println(pareja.getDni() + " Préstamo no concedido: Morosidad o asuntos judiciales.");
+                                System.out.println(pareja.getDni() + " Préstamo no concedido: Pareja morosidad o asuntos judiciales.");
+                                if (jT != null) jT.setText("Pareja morosidad o asuntos judiciales.");
                             }
 
                         } else { //Si no tienen régimen ganancial.
-                            System.out.println(cliente.getDni() + " Préstamo no concedido: Su pareja es cliente del banco pero tienen no tienen régimen ganancial.");
+                            System.out.println(cliente.getDni() + " Préstamo no concedido: Su pareja es cliente del banco pero no tienen régimen ganancial.");
+                            if (jT != null) jT.setText("Su pareja es cliente del banco pero no tienen régimen ganancial.");
                         }
 
                     } else { //Casado pero la pareja no es cliente del banco.
                         System.out.println(cliente.getDni() + " Préstamo no concedido: Casado pero su pareja no es cliente del banco.");
+                        if (jT != null) jT.setText("Casado pero su pareja no es cliente del banco.");
                     }
 
                 } else { //Es desempleado, estudiante o amo de casa y no está casado.
                     System.out.println(cliente.getDni() + " Préstamo no concedido: Desempleado, estudiante o amo de casa + Casado no.");
+                    if (jT != null) jT.setText("Desempleado, estudiante o amo de casa y Casado no.");
                 }
 
             } else { //El cliente está trabajando por cuenta propia, ajena o es pensionista.
 
                 if (tieneBasesMinimas(cliente)) { //Si cumple con las bases mínimas el cliente es APTO para solicitar un préstamo.
-                    //apto = true;
                     clienteApto = cliente;
                 } else { //Si no cumple con las bases mínimas el cliente no es APTO para solicitar un préstamo.
                     System.out.println(cliente.getDni() + " Préstamo no concedido: No cumple con las bases mínimas.");
+                    if (jT != null) jT.setText("No cumple con las bases mínimas.");
                 }
             }
 
         } else { //Si el cliente TIENE morosidad o proceso judicial.
             System.out.println(cliente.getDni() + " Préstamo no concedido: Morosidad o asuntos judiciales.");
+            if (jT != null) jT.setText("Morosidad o asuntos judiciales.");
         }
 
         //return apto;

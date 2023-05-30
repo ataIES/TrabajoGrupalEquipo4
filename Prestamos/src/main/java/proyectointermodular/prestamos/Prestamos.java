@@ -103,6 +103,7 @@ public class Prestamos extends javax.swing.JFrame {
         jComboBoxTipoInteresSolicitar = new javax.swing.JComboBox<>();
         jLabelPlazoAceptacionSolicitar = new javax.swing.JLabel();
         jComboBoxPlazoAceptacionSolicitar = new javax.swing.JComboBox<>();
+        jLabelAptoParaPrestamo = new javax.swing.JLabel();
         lblFondoSolicitar = new javax.swing.JLabel();
         jPCalcularPrestamo = new javax.swing.JPanel();
         jScrollPanePrestamo = new javax.swing.JScrollPane();
@@ -141,7 +142,7 @@ public class Prestamos extends javax.swing.JFrame {
         lblFondoFirmar = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Préstamos - Aurora Bank");
+        setTitle("Aurora Bank - Préstamos");
         setResizable(false);
         getContentPane().setLayout(new java.awt.CardLayout());
 
@@ -281,6 +282,10 @@ public class Prestamos extends javax.swing.JFrame {
         jComboBoxPlazoAceptacionSolicitar.setToolTipText("Plazo de aceptación del préstamo en días.");
         jComboBoxPlazoAceptacionSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPSolicitar.add(jComboBoxPlazoAceptacionSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 430, 50, -1));
+
+        jLabelAptoParaPrestamo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabelAptoParaPrestamo.setForeground(new java.awt.Color(255, 255, 255));
+        jPSolicitar.add(jLabelAptoParaPrestamo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
         jPSolicitar.add(lblFondoSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 804, 580));
 
         getContentPane().add(jPSolicitar, "card3");
@@ -532,6 +537,7 @@ public class Prestamos extends javax.swing.JFrame {
         jTableSolicitar.setModel(new DefaultTableModel());
         jButtonProcesarSolicitar.setEnabled(false);
         jTextFieldDNISolicitar.setEnabled(true);
+        jLabelAptoParaPrestamo.setText("");
     }//GEN-LAST:event_jButtonLimpiarSolicitarActionPerformed
 
     /**
@@ -645,7 +651,7 @@ public class Prestamos extends javax.swing.JFrame {
 
             for (Cliente clienteApto : clientes) {
 
-                if (Funciones.aptoParaPrestamo(clienteApto) != null) {
+                if (Funciones.aptoParaPrestamo(clienteApto, null) != null) {
                     System.out.println(clienteApto.getDni() + " Apto para préstamo" + " | Cantidad: " + Funciones.cantidadPrestamo(clienteApto));
                     MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido((int) (Math.random() * (24 - 3)) + 3, Math.random() * 3, (int) (Math.random() * (30 - 10)) + 10, clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
                 } else {
@@ -934,13 +940,29 @@ public class Prestamos extends javax.swing.JFrame {
 
         String dni = jTextFieldDNISolicitar.getText();
 
-        Cliente clienteApto = Funciones.aptoParaPrestamo(MetodosBD.clientePorDni(dni));
+        Cliente clienteApto = Funciones.aptoParaPrestamo(MetodosBD.clientePorDni(dni), jLabelAptoParaPrestamo);
 
         if (clienteApto != null) {
-            System.out.println(clienteApto.getDni() + " Apto para préstamo");
-            System.out.println("Cantidad: " + Funciones.cantidadPrestamo(clienteApto));
-            MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido(Integer.parseInt(jComboBoxPeriodoMesesSolicitar.getSelectedItem().toString()), Double.parseDouble(jComboBoxTipoInteresSolicitar.getSelectedItem().toString()), Integer.parseInt(jComboBoxPlazoAceptacionSolicitar.getSelectedItem().toString()), clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
-            JOptionPane.showMessageDialog(null, "Apto para préstamo. Cantidad = " + Funciones.cantidadPrestamo(clienteApto), "Solicitar préstamo", JOptionPane.INFORMATION_MESSAGE, null);
+
+            int opcion = JOptionPane.showConfirmDialog(null, "El cliente es apto para solicitar un préstamo ¿Quieres guardar la solicitud?", "Solicitar préstamo", JOptionPane.YES_NO_OPTION);
+
+            switch (opcion) {
+                case JOptionPane.YES_OPTION -> {
+
+                    System.out.println(clienteApto.getDni() + " Apto para préstamo");
+                    System.out.println("Cantidad: " + Funciones.cantidadPrestamo(clienteApto));
+                    MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido(Integer.parseInt(jComboBoxPeriodoMesesSolicitar.getSelectedItem().toString()), Double.parseDouble(jComboBoxTipoInteresSolicitar.getSelectedItem().toString()), Integer.parseInt(jComboBoxPlazoAceptacionSolicitar.getSelectedItem().toString()), clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
+                    JOptionPane.showMessageDialog(null, "Apto para préstamo. Cantidad = " + Funciones.cantidadPrestamo(clienteApto), "Solicitar préstamo", JOptionPane.INFORMATION_MESSAGE, null);
+
+                }
+                case JOptionPane.NO_OPTION -> {
+                    JOptionPane.showMessageDialog(null, "No se ha guardado la solicitud de préstamo", "Solicitar préstamo", JOptionPane.INFORMATION_MESSAGE, null);
+                }
+                default -> {
+                    JOptionPane.showMessageDialog(null, "No se ha guardado la solicitud de préstamo", "Solicitar préstamo", JOptionPane.INFORMATION_MESSAGE, null);
+                }
+            }
+
         } else {
             JOptionPane.showMessageDialog(null, "El cliente no es apto para préstamo.", "Solicitar préstamo", JOptionPane.WARNING_MESSAGE, null);
         }
@@ -1217,6 +1239,7 @@ public class Prestamos extends javax.swing.JFrame {
     private javax.swing.JLabel jLFirmarPrestamo1;
     private javax.swing.JLabel jLPrestamoConcedido;
     private javax.swing.JLabel jLPrestamoPreconcedido1;
+    private javax.swing.JLabel jLabelAptoParaPrestamo;
     private javax.swing.JLabel jLabelDNISolicitar;
     private javax.swing.JLabel jLabelDatosClienteSolicitar;
     private javax.swing.JLabel jLabelFiltroMostrar;
