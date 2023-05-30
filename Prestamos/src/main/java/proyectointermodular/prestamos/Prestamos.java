@@ -258,6 +258,11 @@ public class Prestamos extends javax.swing.JFrame {
         jComboBoxPeriodoMesesSolicitar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "3", "6", "12", "24", "48" }));
         jComboBoxPeriodoMesesSolicitar.setToolTipText("Periodo en meses en los que se devolverá el préstamo.");
         jComboBoxPeriodoMesesSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jComboBoxPeriodoMesesSolicitar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxPeriodoMesesSolicitarActionPerformed(evt);
+            }
+        });
         jPSolicitar.add(jComboBoxPeriodoMesesSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 430, 50, -1));
 
         jLabelPeriodoMesesSolicitar.setForeground(new java.awt.Color(255, 255, 255));
@@ -269,9 +274,10 @@ public class Prestamos extends javax.swing.JFrame {
         jLabelTipoInteresSolicitar.setToolTipText("");
         jPSolicitar.add(jLabelTipoInteresSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 430, -1, -1));
 
-        jComboBoxTipoInteresSolicitar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "1.5", "2", "2.5", "3", "3.5" }));
+        jComboBoxTipoInteresSolicitar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "1.5", "2", "2.5", "3" }));
         jComboBoxTipoInteresSolicitar.setToolTipText("Tipo de interés del préstamo en %.");
         jComboBoxTipoInteresSolicitar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jComboBoxTipoInteresSolicitar.setEnabled(false);
         jPSolicitar.add(jComboBoxTipoInteresSolicitar, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 430, 50, -1));
 
         jLabelPlazoAceptacionSolicitar.setForeground(new java.awt.Color(255, 255, 255));
@@ -653,7 +659,7 @@ public class Prestamos extends javax.swing.JFrame {
 
                 if (Funciones.aptoParaPrestamo(clienteApto, null) != null) {
                     System.out.println(clienteApto.getDni() + " Apto para préstamo" + " | Cantidad: " + Funciones.cantidadPrestamo(clienteApto));
-                    MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido((int) (Math.random() * (48 - 3)) + 3, Math.random() * 3.5, (int) (Math.random() * (30 - 10)) + 10, clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
+                    MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido((int) (Math.random() * (48 - 3)) + 3, Math.random() * 3, (int) (Math.random() * (30 - 10)) + 10, clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
                 } else {
                     System.out.println("No apto para préstamo.");
                 }
@@ -1146,6 +1152,11 @@ public class Prestamos extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jTIntroDNIKeyPressed
 
+    /**
+     * Método jButtonGenerarInformePrestamosConcedidosActionPerformedActionPerformed que permite generar un informe en formato txt de los préstamos concedidos.
+     *
+     * @param evt Parámetro de tipo ActionEvent.
+     */
     private void jButtonGenerarInformePrestamosConcedidosActionPerformedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerarInformePrestamosConcedidosActionPerformedActionPerformed
         // TODO add your handling code here:
 
@@ -1173,6 +1184,31 @@ public class Prestamos extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButtonGenerarInformePrestamosConcedidosActionPerformedActionPerformed
+
+    /**
+     * Método jComboBoxPeriodoMesesSolicitarActionPerformed que al seleccionar un item del combo box de plazo de devolución en meses, modifica el item del combo box del tipo de interés.
+     *
+     * @param evt Parámetro de tipo ActionEvent.
+     */
+    private void jComboBoxPeriodoMesesSolicitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxPeriodoMesesSolicitarActionPerformed
+        // TODO add your handling code here:
+
+        String seleccion = (String) jComboBoxPeriodoMesesSolicitar.getSelectedItem();
+        jComboBoxTipoInteresSolicitar.removeAllItems();
+
+        if (seleccion.equalsIgnoreCase("3")) {
+            jComboBoxTipoInteresSolicitar.addItem("1");
+        } else if (seleccion.equalsIgnoreCase("6")) {
+            jComboBoxTipoInteresSolicitar.addItem("1.5");
+        } else if (seleccion.equalsIgnoreCase("12")) {
+            jComboBoxTipoInteresSolicitar.addItem("2");
+        } else if (seleccion.equalsIgnoreCase("24")) {
+            jComboBoxTipoInteresSolicitar.addItem("2.5");
+        } else if (seleccion.equalsIgnoreCase("48")) {
+            jComboBoxTipoInteresSolicitar.addItem("3");
+        }
+
+    }//GEN-LAST:event_jComboBoxPeriodoMesesSolicitarActionPerformed
 
     /**
      * @param args the command line arguments

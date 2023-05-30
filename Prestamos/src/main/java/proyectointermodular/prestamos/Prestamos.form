@@ -273,6 +273,9 @@
               <Color id="Hand Cursor"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBoxPeriodoMesesSolicitarActionPerformed"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
@@ -312,19 +315,19 @@
         <Component class="javax.swing.JComboBox" name="jComboBoxTipoInteresSolicitar">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="6">
+              <StringArray count="5">
                 <StringItem index="0" value="1"/>
                 <StringItem index="1" value="1.5"/>
                 <StringItem index="2" value="2"/>
                 <StringItem index="3" value="2.5"/>
                 <StringItem index="4" value="3"/>
-                <StringItem index="5" value="3.5"/>
               </StringArray>
             </Property>
             <Property name="toolTipText" type="java.lang.String" value="Tipo de inter&#xe9;s del pr&#xe9;stamo en %."/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
               <Color id="Hand Cursor"/>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>

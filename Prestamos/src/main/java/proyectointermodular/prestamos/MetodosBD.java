@@ -258,7 +258,7 @@ public class MetodosBD {
     public static List<PrestamoConcedido> listarPrestamosConcedidosPorId(String id) {
 
         List<PrestamoConcedido> listaprestamoConcedido = new ArrayList();
-        String sql = "SELECT * FROM " + TABLA_CONCEDIDOS + " WHERE cliente_id = ?";
+        String sql = "SELECT * FROM " + TABLA_CONCEDIDOS + " INNER JOIN prestamospreconcedidos ON prestamosconcedidos.numero_prestamo_preconcedido=prestamospreconcedidos.numero_prestamo WHERE prestamosconcedidos.cliente_id = ?";
 
         try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
 
@@ -586,6 +586,37 @@ public class MetodosBD {
     }
 
     /**
+     * Método prestamoPreconcedidoPorNum que recibe por parámetro un id de número de préstamo preconcedido y devuelve el objeto.
+     *
+     * @param num Parámetro de tipo int que será el número de préstamo.
+     * @return Devuelve un PrestamoPreconcedido.
+     */
+    public static PrestamoPreconcedido prestamoPreconcedidoPorNum(int num) {
+
+        PrestamoPreconcedido prestamoPreconcedido = null;
+        String sql = "SELECT * FROM " + TABLA_PRECONCEDIDOS + " WHERE numero_prestamo=?";
+
+        try ( PreparedStatement stmt = getConnection().prepareStatement(sql);) {
+
+            stmt.setInt(1, num);
+
+            try ( ResultSet rs = stmt.executeQuery();) {
+                if (rs.next()) {
+                    prestamoPreconcedido = crearPrestamoPreconcedido(rs);
+                }
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("SQLException: " + ex.getMessage());
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+
+        return prestamoPreconcedido;
+
+    }
+
+    /**
      * Método estático insertarPrestamo que recibe por parámetro un objeto PrestamoPreconcedido y lo inserta en la base de datos.
      *
      * @param prestamopreconcedido Parámetro de tipo PrestamoPreconcedido que será el objeto a insertar.
@@ -723,7 +754,8 @@ public class MetodosBD {
      * @throws SQLException Lanza una excepción si hay algún error de SQL.
      */
     private static PrestamoConcedido crearPrestamoConcedido(final ResultSet rs) throws SQLException {
-        return new PrestamoConcedido(prestamoPreconcedidoPorIdCliente(rs.getString("cliente_id")), pagosPorNumPrestamo(rs.getInt("numero_prestamo")), rs.getInt("numero_prestamo"), clientePorId(rs.getString("cliente_id")), rs.getDate("fecha_firma").toLocalDate(), rs.getDouble("cantidad_mensual"));
+        //return new PrestamoConcedido(prestamoPreconcedidoPorIdCliente(rs.getString("cliente_id")), pagosPorNumPrestamo(rs.getInt("numero_prestamo")), rs.getInt("numero_prestamo"), clientePorId(rs.getString("cliente_id")), rs.getDate("fecha_firma").toLocalDate(), rs.getDouble("cantidad_mensual"));
+        return new PrestamoConcedido(prestamoPreconcedidoPorNum(rs.getInt("numero_prestamo_preconcedido")), pagosPorNumPrestamo(rs.getInt("numero_prestamo")), rs.getInt("numero_prestamo"), clientePorId(rs.getString("cliente_id")), rs.getDate("fecha_firma").toLocalDate(), rs.getDouble("cantidad_mensual"));
     }
 
     /**
