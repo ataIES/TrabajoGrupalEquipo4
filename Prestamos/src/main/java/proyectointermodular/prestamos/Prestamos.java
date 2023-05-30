@@ -523,6 +523,7 @@ public class Prestamos extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPPortada.setVisible(false);
         jPSolicitar.setVisible(true);
+        jTextFieldDNISolicitar.requestFocus();
     }//GEN-LAST:event_jBSolicitarActionPerformed
 
     /**
@@ -550,6 +551,7 @@ public class Prestamos extends javax.swing.JFrame {
         jButtonProcesarSolicitar.setEnabled(false);
         jTextFieldDNISolicitar.setEnabled(true);
         jLabelAptoParaPrestamo.setText("");
+        jTextFieldDNISolicitar.requestFocus();
     }//GEN-LAST:event_jButtonLimpiarSolicitarActionPerformed
 
     /**
@@ -573,6 +575,7 @@ public class Prestamos extends javax.swing.JFrame {
         // TODO add your handling code here:
         jPPortada.setVisible(false);
         jPMostrar.setVisible(true);
+        jTextFieldDatoMostrar.requestFocus();
     }//GEN-LAST:event_jBMostrarActionPerformed
 
     /**
@@ -587,6 +590,7 @@ public class Prestamos extends javax.swing.JFrame {
         jButtonProcesarSolicitar.setEnabled(false);
         jTextFieldDatoMostrar.setEnabled(true);
         jComboBoxFiltroMostrar.setSelectedIndex(0);
+        jTextFieldDatoMostrar.requestFocus();
     }//GEN-LAST:event_jButtonLimpiarMostrarActionPerformed
 
     /**
@@ -746,6 +750,7 @@ public class Prestamos extends javax.swing.JFrame {
         jTableConcedidosFirmar.setModel(new DefaultTableModel());
         jTIntroDNI.setEnabled(true);
         jBFirmar.setEnabled(false);
+        jTIntroDNI.requestFocus();
     }//GEN-LAST:event_jBPLimpiarActionPerformed
 
     /**
@@ -940,6 +945,7 @@ public class Prestamos extends javax.swing.JFrame {
         jPCalcularPrestamo.setVisible(false);
         jPMostrar.setVisible(false);
         jPFirmar.setVisible(true);
+        jTIntroDNI.requestFocus();
     }//GEN-LAST:event_jBBFirmarActionPerformed
 
     /**
@@ -1230,8 +1236,10 @@ public class Prestamos extends javax.swing.JFrame {
             jTextFieldDatoMostrar.setEnabled(false);
         } else if (seleccion.equalsIgnoreCase("DNI")) {
             jTextFieldDatoMostrar.setEnabled(true);
+            jTextFieldDatoMostrar.requestFocus();
         } else if (seleccion.equalsIgnoreCase("Localidad")) {
             jTextFieldDatoMostrar.setEnabled(true);
+            jTextFieldDatoMostrar.requestFocus();
         }
 
     }//GEN-LAST:event_jComboBoxFiltroMostrarActionPerformed
