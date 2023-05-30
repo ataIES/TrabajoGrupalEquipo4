@@ -660,53 +660,67 @@ public class Prestamos extends javax.swing.JFrame {
     private void jBCalculoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCalculoActionPerformed
         // TODO add your handling code here:
 
-        //Procesar clientes
-        List<Cliente> clientes = MetodosBD.listarClientes();
+        int opcion = JOptionPane.showConfirmDialog(null, "¿Desea ejecutar el cálculo masivo de préstamos preconcedidos para todos auqellos clientes aptos?", "Cálculo de los Préstamos preconcedidos", JOptionPane.YES_NO_OPTION);
 
-        if (!clientes.isEmpty()) {
+        switch (opcion) {
+            case JOptionPane.YES_OPTION -> {
 
-            for (Cliente clienteApto : clientes) {
+                //Procesar clientes
+                List<Cliente> clientes = MetodosBD.listarClientes();
 
-                if (Funciones.aptoParaPrestamo(clienteApto, null) != null) {
-                    System.out.println(clienteApto.getDni() + " Apto para préstamo" + " | Cantidad: " + Funciones.cantidadPrestamo(clienteApto));
-                    MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido((int) (Math.random() * (48 - 3)) + 3, Math.random() * 3, (int) (Math.random() * (30 - 10)) + 10, clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
-                } else {
-                    System.out.println("No apto para préstamo.");
-                }
-            }
+                if (!clientes.isEmpty()) {
 
-            //Mostrar préstamos preconcedidos generados
-            List<PrestamoPreconcedido> lista = MetodosBD.listarPrestamosPreconcedidos();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    for (Cliente clienteApto : clientes) {
 
-            if (!lista.isEmpty()) {
-
-                String[] columnasTablaSolicitar = {"NºPrestamo", "DNI Cliente", "Fecha_Oferta", "Cantidad €", "Periodo en Meses", "Interés %", "Plazo de Aceptación"};
-                DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar) {
-                    // Sobrescribir el método isCellEditable para que devuelva siempre false
-                    @Override
-                    public boolean isCellEditable(int row, int column) {
-                        return false; // No permitir la edición de ninguna celda
+                        if (Funciones.aptoParaPrestamo(clienteApto, null) != null) {
+                            System.out.println(clienteApto.getDni() + " Apto para préstamo" + " | Cantidad: " + Funciones.cantidadPrestamo(clienteApto));
+                            MetodosBD.insertarPrestamopreconcedido(new PrestamoPreconcedido((int) (Math.random() * (48 - 3)) + 3, Math.random() * 3, (int) (Math.random() * (30 - 10)) + 10, clienteApto, LocalDate.now(), Funciones.cantidadPrestamo(clienteApto), false));
+                        } else {
+                            System.out.println("No apto para préstamo.");
+                        }
                     }
-                };
-                jTableCalculo.setModel(modeloTabla);
-                jTableCalculo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-                for (PrestamoPreconcedido preconcedido : lista) {
-                    String[] datosPreconcedidos = {String.valueOf(preconcedido.getId()), preconcedido.getCliente().getDni(), preconcedido.getFecha().format(formatter),
-                        String.valueOf(preconcedido.getCantidad()), String.valueOf(preconcedido.getPeriodoMeses()), String.valueOf(preconcedido.getTipoInteres()),
-                        String.valueOf(preconcedido.getPlazoAceptacion())};
-                    modeloTabla.addRow(datosPreconcedidos);
+                    //Mostrar préstamos preconcedidos generados
+                    List<PrestamoPreconcedido> lista = MetodosBD.listarPrestamosPreconcedidos();
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
+                    if (!lista.isEmpty()) {
+
+                        String[] columnasTablaSolicitar = {"NºPrestamo", "DNI Cliente", "Fecha_Oferta", "Cantidad €", "Periodo en Meses", "Interés %", "Plazo de Aceptación"};
+                        DefaultTableModel modeloTabla = new DefaultTableModel(null, columnasTablaSolicitar) {
+                            // Sobrescribir el método isCellEditable para que devuelva siempre false
+                            @Override
+                            public boolean isCellEditable(int row, int column) {
+                                return false; // No permitir la edición de ninguna celda
+                            }
+                        };
+                        jTableCalculo.setModel(modeloTabla);
+                        jTableCalculo.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+                        for (PrestamoPreconcedido preconcedido : lista) {
+                            String[] datosPreconcedidos = {String.valueOf(preconcedido.getId()), preconcedido.getCliente().getDni(), preconcedido.getFecha().format(formatter),
+                                String.valueOf(preconcedido.getCantidad()), String.valueOf(preconcedido.getPeriodoMeses()), String.valueOf(preconcedido.getTipoInteres()),
+                                String.valueOf(preconcedido.getPlazoAceptacion())};
+                            modeloTabla.addRow(datosPreconcedidos);
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "No hay ningún préstamo preconcedido", "Cálculo de los Préstamos preconcedidos", JOptionPane.ERROR_MESSAGE);
+                    }
+
+                    //JOptionPane.showMessageDialog(null, "Cálculo masivo generado.", "Cálculo de los Préstamos preconcedidos", JOptionPane.INFORMATION_MESSAGE, null);
+                } else {
+                    JOptionPane.showMessageDialog(null, "La lista de clientes está vacía. No se ha generado ningún cálculo.", "Cálculo de los Préstamos preconcedidos", JOptionPane.ERROR_MESSAGE, null);
+                    System.out.println("Está vacía.");
                 }
 
-            } else {
-                JOptionPane.showMessageDialog(null, "No hay ningún préstamo preconcedido", "Cálculo de los Préstamos preconcedidos", JOptionPane.ERROR_MESSAGE);
             }
-
-            //JOptionPane.showMessageDialog(null, "Cálculo masivo generado.", "Cálculo de los Préstamos preconcedidos", JOptionPane.INFORMATION_MESSAGE, null);
-        } else {
-            JOptionPane.showMessageDialog(null, "La lista de clientes está vacía. No se ha generado ningún cálculo.", "Cálculo de los Préstamos preconcedidos", JOptionPane.ERROR_MESSAGE, null);
-            System.out.println("Está vacía.");
+            case JOptionPane.NO_OPTION -> {
+                JOptionPane.showMessageDialog(null, "No se ha ejecutado el cálculo masivo.", "Cálculo de los Préstamos preconcedidos", JOptionPane.INFORMATION_MESSAGE, null);
+            }
+            default -> {
+                JOptionPane.showMessageDialog(null, "No se ha guardado la solicitud de préstamo", "Cálculo de los Préstamos preconcedidos", JOptionPane.INFORMATION_MESSAGE, null);
+            }
         }
 
     }//GEN-LAST:event_jBCalculoActionPerformed
