@@ -31,19 +31,25 @@ Enmpezamos creando la base de datos "préstamos" siguiendo el enunciado entregad
 También generamos los siguientes triggers o disparadores:
 
  1-Crea los uuid de los clientes en el momento de la inserción
+
  ![](Imagenes/uuid.jpg)
  
  2-Modifica la tabla cuentas, poniendo la cantidad del ultimo movimiemto de nombre NOMINA en la tabla movimientos
+
  ![](Imagenes/nomina.jpg)
 
  3-Calcula la media de la nomina de los ultimos 12 meses y la pone en su columna en la tabla cuentas. Si no hay 12 nominas la deja a 0.
+
  ![](Imagenes/nomina1.jpg)
+
  ![](Imagenes/meedia2.jpg)
 
 4-Calcula la cantidad de meses cotizados en el ultimo año
+
 ![](Imagenes/mesesnomina.jpg)
 
 5-Modifica el atributo firmado de la tabla preconcedidos si el préstamo se inserta en la tabla concedidos
+
 ![](Imagenes/firma.png)
 
 6-Modifica el saldo de la cuenta en base a las introducciones en la tabla movimientos
