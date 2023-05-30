@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta charset="UTF-8">
+        <title>Aurora Bank préstamo Inmediato - Página de Promoción</title>
+        <style>
+            body{
+                background-color: rgb(65, 67, 68);
+
+                }
+            .form {
+                width: 100%;
+                max-width: 600px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                }
+            h2{
+             text-align:center;
+                }
+            h3{
+             text-align:center;
+                }
+
+            h2 a {
+                color: rgb(50,50,50);
+                text-decoration: none;
+                }   
+            .form-container{
+                 max-width:700px;
+                margin: 0 auto;
+                }
+            .fondo{
+                background-color: aqua;
+                margin-left: 30%;
+                margin-right: 30% ;
+                }
+            .fondo2{
+                background-color: rgb(123, 106, 221);
+                margin-left: 30%;
+                margin-right: 30% ;
+                }
+            footer{
+                background-color: rgb(31, 31, 31);
+                color: azure;
+                text-align: center;
+                padding: 20px;
+                }
+        </style>
+    </head>
+    <body>
+        <div align="center">
+            <img src="LOGO.png" width="400"height="300" >
+        </div>
+<div class="fondo">
+    <h2>Solicitar prestamo Aurora</h2>
+
+    <h3>Clientes:</h3>
+    <form class="form" >
+        <label for ="DNI:">DNI:</label>
+        <input type="text" id="DNI"/>
+        <label for ="Nombre">Nombre:</label>
+        <input type="text" id="Nombre"/>
+        <label for ="Apellidos">Apellidos:</label>
+        <input type="text" id="Apellidos"/>
+        <label for ="Numero de Cuenta">Nº de Cuenta</label>
+        <input type="text" id="Numero de cuenta"/>
+        <label for ="Usuario">Usuario:</label>
+        <input type="text" id="Usuario"/>
+        <label for ="Contraseña">Contraseña:</label>
+        <input type="password" id="contraseña"/> 
+        <button type="submit" >Solicitar</button>
+    </form>
+</div>
+
+<div class="fondo2">
+    <h3> No Clientes:</h3>
+    <p>Rellena el siguiente formulario y recibirás un correo concertando una cita en nuestras oficinas</p>
+        <form class="form-container" >
+            <label for ="DNI:">DNI:</label>
+            <input type="text" id="DNI"/>
+            <label for ="Nombre">Nombre:</label>
+            <input type="text" id="Nombre"/>
+            <label for ="Apellidos">Apellidos:</label>
+            <input type="text" id="Apellidos"/>
+            <label for ="Correo">Correo electrónico:</label>
+            <input type="email" id="Correo"/>
+            <label for ="Fecha">Fecha de nacimiento:</label>
+            <input type="date" id="Fecha"/>
+            <button type="submit" >Enviar</button>
+        </form>
+</div>
+<br/>
+<br/>
+    <footer>
+        <p>&copy; 2023 Préstamo Inmediato. Todos los derechos reservados.</p>
+      </footer>
+
+
+</html>
